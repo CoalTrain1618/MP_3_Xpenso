@@ -1,5 +1,10 @@
 # MP_3_Lets-Talk-Money
 
+## Project Introduction
+Let's Talk Money is a user-friendly finance budgeting web application that enables users to input their monthly income or budget and track their expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
+
+This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts — with a strong focus on backend functionality — using Python and the Django framework.
+
 ## Agile Methodology
 ### Overview
 For this project, I plan to utilise the Agile methodology to promote flexibility and ensure steady progress towards a clear objective. Agile development is particularly effective in environments where requirements and ideas evolve throughout the development process. It enables teams to break down large tasks into manageable, iterative steps, fostering continuous improvement and adaptability. This approach allows for quick adjustments in response to changing needs, making it ideal for dynamic project environments.
