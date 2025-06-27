@@ -91,3 +91,49 @@ The user stories above have been grouped into Epics to align with the Agile meth
 - [EPIC 6: User interface & Responsive Design](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/6)
 - [EPIC 7: User Experiance Optimisation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/7)
 - [EPIC 8: Quality Assurance & Documentation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/8)
+
+## WireFrames Design
+The wireframe designs serve as an initial blueprint for the website’s layout and user interface. While these designs provide a clear starting point for the placement of key elements across each page, they are intended to be flexible and may evolve throughout development as requirements and user needs become clearer. Creating wireframes has been instrumental in visualising the site’s structure and user flow, as well as aiding the development of the underlying database schema.
+
+[Wireframes doc link here]
+
+## Database Design
+This database ERD visualises the structure and relationships between the database tables for this web application.
+
+This ERD was designed using [dbdiagram.io](https://dbdiagram.io)
+
+[ERD Design Here]
+
+## Design Choices
+
+#### Fonts 
+The font choice for this web application is [Inter](https://fonts.google.com/specimen/Inter?query=Inter), which offers a professional, modern look that fits well with fintech applications. Inter is easy to read and accessible to all users. For headings, I have chosen ![Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity), providing a clear visual distinction between sections of text while remaining in line with the fintech style.
+
+#### Colour Scheme
+[Colour Scheme information here]
+
+#### Images
+
+All images were produced using [Adobe Firefly](https://www.adobe.com/products/firefly.html) with custom prompts. I chose this option to avoid any copyright issues with images.
+
+
+## Security Measures
+
+#### User Authentication
+
+- Django’s `LoginRequiredMixin` is implemented to ensure that users must be logged in to access protected pages. Any unauthenticated requests are redirected to the login screen.
+- The `UserPassesTestMixin` is used to restrict certain actions, such as editing or deleting content, so that only the original author has permission. If a user does not meet the required conditions, a 403 Forbidden error is displayed.
+
+#### Password Management
+
+- Django’s built-in password management system is used to securely hash and store user passwords.
+- Strong password requirements are enforced to improve the security of user accounts.
+
+#### Form Validation
+
+- Forms are validated both client-side and server-side. If a user submits incomplete or incorrect information, the form will not be processed and a clear warning message will indicate which field needs attention.
+
+#### Database Security
+
+- Sensitive information such as the database URL and secret key are stored in an `env.py` file, keeping them out of version control and reducing the risk of unauthorised access. This was set up prior to the initial commit to GitHub.
+- CSRF (Cross-Site Request Forgery) protection is enabled on all forms to further safeguard user data.## Security Measures
