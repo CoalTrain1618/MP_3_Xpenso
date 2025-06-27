@@ -1,5 +1,25 @@
 # MP_3_Lets-Talk-Money
 
+## Contents
+
+- [Project Introduction](#project-introduction)
+- [Agile Methodology](#agile-methodology)
+    - [Overview](#overview)
+    - [MoSCoW Prioritisation Technique](#moscow-prioritisation-technique)
+    - [GitHub Project Board](#github-project-board)
+- [Website Goals & Objectives](#website-goals--objectives)
+- [User Stories](#user-stories)
+    - [Developer Stories](#developer-stories)
+    - [Visitor Stories](#visitor-stories)
+- [Epics](#epics)
+- [Wireframes Design](#wireframes-design)
+- [Database Design](#database-design)
+- [Design Choices](#design-choices)
+    - [Fonts](#fonts)
+    - [Colour Scheme](#colour-scheme)
+    - [Images](#images)
+- [Security Measures](#security-measures)
+
 ## Project Introduction
 Let's Talk Money is a user-friendly finance budgeting web application that enables users to input their monthly income or budget and track their expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
 
@@ -16,6 +36,8 @@ As part of the project planning process, I will apply the MoSCoW prioritisation 
 In line with Agile development methodology, I have made extensive use of GitHub’s project board by organising the development process into Epics, which are further broken down into user stories and manageable tasks. I have also utilised the Milestones feature, allowing me to group tasks into Sprint sections, each with a defined due date. By following this structured approach, I aim to maintain effective time management throughout the development of the web application, while also remaining adaptable to any necessary changes.
 
 [INSERT IMAGE OF PROJECT BOARD]
+
+[Back to top](#contents)
 
 ## Website Goals & Objectives
 - Empower Users to Manage Personal Finances:
@@ -41,6 +63,9 @@ In line with Agile development methodology, I have made extensive use of GitHub�
 - Encourage Continued Use and Habit Formation:
     - Provide reminders, insights, and positive feedback to help users stay engaged.
     - Allow users to view progress over time and set personal financial goals.
+
+[Back to top](#contents)
+
 --------------------------------------------------------------------------------------------
 ### User Stories
 Through the implementation of Agile methodology, I created the user stories with the website’s goals and objectives in mind. The result is a well-organised structure of user stories, divided between developer-focused and visitor-focused perspectives. A full list of these is provided below.
@@ -92,6 +117,8 @@ The user stories above have been grouped into Epics to align with the Agile meth
 - [EPIC 7: User Experiance Optimisation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/7)
 - [EPIC 8: Quality Assurance & Documentation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/8)
 
+[Back to top](#contents)
+
 ## WireFrames Design
 The wireframe designs serve as an initial blueprint for the website’s layout and user interface. While these designs provide a clear starting point for the placement of key elements across each page, they are intended to be flexible and may evolve throughout development as requirements and user needs become clearer. Creating wireframes has been instrumental in visualising the site’s structure and user flow, as well as aiding the development of the underlying database schema.
 
@@ -116,6 +143,7 @@ The font choice for this web application is [Inter](https://fonts.google.com/spe
 
 All images were produced using [Adobe Firefly](https://www.adobe.com/products/firefly.html) with custom prompts. I chose this option to avoid any copyright issues with images.
 
+[Back to top](#contents)
 
 ## Security Measures
 
@@ -137,3 +165,38 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 
 - Sensitive information such as the database URL and secret key are stored in an `env.py` file, keeping them out of version control and reducing the risk of unauthorised access. This was set up prior to the initial commit to GitHub.
 - CSRF (Cross-Site Request Forgery) protection is enabled on all forms to further safeguard user data.## Security Measures
+
+[Back to top](#contents)
+
+## Webapp Features
+
+[Features listed here]
+
+#### Custom error page
+
+[custom error page herer]
+
+## Admin Portal
+
+[Admin portal section]
+
+## Testing
+
+[Link testing documentation here]
+
+## Deployment
+
+### Deployment process for Heroku
+
+[Fill in step process of deployment here]
+
+
+## Technologies
+
+#### Languages
+
+#### Framework
+
+#### Libraries
+
+#### Tools
