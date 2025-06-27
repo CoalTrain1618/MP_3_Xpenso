@@ -134,7 +134,7 @@ This ERD was designed using [dbdiagram.io](https://dbdiagram.io)
 ## Design Choices
 
 #### Fonts 
-The font choice for this web application is [Inter](https://fonts.google.com/specimen/Inter?query=Inter), which offers a professional, modern look that fits well with fintech applications. Inter is easy to read and accessible to all users. For headings, I have chosen ![Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity), providing a clear visual distinction between sections of text while remaining in line with the fintech style.
+The font choice for this web application is [Inter](https://fonts.google.com/specimen/Inter?query=Inter), which offers a professional, modern look that fits well with fintech applications. Inter is easy to read and accessible to all users. For headings, I have chosen [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity), providing a clear visual distinction between sections of text while remaining in line with the fintech style.
 
 #### Colour Scheme
 [Colour Scheme information here]
