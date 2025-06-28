@@ -17,7 +17,15 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import importlib.util
 
+env_path = os.path.join(os.getcwd(), 'env.py')
+if os.path.isfile(env_path):
+    spec = importlib.util.spec_from_file_location("env", env_path)
+    env = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(env)
+
+print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
