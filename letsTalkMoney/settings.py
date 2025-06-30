@@ -64,7 +64,8 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -132,6 +133,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
