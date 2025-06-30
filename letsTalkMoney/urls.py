@@ -19,7 +19,7 @@ from django.urls import path, include
 from accounts import views as accounts_views
 
 urlpatterns = [
-    path('', accounts_views.index, name="accounts"),
+    path('', accounts_views.landing_login, name="landing_login"),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]
