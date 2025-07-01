@@ -14,4 +14,7 @@ def create_user_profile(sender, instance, created, **kwargs):
 # Ensures anytime the User is saved, the realting profile is also saved.
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    try:
+        instance.profile.save()
+    except Profile.DoesNotExist:
+        Profile.objects.create(user=instance)
