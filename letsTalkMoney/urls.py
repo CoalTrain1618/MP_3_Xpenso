@@ -20,6 +20,7 @@ from accounts import views as accounts_views
 
 urlpatterns = [
     path('', accounts_views.landing_login, name="landing_login"),
+    path('profile/', accounts_views.profile_view, name=""),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]
