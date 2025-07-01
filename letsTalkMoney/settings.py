@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     'crispy_bootstrap5',
-    'accounts',
+    'accounts.apps.AccountsConfig',
 ]
 
 SITE_ID = 1
