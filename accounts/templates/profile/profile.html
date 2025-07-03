@@ -9,17 +9,17 @@
         <div class="col-12 col-md-8 col-lg-6">
             
                 <h2 class="text-center mb-4">Hey {{ profile.user.username }}, You can make profile changes here!</h2>
-                <div class="mb-3 custom-card">
+                <div class="mb-3 custom-card custom-border">
                     <strong class="text-muted">Username:</strong>
                     <span class="">{{ profile.user.username }}</span>
                 </div>
-                <div class="mb-3 custom-card">
+                <div class="mb-3 custom-card custom-border">
                     <strong class="text-muted">Email:</strong>
                     <span class="ms-2">{{ profile.user.email }}</span>
                     <br>
                     <a href="{% url 'account_email' %}">Change Email</a>
                 </div>
-                <div class="mb-3 custom-card">
+                <div class="mb-3 custom-card custom-border">
                     <strong class="text-muted">Password:</strong>
                     <a href="{% url 'account_change_password' %}" class="ms-2">Change Password</a>
                 </div>
