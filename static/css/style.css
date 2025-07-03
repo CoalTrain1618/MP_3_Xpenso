@@ -58,3 +58,7 @@ nav, footer {
 input {
     border-radius: 5px;
 }
+
+.min-height {
+    min-height: 80vh;
+}

@@ -4,12 +4,26 @@
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="row">
-        <h1 class="col-12 text-center">{{ profile.user.username }}'s Profile</h1>
-        <h5 class="col-12 col-lg-6">Email: {{ profile.user.email }} </h5>
-        <h5 class="col-12 col-lg-6">User Name: {{ profile.user.username }}</h5>
-        <h5 class="col-12 col-lg-6">Password: <a href="{% url 'account_change_password' %}">Change Password</a></h5>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow p-4">
+                <h2 class="text-center mb-4">{{ profile.user.username }}'s Profile</h2>
+                <div class="mb-3">
+                    <strong>Email:</strong>
+                    <span class="ms-2">{{ profile.user.email }}</span>
+                    <a href="{% url 'account_email' %}" class="btn btn-link btn-sm ms-2">Change Email</a>
+                </div>
+                <div class="mb-3">
+                    <strong>Username:</strong>
+                    <span class="ms-2">{{ profile.user.username }}</span>
+                </div>
+                <div class="mb-3">
+                    <strong>Password:</strong>
+                    <a href="{% url 'account_change_password' %}" class="btn btn-link btn-sm ms-2">Change Password</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
