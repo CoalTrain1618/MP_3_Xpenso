@@ -60,11 +60,25 @@ footer {
     background-color: #d5f716;
     border-color: #111111;
     color: black;
+    max-width: 200px;
 }
 
 .btn-primary:hover {
     background-color: #111111;
     border-color: #d5f716;
+}
+
+.btn-secondary {
+    background-color: #afafaf;
+    border-color: #d5f716;
+    color: black;
+    max-width: 200px;
+}   
+
+.btn-secondary:hover {
+    background-color: #d5f716;
+    border-color: #111111;
+    color: black;
 }
 
 /* Form Styles */
