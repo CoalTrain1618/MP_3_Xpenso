@@ -1,9 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* General Styles */
+
 body {
+    background-color: #e4e4e4;
     font-family: 'Inter', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
+}
+
+.highlight-colour {
+    color: #d5f716 !important;
+}
+
+.view-height {
+    min-height: 80vh;
+}
+
+/* Spacing for forms */
+br {
+    margin-top: 0.5rem;
+}
+
+a {
+    color: #274c77;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d5f716;
+    text-decoration: underline;
+}
+
+/* Navigation and Footer Styles */
+nav {
+    background-color: #111111 !important;
+    border-radius: 50px;
+    margin: 0 20px;
+}
+
+footer {
+    background-color: #111111 !important;
+}
+
+
+.navbar-brand, .navbar-nav .nav-link, .footer{
+    color: #E7ECEF !important;
+}
+
+.navbar-toggler {
+    border-color: #d5f716;
+}
+
+/* Over-rides bootstrap navbar-toggler-icon */
+.custom-toggler {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(231,236,239, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #d5f716;
+    border-color: #111111;
+    color: black;
+    max-width: 200px;
+}
+
+.btn-primary:hover {
+    background-color: #111111;
+    border-color: #d5f716;
+}
+
+.btn-secondary {
+    background-color: #afafaf;
+    border-color: #d5f716;
+    color: black;
+    max-width: 200px;
+}   
+
+.btn-secondary:hover {
+    background-color: #d5f716;
+    border-color: #111111;
+    color: black;
+}
+
+/* Form Styles */
+input {
+    border-radius: 5px;
+}
+
+.min-height {
+    min-height: 80vh;
+}
+
+/* Custom card */
+.custom-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-border {
+    border: 1px solid #d5f716;
+}
+
+.custom-border-danger {
+    border: 2px dashed red; 
 }
