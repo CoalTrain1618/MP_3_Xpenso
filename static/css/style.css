@@ -3,12 +3,16 @@
 /* General Styles */
 
 body {
-    background-color: #E7ECEF;
+    background-color: #afafaf;
     font-family: 'Inter', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
+}
+
+.highlight-colour {
+    color: #d5f716 !important;
 }
 
 /* Spacing for forms */
@@ -53,13 +57,14 @@ footer {
 
 /* Buttons */
 .btn-primary {
-    background-color: #6096BA;
-    border-color: #6096BA;
+    background-color: #d5f716;
+    border-color: #111111;
+    color: black;
 }
 
 .btn-primary:hover {
-    background-color: #274C77;
-    border-color: #274C77;
+    background-color: #111111;
+    border-color: #d5f716;
 }
 
 /* Form Styles */
