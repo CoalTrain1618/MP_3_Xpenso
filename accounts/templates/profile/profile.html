@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load i18n %}
+
 
 {% block content %}
 
@@ -22,6 +24,17 @@
                 <strong class="text-muted">Password:</strong>
                 <a href="{% url 'account_change_password' %}" class="ms-2">Change Password</a>
             </div>
+            <h4>{% trans "Account Removal" %}</h4>
+            <!-- Bootstrap dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Delete Account
+                </button>
+                <ul class= "dropdown-menu text-center">
+                    <li class="p-2"><p>Are you sure you want to delete you account ?</p></li>
+                    <li><button class="btn btn-danger">Yes</button></li>
+                </ul>
+            </div>  
         </div>
     </div>
 </div>
