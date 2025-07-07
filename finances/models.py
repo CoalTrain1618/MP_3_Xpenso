@@ -19,3 +19,13 @@ class Income(models.Model):
     date_set = models.DateField(auto_now_add=True)
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
 
+class Category(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=60)
+
+class Expenses(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date_set = models.DateField(auto_now_add=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
