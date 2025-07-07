@@ -21,6 +21,7 @@ from accounts import views as accounts_views
 urlpatterns = [
     path('', accounts_views.landing_login, name="landing_login"),
     path('user/', include("accounts.urls")),
+    path('finances/', include('finances.urls')),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]

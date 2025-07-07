@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'accounts.apps.AccountsConfig',
+    'finances',
 ]
 
 SITE_ID = 1
