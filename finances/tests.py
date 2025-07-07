@@ -28,3 +28,16 @@ class FinanceModelsTest(TestCase):
         self.assertEqual(income.amount, 500)
         self.assertEqual(income.budget, self.budget)
         self.assertEqual(income.user_id, self.user)
+
+    #Test that a category is created with correct name and with user link
+    def test_category_creation(self):
+        self.assertEqual(self.category.name, "Groceries")
+        self.assertEqual(self.category.user_id, self.user)
+    
+    #Test that an expense is created and linked to the correct user
+    def test_expense_creation(self):
+        expense = Expenses.objects.create(user_id=self.user, amount=200, category=self.category, budget=self.budget)
+        self.assertEqual(expense.amount, 200)
+        self.assertEqual(expense.category, self.category)
+        self.assertEqual(expense.budget, self.budget)
+        self.assertEqual(expense.user_id, self.user)
