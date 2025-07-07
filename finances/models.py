@@ -11,3 +11,11 @@ class Budget(models.Model):
     date_set = models.DateField(auto_now_add=True)
     month = models.PositiveSmallIntegerField()
     year = models.PositiveSmallIntegerField()
+
+class Income(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    source = models.CharField(max_length=60)
+    date_set = models.DateField(auto_now_add=True)
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
+
