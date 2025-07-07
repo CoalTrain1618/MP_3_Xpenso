@@ -15,4 +15,16 @@ class FinanceModelsTest(TestCase):
                                             amount=1000, month=7, year=2025)
         self.category = Category.objects.create(user_id=self.user, name="Groceries")
 
-    
+    #Test that busget is created with correct values
+    def test_budget_creation(self):
+        self.assertEqual(self.budget.amount, 1000)
+        self.assertEqual(self.budget.month, 7)
+        self.assertEqual(self.budget.year, 2025)
+        self.assertEqual(self.budget.user_id, self.user)
+
+    #Test that income is created and linked to budget and user
+    def test_income_creation(self):
+        income = Income.objects.create(user_id=self.user, amount=500, source="job", budget=self.budget)
+        self.assertEqual(income.amount, 500)
+        self.assertEqual(income.budget, self.budget)
+        self.assertEqual(income.user_id, self.user)
