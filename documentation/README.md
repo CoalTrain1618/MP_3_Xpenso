@@ -131,6 +131,10 @@ This ERD was designed using [dbdiagram.io](https://dbdiagram.io)
 
 [ERD Design Here]
 
+#### Chnages
+While creating the finances models, I made some adjustments to the database schema and the relationships between tables. Initially, the tables did not include any month or year fields. However, I soon realised that adding these fields was necessary to allow users to view financial data specific to a selected month and year. I also decided to link Budget as a Foreign Key to both Expenses and Incomes, making it much easier to group and filter data by month and date.
+
+
 ## Design Choices
 
 #### Fonts 
