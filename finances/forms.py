@@ -10,3 +10,12 @@ class BudgetForm(ModelForm):
 
 
 #Income form for user to create Income
+class IncomeForm(ModelForm):
+    class Meta:
+        model = Income
+        fields = ['amount', 'source', 'budget']
+
+    def __init__(self,*args,**kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+        self.fields['budget'].queryset= Budget.objects.filter(user_id=user)
