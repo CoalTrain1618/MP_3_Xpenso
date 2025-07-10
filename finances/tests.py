@@ -47,11 +47,11 @@ class FinanceModelsTest(TestCase):
 # ________________________________________________________________________________
 
 class FinanceCreateViewTests(TestCase):
-    
+
     # Test user creation for test cases
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser43', passwords="testpass1")
-        self.client.login(username='testuser43', passwords="testpass1")
+        self.user = User.objects.create_user(username='testuser43', password="testpass1")
+        self.client.login(username='testuser43', password="testpass1")
 
     #Test to check form displays correctly
     def test_budget_create_view_get(self):
@@ -78,5 +78,28 @@ class FinanceCreateViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Budget.objects.filter(user_id=self.user, amount=500, month=7, year=2025).exists())
 
-    #Test thatview requires login
+    #Test that view requires login
+    def test_budget_create_view_requires_login(self):
+        """
+        Test to ensure anonymous user are restricted, unless logged in.
+        """
+        self.client.logout()
+        url = reverse('budget_create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("accounts/login", response.url)
+
     
+    #Test budget creation successful message
+    def test_budget_create_view_success_message(self):
+        """
+        Test that django message is displayed upon budget completion
+        """
+        url = reverse('budget_create')
+        data = {'amount': 1000,
+                'month': 8,
+                'year': 2025,
+                }
+        response = self.client.post(url, data, follow=True)
+        messages = list(response.context['messages'])
+        self.assertTrue(any("Budget created successfully!" in str(m) for m in messages))
