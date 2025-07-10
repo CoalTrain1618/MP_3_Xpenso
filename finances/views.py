@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, h
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import CreateView
@@ -7,6 +7,14 @@ from .models import Budget, Income, Category, Expenses
 from .forms import BudgetForm, IncomeForm, ExpenseForm
 
 # Create your views here.
+
+#_____________________________________________________________________
+
+# Function for displaying dashboard
+def DashboardView(request):
+    return render(request, 'finances/dashboard')
+
+#_____________________________________________________________________
 
 class BudgetView(LoginRequiredMixin ,CreateView):
     """
@@ -22,3 +30,5 @@ class BudgetView(LoginRequiredMixin ,CreateView):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Budget created successfully!")
         return super().form_valid(form)
+    
+#_____________________________________________________________________
