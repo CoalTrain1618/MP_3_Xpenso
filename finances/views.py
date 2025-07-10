@@ -12,7 +12,7 @@ from .forms import BudgetForm, IncomeForm, ExpenseForm
 
 # Function for displaying dashboard
 def DashboardView(request):
-    return render(request, 'finances/dashboard')
+    return render(request, 'finances/dashboard.html')
 
 #_____________________________________________________________________
 
