@@ -10,8 +10,23 @@ Using TDD and automated tests brings a lot of benefits:
 - My project is more reliable and ready for future updates.
 
 
-### Finances app - testing models
+### Finances app - Testing Models
 I wrote unit tests for all the main models in my finance app, including Budget, Income, Category, and Expenses. These tests check that each model can be created correctly, that relationships between models (like linking an income to a budget or an expense to a category) work as expected, and that the right data is stored in the database.
 
 After running the tests with `python manage.py test finances`, all tests passed successfully. This gives me confidence that the core parts of my app are working as intended and that future changes can be made safely, knowing that the tests will catch any major issues.
+
+### Finance app - Testing Views
+
+#### Initial Test - BudgetView
+I want the user to go to the budget_form.html, input amount, month and year. I want them to only see their budget. Upon sumbission, they get redirected, maybe back to dashboard, where the list will be, and a success message.
+
+Test Outcome: Failure 
+
+Expected Outcomes:
+- Only logged-in users can access the budget creation page.
+- The for display for a GET request.
+- Submitting valid data creates a new Budget for the logged in user.
+- The user is redirected to the dashboard after submission.
+- A success message is displayed.
+
 

@@ -17,4 +17,8 @@ class BudgetView(LoginRequiredMixin ,CreateView):
     form_class = BudgetForm
     template_name = 'finances/budget_form.html'
     success_url = reverse_lazy('dashboard')
-    
+
+    def form_valid(self, form):
+        form.instance.user_id = self.request.user
+        messages.success(self.request, "Budget created successfully!")
+        return super().form_valid(form)

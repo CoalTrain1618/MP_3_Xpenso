@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from .models import Budget, Income, Category, Expenses
 
+
 User = get_user_model()
 
 # Create your tests here.
@@ -41,3 +42,10 @@ class FinanceModelsTest(TestCase):
         self.assertEqual(expense.category, self.category)
         self.assertEqual(expense.budget, self.budget)
         self.assertEqual(expense.user_id, self.user)
+
+
+class FinanceCreateViewTests(TestCase):
+    
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser43', passwords="testpass1")
+        self.client.login(username='testuser43', passwords="testpass1")
