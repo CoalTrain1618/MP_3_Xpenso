@@ -29,4 +29,11 @@ Expected Outcomes:
 - The user is redirected to the dashboard after submission.
 - A success message is displayed.
 
-
+Test Outcomes:
+During the test, three errors were produced. 
+- TemplateDoesNotExist: 
+    - The template finances/budget_form.html could not be found, causing the test to fail. 
+- NoReverseMatch: 
+    - The url pattern named 'dashboard' could not be found.
+- Dependant test failure:
+    - Since two test failed, the proceeding failed.
