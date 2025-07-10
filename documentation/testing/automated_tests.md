@@ -29,11 +29,44 @@ Expected Outcomes:
 - The user is redirected to the dashboard after submission.
 - A success message is displayed.
 
-Test Outcomes:
-During the test, three errors were produced. 
+##### Test 1 Outcomes:
+###### During the test, three errors were produced. 
 - TemplateDoesNotExist: 
     - The template finances/budget_form.html could not be found, causing the test to fail. 
 - NoReverseMatch: 
     - The url pattern named 'dashboard' could not be found.
 - Dependant test failure:
     - Since two test failed, the proceeding failed.
+
+###### Remedial Work: 
+- Create budget_form.html template.
+    - This way totally missed prior to origianl test.
+- Create Dashboard template, add url and create simple render view.
+    - I wans't plannig to create the dashboard this early originally, but I clearly overlooked that it would be needed during testing. 
+
+##### Test 2 Outcome: 
+###### During this test, one error was found. 
+- ImportError:
+    - Django could not import 'h'
+
+###### Remedial Work: 
+- I traced back to where the error was found in views.py
+    - Small typo in the import, I typed a h and commited. This is now removed. 
+
+##### Test 3 Outcome:
+###### During test 3, Two errors were found:
+- TemplateDoesNotExist
+    - I believe the file structure is making an error.
+
+###### Remidial Work:
+- I removed budget_form to finances/templates and deleted /finances/templates/budget_form dir ready for test 4.
+
+##### Test 4 Outcome:
+###### During test 4, the saem errors were recorded.
+- TemplateDoesNotExist
+
+###### Remidial work:
+This time I decided to move both templates into a finance folder, within templates dir. 
+
+##### Test 5 Outcome:
+###### During test 5, test passed
