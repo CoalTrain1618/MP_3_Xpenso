@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from .models import Budget, Income, Category, Expenses
@@ -43,9 +44,39 @@ class FinanceModelsTest(TestCase):
         self.assertEqual(expense.budget, self.budget)
         self.assertEqual(expense.user_id, self.user)
 
+# ________________________________________________________________________________
 
 class FinanceCreateViewTests(TestCase):
     
+    # Test user creation for test cases
     def setUp(self):
         self.user = User.objects.create_user(username='testuser43', passwords="testpass1")
         self.client.login(username='testuser43', passwords="testpass1")
+
+    #Test to check form displays correctly
+    def test_budget_create_view_get(self):
+        """
+        Test to ensure the budget form loads for logged in user.
+        """
+        url = reverse('budget_create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "amount")
+
+    # budget is created
+    def test_budget_create_view_post(self):
+        """
+        Testing if budget is created on submission of form
+        """
+        url = reverse('budget_create')
+        data = {
+            'amount': 500,
+            'month': 7,
+            'year': 2025,
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Budget.objects.filter(user_id=self.user, amount=500, month=7, year=2025).exists())
+
+    #Test thatview requires login
+    
