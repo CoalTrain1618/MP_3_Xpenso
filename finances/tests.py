@@ -180,7 +180,7 @@ class FinanceIncomeViewTest(TestCase):
         }
         response = self.client.post(url, data, follow=True)
         messages = list(response.context['messages'])
-        self.assertTrue(any("Income Successfully created!" in str(m) for m in messages))
+        self.assertTrue(any("Income successfully created!" in str(m) for m in messages))
 
 # ________________________________________________________________________________
 
@@ -200,6 +200,9 @@ class FinanceExpenseViewTest(TestCase):
             month=7,
             year=2025
         )
+        self.category = Category.objects.create(
+            name = 'Fuel'
+        )
     
     #__________
 
@@ -214,4 +217,57 @@ class FinanceExpenseViewTest(TestCase):
 
     #__________
 
+    def test_expense_create_view_post(self):
+        """
+        Testing if Expense data is created on form submission
+        """
+        url = reverse('expense_create')
+        data = {
+            'amount': 30,
+            'expense_date': '2025-07-15',
+            'category': self.category.pk,
+            'description': 'Fuel for car',
+            'budget': self.budget.pk,
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Expenses.objects.filter(
+            user_id=self.user,
+            amount=30,
+            expense_date='2025-07-15',
+            category=self.category,
+            description='Fuel for car',
+            budget= self.budget,
+        ))
+
+    #__________
+
+    def test_expense_create_view_requires_login(self):
+        """
+        Test to ensure anonymous users are restricted, unless logged in.
+        """
+        self.client.logout()
+        url = reverse('expense_create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("accounts/login", response.url)
     
+    #__________
+
+    def test_expense_create_view_success_message(self):
+        """
+        Test that Django message is displayed upon Expense successful submission
+        """
+        url = reverse('expense_create')
+        data = {
+            'amount': 30,
+            'expense_date': '2025-07-15',
+            'category': self.category.pk,
+            'description': 'Fuel for car',
+            'budget': self.budget.pk,
+        }
+        response = self.client.post(url, data, follow=True)
+        messages = list(response.context['messages'])
+        self.assertTrue(any("Expense successfully created!" in str(m) for m in messages))
+
+# ________________________________________________________________________________
