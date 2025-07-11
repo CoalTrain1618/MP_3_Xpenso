@@ -15,9 +15,9 @@ I wrote unit tests for all the main models in my finance app, including Budget, 
 
 After running the tests with `python manage.py test finances`, all tests passed successfully. This gives me confidence that the core parts of my app are working as intended and that future changes can be made safely, knowing that the tests will catch any major issues.
 
-### Finance app - Testing Views
+## Finance app - Testing Views
 
-#### Initial Test - BudgetView
+### Initial Test - BudgetView
 I want the user to go to the budget_form.html, input amount, month and year. I want them to only see their budget. Upon sumbission, they get redirected, maybe back to dashboard, where the list will be, and a success message.
 
 Test Outcome: Failure 
@@ -29,8 +29,8 @@ Expected Outcomes:
 - The user is redirected to the dashboard after submission.
 - A success message is displayed.
 
-##### Test 1 Outcomes:
-###### During the test, three errors were produced. 
+#### Test 1 Outcomes:
+##### During the test, three errors were produced. 
 - TemplateDoesNotExist: 
     - The template finances/budget_form.html could not be found, causing the test to fail. 
 - NoReverseMatch: 
@@ -38,35 +38,42 @@ Expected Outcomes:
 - Dependant test failure:
     - Since two test failed, the proceeding failed.
 
-###### Remedial Work: 
+##### Remedial Work: 
 - Create budget_form.html template.
     - This way totally missed prior to origianl test.
 - Create Dashboard template, add url and create simple render view.
     - I wans't plannig to create the dashboard this early originally, but I clearly overlooked that it would be needed during testing. 
 
-##### Test 2 Outcome: 
-###### During this test, one error was found. 
+#### Test 2 Outcome: 
+##### During this test, one error was found. 
 - ImportError:
     - Django could not import 'h'
 
-###### Remedial Work: 
+##### Remedial Work: 
 - I traced back to where the error was found in views.py
     - Small typo in the import, I typed a h and commited. This is now removed. 
 
-##### Test 3 Outcome:
-###### During test 3, Two errors were found:
+#### Test 3 Outcome:
+##### During test 3, Two errors were found:
 - TemplateDoesNotExist
     - I believe the file structure is making an error.
 
-###### Remidial Work:
+##### Remidial Work:
 - I removed budget_form to finances/templates and deleted /finances/templates/budget_form dir ready for test 4.
 
-##### Test 4 Outcome:
-###### During test 4, the saem errors were recorded.
+#### Test 4 Outcome:
+##### During test 4, the saem errors were recorded.
 - TemplateDoesNotExist
 
-###### Remidial work:
+##### Remidial work:
 This time I decided to move both templates into a finance folder, within templates dir. 
 
-##### Test 5 Outcome:
-###### During test 5, test passed
+#### Test 5 Outcome:
+##### During test 5, test passed
+- Yay !!
+
+
+### IncomeView testing
+IncomeView was designed using the base of budgetView.
+
+

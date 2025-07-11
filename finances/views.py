@@ -32,3 +32,18 @@ class BudgetView(LoginRequiredMixin ,CreateView):
         return super().form_valid(form)
     
 #_____________________________________________________________________
+
+class IncomeView(LoginRequiredMixin, CreateView):
+    """
+    This Income View will allow users to record an Income. 
+    On success, logged in user will be redirected to dashboard.
+    """
+    model = Income
+    fields = ['source', 'amount', 'budget']
+    template_name = 'finances/income_form.html'
+    success_url = reverse_lazy('dashboard')
+
+    def form_valid(self, form):
+        form.instance.user_id = self.request.user
+        messages.success(self.request, "Income was Successfully created!")
+        return super().form_valid(form)
