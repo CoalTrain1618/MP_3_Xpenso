@@ -46,14 +46,15 @@ class FinanceModelsTest(TestCase):
 
 # ________________________________________________________________________________
 
-class FinanceCreateViewTests(TestCase):
+class FinanceBudgetViewTests(TestCase):
 
     # Test user creation for test cases
     def setUp(self):
         self.user = User.objects.create_user(username='testuser43', password="testpass1")
         self.client.login(username='testuser43', password="testpass1")
 
-    #Test to check form displays correctly
+    #__________
+
     def test_budget_create_view_get(self):
         """
         Test to ensure the budget form loads for logged in user.
@@ -63,7 +64,8 @@ class FinanceCreateViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "amount")
 
-    # budget is created
+    #__________
+
     def test_budget_create_view_post(self):
         """
         Testing if budget is created on submission of form
@@ -78,7 +80,8 @@ class FinanceCreateViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Budget.objects.filter(user_id=self.user, amount=500, month=7, year=2025).exists())
 
-    #Test that view requires login
+    #__________
+
     def test_budget_create_view_requires_login(self):
         """
         Test to ensure anonymous user are restricted, unless logged in.
@@ -89,8 +92,8 @@ class FinanceCreateViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertIn("accounts/login", response.url)
 
+    #__________
     
-    #Test budget creation successful message
     def test_budget_create_view_success_message(self):
         """
         Test that django message is displayed upon budget completion
@@ -103,3 +106,37 @@ class FinanceCreateViewTests(TestCase):
         response = self.client.post(url, data, follow=True)
         messages = list(response.context['messages'])
         self.assertTrue(any("Budget created successfully!" in str(m) for m in messages))
+
+# ________________________________________________________________________________
+
+class FinanceIncomeViewTest(TestCase):
+    """
+    The following test will be to test if IncomeView is functional and valid. 
+    This test should showcase that a User can record and income, which will
+    be successfully applied to the DB on submission.
+    """
+
+    # Creating moock user for testcase.
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser33', password="testpass4")
+        self.client.login(username='testuser33', password="testpass4")
+    
+    #__________
+
+    def test_income_create_view_get(self):
+        """
+        Test to check if Income form displays correctly
+        """
+        url = reverse('income_create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "amount")
+
+    #__________
+
+    def test_income_create_view_post(self):
+        """
+        Testing if Income is created on submission of form.
+        """
+        
+
