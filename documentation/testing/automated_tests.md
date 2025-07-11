@@ -76,4 +76,16 @@ This time I decided to move both templates into a finance folder, within templat
 ### IncomeView testing
 IncomeView was designed using the base of budgetView.
 
+Income view will allow logged in user to record an income using a form. The form will be it's own page income_form.html. The form will use the Income model and contain the following fields ['amount', 'source', 'budget selection']. 
 
+I will need to create a view and urls pattern to link this up. The view will be designed to ensure the logged in user can only access their own data. Upon successful submit, the user will be ported back to dashboard and should be able to see a success message. 
+
+Initial test: Fail
+
+Created view to requirments. Developed testcases to test income creation functionality. 
+
+#### Expected outcomes:
+- Authorised user can input Income into form field
+- User can submit Income data and it will post the data to DB Income table
+
+#### Test One: 

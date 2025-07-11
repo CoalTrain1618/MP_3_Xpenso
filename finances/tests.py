@@ -116,10 +116,16 @@ class FinanceIncomeViewTest(TestCase):
     be successfully applied to the DB on submission.
     """
 
-    # Creating moock user for testcase.
+    # Creating mock user for testcase.
     def setUp(self):
         self.user = User.objects.create_user(username='testuser33', password="testpass4")
         self.client.login(username='testuser33', password="testpass4")
+        self.budget = Budget.objects.create(
+            user_id=self.user,
+            amount=1000,
+            month=7,
+            year=2025
+        )
     
     #__________
 
@@ -138,5 +144,40 @@ class FinanceIncomeViewTest(TestCase):
         """
         Testing if Income is created on submission of form.
         """
-        
+        url = reverse('income_create')
+        data = {
+            'source': 'job',
+            'amount': 500,
+            'budget': self.budget.pk,
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Income.objects.filter(user_id=self.user, amount=500, budget=self.budget).exists())
 
+    #__________
+
+    def test_income_create_view_requires_login(self):
+        """
+        Test to ensure anonymous users are restricted, unless logged in.
+        """
+        self.client.logout()
+        url = reverse('income_create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("accounts/login", response.url)
+
+    #__________
+
+    def test_income_create_view_success_message(self):
+        """
+        Test that Django message is displayed upon income successful submission
+        """
+        url = reverse('income_create')
+        data = {
+            'source': 'job',
+            'amount': 250,
+            'budget': self.budget.pk,
+        }
+        response = self.client.post(url, data, follow=True)
+        messages = list(response.context['messages'])
+        self.assertTrue(any("Income Successfully created!" in str(m) for m in messages))

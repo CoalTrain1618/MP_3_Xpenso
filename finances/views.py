@@ -45,7 +45,7 @@ class IncomeView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user_id = self.request.user
-        messages.success(self.request, "Income was Successfully created!")
+        messages.success(self.request, "Income Successfully created!")
         response = super().form_valid(form)
         if 'add_more' in self.request.POST:
             return redirect('income_create')
