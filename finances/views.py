@@ -65,4 +65,9 @@ class ExpenseView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Expense successfully created!")
+        response = super().form_valid(form)
+        if 'add_more' in self.request.POST:
+            return redirect('expense_create')
+        else:
+            return response
         

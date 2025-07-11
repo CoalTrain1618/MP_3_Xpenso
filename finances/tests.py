@@ -201,6 +201,7 @@ class FinanceExpenseViewTest(TestCase):
             year=2025
         )
         self.category = Category.objects.create(
+            user_id=self.user,
             name = 'Fuel'
         )
     

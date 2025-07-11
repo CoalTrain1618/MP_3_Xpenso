@@ -73,9 +73,7 @@ This time I decided to move both templates into a finance folder, within templat
 - Yay !!
 
 
-### IncomeView testing
-IncomeView was designed using the base of budgetView.
-
+### IncomeView Testing
 Income view will allow logged in user to record an income using a form. The form will be it's own page income_form.html. The form will use the Income model and contain the following fields ['amount', 'source', 'budget selection']. 
 
 I will need to create a view and urls pattern to link this up. The view will be designed to ensure the logged in user can only access their own data. Upon successful submit, the user will be ported back to dashboard and should be able to see a success message. 
@@ -90,3 +88,28 @@ Created view to requirments. Developed testcases to test income creation functio
 
 #### Test One: 
 Test Passed first time. 
+
+### ExpenseView Testing
+Expense view will allow authorised users to record expenses and subit their expenses to the Expense DB table using a post form. The formm will contain the following fields ['amount', 'expense_date', 'category', 'description', 'budget'].
+
+I will need to creat a view, url patterns and make the expense_form.html. The template will display the form and the view will allows the user to submit the form data to the Expenses model. 
+
+Initial test: Fail
+
+Created view to requirments. Developed testcases to test expense creation functionality.
+
+#### Expected Outcome: 
+- Authorised user can input expense data into form fields
+- Authorised user can submit for and post data to DB Expenses table
+
+##### Test One: 
+Fail - Two main errors:
+- Incorrect url names in base.html navigation.
+    - url names back to front was 'create_budget' neds to be 'budget_create', same for others.
+- Missing Category object in tests.py
+    - Didn't include user_id FK field.
+
+#### Test Two: 
+Failed with one main error: 
+- No HttpRespons
+    - Forgot to finish off Expense view return. Now completed. 
