@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import CreateView
@@ -46,4 +46,8 @@ class IncomeView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Income was Successfully created!")
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        if 'add_more' in self.request.POST:
+            return redirect('income_create')
+        else:
+            return response
