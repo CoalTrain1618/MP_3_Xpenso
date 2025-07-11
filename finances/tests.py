@@ -181,3 +181,37 @@ class FinanceIncomeViewTest(TestCase):
         response = self.client.post(url, data, follow=True)
         messages = list(response.context['messages'])
         self.assertTrue(any("Income Successfully created!" in str(m) for m in messages))
+
+# ________________________________________________________________________________
+
+class FinanceExpenseViewTest(TestCase):
+    """
+    To test if ExpenseView allows user to create and submit data to the Expense 
+    DB table. 
+    """
+
+    # Create mock user and data for testing
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser74', password='testpass11')
+        self.client.login(username='testuser74', password='testpass11')
+        self.budget = Budget.objects.create(
+            user_id = self.user,
+            amount=1000,
+            month=7,
+            year=2025
+        )
+    
+    #__________
+
+    def test_expense_create_view_get(self):
+        """
+        To check Expense form loads and displays correctly
+        """
+        url = reverse('expense_create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'amount')
+
+    #__________
+
+    
