@@ -45,9 +45,24 @@ class IncomeView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user_id = self.request.user
-        messages.success(self.request, "Income Successfully created!")
+        messages.success(self.request, "Income successfully created!")
         response = super().form_valid(form)
         if 'add_more' in self.request.POST:
             return redirect('income_create')
         else:
             return response
+
+class ExpenseView(LoginRequiredMixin, CreateView):
+    """
+    This view allows users to post expense data to the expense Model. 
+    It only allows authorised users to see their own expenses. 
+    """
+    model = Expenses
+    fields = ['amount', 'expense_date', 'category', 'description', 'budget']
+    template_name = 'finances/expense_form.html'
+    success_url = reverse_lazy('dashboard')
+
+    def form_valid(self, form):
+        form.instance.user_id = self.request.user
+        messages.success(self.request, "Expense successfully created!")
+        
