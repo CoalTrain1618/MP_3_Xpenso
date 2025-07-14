@@ -6,7 +6,10 @@ from .models import Budget, Income, Category, Expenses
 class BudgetForm(ModelForm):
     class Meta:
         model = Budget
-        fields = ['amount', 'month', 'year']
+        fields = ['amount', 'month_year']
+        widgets = {
+            'month_year': forms.DateInput(attrs={'type': 'month'})
+        }
 
 
 #Income form for user to create Income

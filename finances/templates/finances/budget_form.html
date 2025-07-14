@@ -12,7 +12,10 @@
             <h2 class="text-center mb-4">Hey {{ profile.user.username }}, Let's create a budget.</h2>
             <form class="form" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.amount.label_tag }} {{ form.amount }}  
+                <br>
+                {{ form.month_year.label_tag }} {{ form.month_year }}
+                <br>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>

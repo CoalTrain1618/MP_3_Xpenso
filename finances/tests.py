@@ -3,6 +3,8 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from .models import Budget, Income, Category, Expenses
 
+import datetime
+
 
 User = get_user_model()
 
@@ -13,15 +15,13 @@ class FinanceModelsTest(TestCase):
     #create and define example data to use in all tests
     def setUp(self):
         self.user = User.objects.create_user(username="testuser42", password="testpass")
-        self.budget = Budget.objects.create(user_id=self.user, 
-                                            amount=1000, month=7, year=2025)
+        self.budget = Budget.objects.create(user_id=self.user, amount=1000, month_year=datetime.date(2025, 7, 1))
         self.category = Category.objects.create(name="Groceries")
 
     #Test that busget is created with correct values
     def test_budget_creation(self):
         self.assertEqual(self.budget.amount, 1000)
-        self.assertEqual(self.budget.month, 7)
-        self.assertEqual(self.budget.year, 2025)
+        self.assertEqual(self.budget.month_year, datetime.date(2025, 7, 1))
         self.assertEqual(self.budget.user_id, self.user)
 
     #Test that income is created and linked to budget and user
@@ -72,12 +72,11 @@ class FinanceBudgetViewTests(TestCase):
         url = reverse('budget_create')
         data = {
             'amount': 500,
-            'month': 7,
-            'year': 2025,
+            'month_year': '2025-07-01',
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(Budget.objects.filter(user_id=self.user, amount=500, month=7, year=2025).exists())
+        self.assertTrue(Budget.objects.filter(user_id=self.user, amount=500, month_year="2025-07-01").exists())
 
     #__________
 
@@ -99,8 +98,7 @@ class FinanceBudgetViewTests(TestCase):
         """
         url = reverse('budget_create')
         data = {'amount': 1000,
-                'month': 8,
-                'year': 2025,
+                'month_year': '2025-08-01',
                 }
         response = self.client.post(url, data, follow=True)
         messages = list(response.context['messages'])
@@ -122,8 +120,7 @@ class FinanceIncomeViewTest(TestCase):
         self.budget = Budget.objects.create(
             user_id=self.user,
             amount=1000,
-            month=7,
-            year=2025
+            month_year="2025-07-01"
         )
     
     #__________
@@ -196,8 +193,7 @@ class FinanceExpenseViewTest(TestCase):
         self.budget = Budget.objects.create(
             user_id = self.user,
             amount=1000,
-            month=7,
-            year=2025
+            month_year="2025-07-01"
         )
         self.category = Category.objects.create(
             name = 'Fuel'

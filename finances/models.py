@@ -11,8 +11,7 @@ class Budget(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date_set = models.DateField(auto_now_add=True)
-    month = models.PositiveSmallIntegerField()
-    year = models.PositiveSmallIntegerField()
+    month_year = models.DateField()
 
 class Income(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -23,6 +22,9 @@ class Income(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.name
 
 class Expenses(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
