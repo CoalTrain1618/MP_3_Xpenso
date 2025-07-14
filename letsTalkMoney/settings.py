@@ -27,7 +27,6 @@ if os.path.isfile(env_path):
     env = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(env)
 
-print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
