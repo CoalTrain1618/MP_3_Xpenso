@@ -15,7 +15,7 @@ class FinanceModelsTest(TestCase):
         self.user = User.objects.create_user(username="testuser42", password="testpass")
         self.budget = Budget.objects.create(user_id=self.user, 
                                             amount=1000, month=7, year=2025)
-        self.category = Category.objects.create(user_id=self.user, name="Groceries")
+        self.category = Category.objects.create(name="Groceries")
 
     #Test that busget is created with correct values
     def test_budget_creation(self):
@@ -34,7 +34,6 @@ class FinanceModelsTest(TestCase):
     #Test that a category is created with correct name and with user link
     def test_category_creation(self):
         self.assertEqual(self.category.name, "Groceries")
-        self.assertEqual(self.category.user_id, self.user)
     
     #Test that an expense is created and linked to the correct user
     def test_expense_creation(self):
@@ -201,7 +200,6 @@ class FinanceExpenseViewTest(TestCase):
             year=2025
         )
         self.category = Category.objects.create(
-            user_id=self.user,
             name = 'Fuel'
         )
     

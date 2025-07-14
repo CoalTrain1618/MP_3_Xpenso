@@ -22,7 +22,6 @@ class Income(models.Model):
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
 
 class Category(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=60)
 
 class Expenses(models.Model):
