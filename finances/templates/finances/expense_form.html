@@ -19,18 +19,23 @@
             <div>
                 <table>
                     <tr>
-                        <th>Income Source</th>
-                        <th>Income Amount</th>
+                        <!-- 'expense_date', 'amount', 'category', 'description', 'budget' -->
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Expense Date</th>
                         <th>Budget</th>
                         <th>Remove</th>
                     </tr>
                     {% for expense in expenses %}
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td>{{ income.budget.get_month_display }}, {{ income.budget.get_year_display }}</td>
+                            <td>{{ expense.description }}</td>
+                            <td>{{ expense.amount }}</td>
+                            <td>{{ expense.category.name }}</td>
+                            <td>{{ expense.expense_date }}</td>
+                            <td>{{ expense.budget.get_month_display }}, {{ expense.budget.get_year_display }}</td>
                             <td>
-                                <form method="POST" action="">
+                                <form method="POST" action="{% url 'delete_expense' expense.pk %}">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>

@@ -6,6 +6,7 @@ from .views import ExpenseView
 
 urlpatterns = [
     path('expense/add/', ExpenseView.as_view(), name='expense_create'),
+    path('budget/expense/<int:pk>/', views.delete_expense, name="delete_expense"),
     path('income/add/', IncomeView.as_view(), name='income_create'),
     path('budget/income/<int:pk>/', views.delete_income, name="delete_income"),
     path('budget/add/', BudgetView.as_view(), name="budget_create"),
