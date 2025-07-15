@@ -66,8 +66,15 @@ class IncomeView(LoginRequiredMixin, CreateView):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['income'] = Income.objects.filter(user_id=self.request.user)
+        context['incomes'] = Income.objects.filter(user_id=self.request.user)
         return context
+
+def delete_income(request, pk):
+    income = get_object_or_404(Income, pk=pk, user_id=request.user)
+    if request.method == "POST":
+        income.delete()
+        messages.success(request, 'Income deleted successfully!')
+    return redirect('income_create')
 
 class ExpenseView(LoginRequiredMixin, CreateView):
     """
