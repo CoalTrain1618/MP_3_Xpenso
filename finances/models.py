@@ -8,10 +8,29 @@ User = get_user_model()
 
 
 class Budget(models.Model):
+
+    MONTH_CHOICES = [
+        (1, 'January'),
+        (2, 'February'),
+        (3, 'March'),
+        (4, 'April'),
+        (5, 'May'),
+        (6, 'June'),
+        (7, 'July'),
+        (8, 'August'),
+        (9, 'September'),
+        (10, 'October'),
+        (11, 'November'),
+        (12, 'December'),
+    ]
+
+    YEAR_CHOICES = [(y, y) for y in range(datetime.date.today().year, datetime.date.today().year + 5)]
+
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date_set = models.DateField(auto_now_add=True)
-    month_year = models.DateField()
+    month = models.IntegerField(choices=MONTH_CHOICES, default=datetime.date.today().month)
+    year = models.IntegerField(choices=YEAR_CHOICES, default=datetime.date.today().month)
 
 class Income(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)

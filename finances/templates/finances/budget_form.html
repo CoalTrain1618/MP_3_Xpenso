@@ -14,7 +14,9 @@
                 {% csrf_token %}
                 {{ form.amount.label_tag }} {{ form.amount }}  
                 <br>
-                {{ form.month_year.label_tag }} {{ form.month_year }}
+                {{ form.month.label }} {{ form.month }}
+                <br>
+                {{ form.year.label }} {{ form.year }}
                 <br>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

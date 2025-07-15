@@ -1,15 +1,16 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Budget, Income, Category, Expenses
+import datetime
 
 #Budget form for user to create budget.
-class BudgetForm(ModelForm):
+class BudgetForm(forms.ModelForm):
+    month = forms.ChoiceField(choices=Budget.MONTH_CHOICES, initial=datetime.date.today().month)
+    year = forms.ChoiceField(choices=Budget.YEAR_CHOICES, initial=datetime.date.today().year)
+    
     class Meta:
         model = Budget
-        fields = ['amount', 'month_year']
-        widgets = {
-            'month_year': forms.DateInput(attrs={'type': 'month'})
-        }
+        fields = ['amount', 'month', 'year']
 
 
 #Income form for user to create Income
