@@ -5,9 +5,12 @@ from django.contrib.auth import logout
 
 #_____________________________________________________________________
 
-# makes login the landing page.
+# makes login the landing page if user is not authenticated.
 def landing_login(request):
-    return redirect('account_login')
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        return redirect('account_login')
 
 #_____________________________________________________________________
 
