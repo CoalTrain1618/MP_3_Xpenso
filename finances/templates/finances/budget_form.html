@@ -30,7 +30,7 @@
                     </tr>
                     {% for budget in budgets %}
                         <tr>
-                            <td>{{ budget.month }}</td>
+                            <td>{{ budget.get_month_display }}</td>
                             <td>{{ budget.year }}</td>
                             <td>{{ budget.amount }}</td>
                             <td>
