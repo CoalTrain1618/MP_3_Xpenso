@@ -16,6 +16,29 @@
                 <button type="submit" name="save" class="btn btn-primary">Save</button>
                 <button type="submit" name="add_more" class="btn btn-secondary">Add More</button>
             </form>
+            <div>
+                <table>
+                    <tr>
+                        <th>Income Source</th>
+                        <th>Income Amount</th>
+                        <th>Budget</th>
+                        <th>Remove</th>
+                    </tr>
+                    {% for expense in expenses %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>{{ income.budget.get_month_display }}, {{ income.budget.get_year_display }}</td>
+                            <td>
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -94,4 +94,15 @@ class ExpenseView(LoginRequiredMixin, CreateView):
             return redirect('expense_create')
         else:
             return response
-        
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['expenses'] = Expenses.objects.filter(user_id=self.request.user)
+        return context
+    
+def delete_expense(request, pk):
+    expense = get_object_or_404(Expenses, pk=pk, user_id=request.user)
+    if request.method == "POST":
+        expense.delete()
+        messages.success(request, 'Expense deleted successfully!')
+    return redirect('expense_create')
