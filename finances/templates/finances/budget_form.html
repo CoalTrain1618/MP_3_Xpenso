@@ -20,6 +20,29 @@
                 <br>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
+            <div>
+                <table>
+                    <tr>
+                        <th>Budget Month</th>
+                        <th>Budget Year</th>
+                        <th>Amount</th>
+                        <th>Remove</th>
+                    </tr>
+                    {% for budget in budgets %}
+                        <tr>
+                            <td>{{ budget.month }}</td>
+                            <td>{{ budget.year }}</td>
+                            <td>{{ budget.amount }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'delete_budget' budget.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 </div>

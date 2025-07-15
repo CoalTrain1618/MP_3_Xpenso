@@ -8,5 +8,6 @@ urlpatterns = [
     path('expense/add/', ExpenseView.as_view(), name='expense_create'),
     path('income/add/', IncomeView.as_view(), name='income_create'),
     path('budget/add/', BudgetView.as_view(), name="budget_create"),
+    path('budget/delete/<int:pk>/', views.delete_budget, name="delete_budget"),
     path('dashboard/', views.DashboardView, name='dashboard'),
 ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import CreateView
@@ -26,11 +26,23 @@ class BudgetView(LoginRequiredMixin ,CreateView):
     template_name = 'finances/budget_form.html'
     success_url = reverse_lazy('dashboard')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['budgets'] = Budget.objects.filter(user_id=self.request.user)
+        return context
+
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Budget created successfully!")
         return super().form_valid(form)
-    
+
+def delete_budget(request, pk):
+    budget = get_object_or_404(Budget, pk=pk, user_id=request.user)
+    if request.method == "POST":
+        budget.delete()
+        messages.success(request, 'Budget deleted successfully!')
+    return redirect('budget_create')
+
 #_____________________________________________________________________
 
 class IncomeView(LoginRequiredMixin, CreateView):
