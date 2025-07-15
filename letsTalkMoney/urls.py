@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts import views as accounts_views
+from finances.views import DashboardView
 
 urlpatterns = [
     path('', accounts_views.landing_login, name="landing_login"),
+    path('dashboard/', DashboardView, name='dashboard'),
     path('user/', include("accounts.urls")),
     path('finances/', include('finances.urls')),
     path("accounts/", include("allauth.urls")),
