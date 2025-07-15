@@ -63,6 +63,11 @@ class IncomeView(LoginRequiredMixin, CreateView):
             return redirect('income_create')
         else:
             return response
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['income'] = Income.objects.filter(user_id=self.request.user)
+        return context
 
 class ExpenseView(LoginRequiredMixin, CreateView):
     """
