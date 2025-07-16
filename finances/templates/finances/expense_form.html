@@ -10,30 +10,34 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-4">Hey {{ profile.user.username }}, Let's create an Expense</h2>
-            <form class="form" method="POST">
+            <form class="form ms-4" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" name="save" class="btn btn-primary">Save</button>
-                <button type="submit" name="add_more" class="btn btn-secondary">Add More</button>
+                <div class="text-center">
+                    <button type="submit" name="save" class="btn btn-primary">Save</button>
+                    <button type="submit" name="add_more" class="btn btn-secondary">Add More</button>
+                </div>
             </form>
-            <div>
-                <table>
-                    <tr>
-                        <!-- 'expense_date', 'amount', 'category', 'description', 'budget' -->
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                        <th>Expense Date</th>
-                        <th>Budget</th>
-                        <th>Remove</th>
-                    </tr>
-                    {% for expense in expenses %}
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Budget</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for expense in expenses %}
                         <tr>
                             <td>{{ expense.description }}</td>
                             <td>{{ expense.amount }}</td>
                             <td>{{ expense.category.name }}</td>
                             <td>{{ expense.expense_date }}</td>
-                            <td>{{ expense.budget.get_month_display }}, {{ expense.budget.get_year_display }}</td>
+                            <td>{{ expense.budget.get_month_display }}, {{ expense.budget.year }}</td>
                             <td>
                                 <form method="POST" action="{% url 'delete_expense' expense.pk %}">
                                     {% csrf_token %}
@@ -41,7 +45,8 @@
                                 </form>
                             </td>
                         </tr>
-                    {% endfor %}
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
