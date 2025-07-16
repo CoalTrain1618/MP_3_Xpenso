@@ -32,19 +32,19 @@
                     </thead>
                     <tbody>
                         {% for expense in expenses %}
-                        <tr>
-                            <td>{{ expense.description }}</td>
-                            <td>{{ expense.amount }}</td>
-                            <td>{{ expense.category.name }}</td>
-                            <td>{{ expense.expense_date }}</td>
-                            <td>{{ expense.budget.get_month_display }}, {{ expense.budget.year }}</td>
-                            <td>
-                                <form method="POST" action="{% url 'delete_expense' expense.pk %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ expense.description }}</td>
+                                <td>{{ expense.amount }}</td>
+                                <td>{{ expense.category.name }}</td>
+                                <td>{{ expense.expense_date }}</td>
+                                <td>{{ expense.budget.get_month_display }}, {{ expense.budget.year }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'delete_expense' expense.pk %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
