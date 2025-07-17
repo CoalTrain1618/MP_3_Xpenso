@@ -76,6 +76,8 @@ def delete_income(request, pk):
         messages.success(request, 'Income deleted successfully!')
     return redirect('income_create')
 
+#_____________________________________________________________________
+
 class ExpenseView(LoginRequiredMixin, CreateView):
     """
     This view allows users to post expense data to the expense Model. 
