@@ -21,24 +21,28 @@
             <div class="table-responsive">
                 <table class="table table-striped table-bordered mt-4">
                     <thead>
-                        <th>Income Source</th>
-                        <th>Income Amount</th>
-                        <th>Budget</th>
-                        <th>Remove</th>
-                    </thead>
-                    {% for income in incomes %}
                         <tr>
-                            <td>{{ income.source }}</td>
-                            <td>{{ income.amount }}</td>
-                            <td>{{ income.budget.get_month_display }}, {{ income.budget.get_year_display }}</td>
-                            <td>
-                                <form method="POST" action="{% url 'delete_income' income.pk %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                            </td>
+                            <th>Income Source</th>
+                            <th>Income Amount</th>
+                            <th>Budget</th>
+                            <th>Remove</th>
                         </tr>
-                    {% endfor %}
+                    </thead>
+                    <tbody>
+                        {% for income in incomes %}
+                            <tr>
+                                <td>{{ income.source }}</td>
+                                <td>{{ income.amount }}</td>
+                                <td>{{ income.budget.get_month_display }}, {{ income.budget.get_year_display }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'delete_income' income.pk %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
