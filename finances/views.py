@@ -12,8 +12,6 @@ from .forms import BudgetForm, IncomeForm, ExpenseForm,DashboardBudgetSelect
 #_____________________________________________________________________
 
 # Function for displaying dashboard
-def DashboardView(request):
-    return render(request, 'finances/dashboard.html')
 
 #_____________________________________________________________________
 
@@ -118,6 +116,9 @@ def DashboardView(request):
     data. The function based view allows us to handle multiple form POST requests. 
     """
     budget_select_form = DashboardBudgetSelect(prefix='budget_select')
+    selected_budget = None
+    total_expenses = None
+    total_incomes = None
 
     # Function for calculating Expense total
     def budget_expense_total(user, month, year):
@@ -131,7 +132,11 @@ def DashboardView(request):
     # Function for calculating Income total here
     def budget_income_total(user, month, year):
         incomes = Income.objects.filter(user=user, budget__month=month, budget__year=year)
-        result
+        result = incomes.aggregate(Sum('amount'))
+        total = result['amount__sum']
+        if total is None:
+            return 0
+        return total
 
     if request.method == "POST":
         if "budget_select" in request.POST:
@@ -141,7 +146,15 @@ def DashboardView(request):
                 month = selected_budget.month
                 year = selected_budget.year
                 total_expenses = budget_expense_total(user=request.user, month=month, year=year)
-                context = {
+                total_incomes = budget_income_total(user=request.user, month=month, year=year)
 
-                }
+
+    context = {
+        "budget_select_form": budget_select_form,
+        "selected_budget": selected_budget,
+        "total_expenses": total_expenses,
+        "total_incomes": total_incomes,
+    }
                 
+            
+    return render(request, 'finances/dashboard.html', context)
