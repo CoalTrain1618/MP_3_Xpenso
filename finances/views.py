@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Budget, Income, Category, Expenses
-from .forms import BudgetForm, IncomeForm, ExpenseForm
+from .forms import BudgetForm, IncomeForm, ExpenseForm,DashboardBudgetSelect
 
 # Create your views here.
 
@@ -108,3 +108,16 @@ def delete_expense(request, pk):
         expense.delete()
         messages.success(request, 'Expense deleted successfully!')
     return redirect('expense_create')
+
+#_____________________________________________________________________
+
+def DashboardView(request):
+    budget_select_form = DashboardBudgetSelect(prefix='budget_select')
+
+    if request.method == "POST":
+        if "budget_select" in request.POST:
+            budget_select_form = DashboardBudgetSelect(request.POST, prefix="budget_select", user=request.user)
+            if budget_select_form.is_valid():
+                selected_budget = budget_select_form.cleaned_data['budget']
+                month = selected_budget.month
+                year = selected_budget.year
