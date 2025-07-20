@@ -6,10 +6,12 @@
     <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
 </div>
 <div class="container mt-4">
-    <form action="POST">
-         
+    <form class="text-center" action="POST">
+        {% csrf_token %}
+        {{ budget_select_form.budget }}
+        <button type="submit" class="btn btn-secondary">Calculate </button>
     </form>
-    <div class="row">
+    <div class="row text-center">
         <div class="col-md-4">
             <h2>Budgets</h2>
             <p>Total Budgets: </p>

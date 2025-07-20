@@ -45,4 +45,4 @@ class DashboardBudgetSelect(forms.Form):
     def __init__(self, user=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if user is not None:
-            self.fileds['budget'].queryset = Budget.objects.filter(user=user)
+            self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
