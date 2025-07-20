@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Sum
 from .models import Budget, Income, Category, Expenses
 from .forms import BudgetForm, IncomeForm, ExpenseForm,DashboardBudgetSelect
 
@@ -112,7 +113,25 @@ def delete_expense(request, pk):
 #_____________________________________________________________________
 
 def DashboardView(request):
+    """
+    This function based view will hand the summary of the users financial
+    data. The function based view allows us to handle multiple form POST requests. 
+    """
     budget_select_form = DashboardBudgetSelect(prefix='budget_select')
+
+    # Function for calculating Expense total
+    def budget_expense_total(user, month, year):
+        expenses = Expenses.objects.filter(user=user, budget__month=month, budget__year=year)
+        result = expenses.aggregate(Sum('amount'))
+        total = result['amount__sum']
+        if total is None:
+            return 0 
+        return total
+
+    # Function for calculating Income total here
+    def budget_income_total(user, month, year):
+        incomes = Income.objects.filter(user=user, budget__month=month, budget__year=year)
+        result
 
     if request.method == "POST":
         if "budget_select" in request.POST:
@@ -121,3 +140,8 @@ def DashboardView(request):
                 selected_budget = budget_select_form.cleaned_data['budget']
                 month = selected_budget.month
                 year = selected_budget.year
+                total_expenses = budget_expense_total(user=request.user, month=month, year=year)
+                context = {
+
+                }
+                
