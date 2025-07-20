@@ -37,3 +37,12 @@ class ExpenseForm(ModelForm):
         self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
         self.fields['category'].queryset = Category.objects.filter(user_id=user)
 
+
+#Dashboard budget select form 
+class DashboardBudgetSelect(forms.Form):
+    budget = forms.ModelChoiceField(queryset=Budget.objects.none())
+
+    def __init__(self, user=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if user is not None:
+            self.fileds['budget'].queryset = Budget.objects.filter(user=user)
