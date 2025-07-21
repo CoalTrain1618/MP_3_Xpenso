@@ -115,6 +115,8 @@ def DashboardView(request):
     This function based view will hand the summary of the users financial
     data. The function based view allows us to handle multiple form POST requests. 
     """
+    # test print
+    print("Dashboard View Called")
     budget_select_form = DashboardBudgetSelect(user=request.user, prefix='budget_select')
     selected_budget = None
     total_expenses = None
@@ -139,9 +141,15 @@ def DashboardView(request):
         return total
 
     if request.method == "POST":
-        if "budget_select" in request.POST:
-            budget_select_form = DashboardBudgetSelect(request.POST, prefix="budget_select", user=request.user)
+        # test print
+        print("POST request received")
+        if "budget_select-budget" in request.POST:
+            # test print
+            print("budget_select in POST")
+            budget_select_form = DashboardBudgetSelect(user=request.user, data=request.POST, prefix="budget_select")
             if budget_select_form.is_valid():
+                # test print
+                print('form is valid')
                 selected_budget = budget_select_form.cleaned_data['budget']
                 month = selected_budget.month
                 year = selected_budget.year
