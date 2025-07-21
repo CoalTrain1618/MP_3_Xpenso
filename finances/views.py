@@ -124,7 +124,7 @@ def DashboardView(request):
 
     # Function for calculating Expense total
     def budget_expense_total(user, month, year):
-        expenses = Expenses.objects.filter(user=user, budget__month=month, budget__year=year,)
+        expenses = Expenses.objects.filter(user_id=user, budget__month=month, budget__year=year,)
         result = expenses.aggregate(Sum('amount'))
         total = result['amount__sum']
         if total is None:
@@ -133,7 +133,7 @@ def DashboardView(request):
 
     # Function for calculating Income total here
     def budget_income_total(user, month, year):
-        incomes = Income.objects.filter(user=user, budget__month=month, budget__year=year)
+        incomes = Income.objects.filter(user_id=user, budget__month=month, budget__year=year)
         result = incomes.aggregate(Sum('amount'))
         total = result['amount__sum']
         if total is None:
@@ -158,8 +158,8 @@ def DashboardView(request):
                 # Debug prints
                 print("Selected budget:", selected_budget)
                 print("Month:", month, "Year:", year)
-                print("Expenses count:", Expenses.objects.filter(user=request.user, budget__month=month, budget__year=year).count())
-                print("Incomes count:", Income.objects.filter(user=request.user, budget__month=month, budget__year=year).count())
+                print("Expenses count:", Expenses.objects.filter(user_id=request.user, budget__month=month, budget__year=year).count())
+                print("Incomes count:", Income.objects.filter(user_id=request.user, budget__month=month, budget__year=year).count())
     context = {
         "budget_select_form": budget_select_form,
         "selected_budget": selected_budget,
