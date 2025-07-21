@@ -115,14 +115,14 @@ def DashboardView(request):
     This function based view will hand the summary of the users financial
     data. The function based view allows us to handle multiple form POST requests. 
     """
-    budget_select_form = DashboardBudgetSelect(prefix='budget_select')
+    budget_select_form = DashboardBudgetSelect(user=request.user, prefix='budget_select')
     selected_budget = None
     total_expenses = None
     total_incomes = None
 
     # Function for calculating Expense total
     def budget_expense_total(user, month, year):
-        expenses = Expenses.objects.filter(user=user, budget__month=month, budget__year=year)
+        expenses = Expenses.objects.filter(user=user, budget__month=month, budget__year=year,)
         result = expenses.aggregate(Sum('amount'))
         total = result['amount__sum']
         if total is None:
@@ -147,14 +147,17 @@ def DashboardView(request):
                 year = selected_budget.year
                 total_expenses = budget_expense_total(user=request.user, month=month, year=year)
                 total_incomes = budget_income_total(user=request.user, month=month, year=year)
-
-
+                # Debug prints
+                print("Selected budget:", selected_budget)
+                print("Month:", month, "Year:", year)
+                print("Expenses count:", Expenses.objects.filter(user=request.user, budget__month=month, budget__year=year).count())
+                print("Incomes count:", Income.objects.filter(user=request.user, budget__month=month, budget__year=year).count())
     context = {
         "budget_select_form": budget_select_form,
         "selected_budget": selected_budget,
         "total_expenses": total_expenses,
         "total_incomes": total_incomes,
     }
-                
+        
             
     return render(request, 'finances/dashboard.html', context)

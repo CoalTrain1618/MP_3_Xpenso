@@ -6,7 +6,7 @@
     <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
 </div>
 <div class="container mt-4">
-    <form class="text-center" action="POST">
+    <form class="text-center" method="POST" action="{% url 'dashboard' %}">
         {% csrf_token %}
         {{ budget_select_form.budget }}
         <button type="submit" class="btn btn-secondary">Calculate </button>
@@ -18,11 +18,11 @@
         </div>
         <div class="col-md-4">
             <h2>Incomes</h2>
-            <p>Total Incomes: </p>
+            <p>Total Incomes: {{ total_incomes }}</p>
         </div>
         <div class="col-md-4">
             <h2>Expenses</h2>
-            <p>Total Expenses: </p>
+            <p>Total Expenses: {{ total_expenses }}</p>
         </div>
     </div>
 {% endblock %}
