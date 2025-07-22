@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 <div class="container mt-5 text-center">
     <h1>Hey, Welcome to your Dashboard!</h1>
@@ -26,9 +28,9 @@
         </div>
     </div>
     <div>
-        <canvas id="budget-chart" ></canvas>
+        <canvas id="dashboardChart" ></canvas>
     </div>
 {% endblock %}
-{% block sripts %}
+{% block scripts %}
     <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
