@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
+import json
 from .models import Budget, Income, Category, Expenses
 from .forms import BudgetForm, IncomeForm, ExpenseForm,DashboardBudgetSelect
 
@@ -140,6 +141,8 @@ def DashboardView(request):
             return 0
         return total
 
+    #___________
+
     if request.method == "POST":
         # test print
         print("POST request received")
@@ -160,11 +163,19 @@ def DashboardView(request):
                 print("Month:", month, "Year:", year)
                 print("Expenses count:", Expenses.objects.filter(user_id=request.user, budget__month=month, budget__year=year).count())
                 print("Incomes count:", Income.objects.filter(user_id=request.user, budget__month=month, budget__year=year).count())
+    
+    #___________
+    # category variables for charts
+    categories = Category.objects.all()
+    category_names = [cat.name for cat in categories]
+    expenses = Expenses.objects.
+
     context = {
         "budget_select_form": budget_select_form,
         "selected_budget": selected_budget,
         "total_expenses": total_expenses,
         "total_incomes": total_incomes,
+        "category_names": json.dumps(category_names),
     }
         
             
