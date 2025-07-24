@@ -32,5 +32,11 @@
     </div>
 {% endblock %}
 {% block scripts %}
+    <script>
+        const categoryLabels = {{ category_names|safe }};
+        const categoryData = {{ category_name_data|safe }};
+        console.log('Category Labels:', categoryLabels);
+        console.log('Category Data:', categoryData);
+    </script>
     <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

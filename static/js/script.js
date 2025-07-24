@@ -1,15 +1,15 @@
 $(document).ready(function(){
     // Get the canvas element by its ID
     const ctx = document.getElementById('dashboardChart').getContext('2d');
-    
+
     // Create a new Chart
     new Chart(ctx, {
         type: 'bar', 
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: categoryLabels,
             datasets: [{
-                label: 'Sample Data',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Expenses by Category',
+                data: categoryData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
