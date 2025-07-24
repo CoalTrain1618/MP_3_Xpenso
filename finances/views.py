@@ -116,12 +116,17 @@ def DashboardView(request):
     This function based view will hand the summary of the users financial
     data. The function based view allows us to handle multiple form POST requests. 
     """
-    # test print
-    print("Dashboard View Called")
+    # Variables
     budget_select_form = DashboardBudgetSelect(user=request.user, prefix='budget_select')
     selected_budget = None
     total_expenses = None
     total_incomes = None
+    # category variables for charts
+    categories = Category.objects.all()
+    category_names = [cat.name for cat in categories]
+    category_count = {name: 0 for name in category_names}
+
+    #___________
 
     # Function for calculating Expense total
     def budget_expense_total(user, month, year):
@@ -140,36 +145,37 @@ def DashboardView(request):
         if total is None:
             return 0
         return total
+    
+    # Function to process category data into chart
+    def category_chart_data(user, month, year):
+        expenses = Expenses.objects.filter(user_id=user, budget__month=month, budget__year=year,)
+        categories = Category.objects.all()
+        # list for chart labels
+        category_names = [cat.name for cat in categories]
+        # dic to increment value based on how many times a category in recorded expenses
+        category_count = {name: 0 for name in category_names}
+        for expense in expenses:
+            cat_name = expense.category.name
+            if cat_name in category_count:
+                category_count[cat_name] += 1
+        # Extracts value list from dictionary ready for chart data
+        category_name_data = [category_count[name] for name in category_names]
+        return category_names, category_name_data 
 
     #___________
-
+    # Handles which post request should action, based on prefix 
     if request.method == "POST":
-        # test print
-        print("POST request received")
         if "budget_select-budget" in request.POST:
-            # test print
-            print("budget_select in POST")
             budget_select_form = DashboardBudgetSelect(user=request.user, data=request.POST, prefix="budget_select")
             if budget_select_form.is_valid():
-                # test print
-                print('form is valid')
                 selected_budget = budget_select_form.cleaned_data['budget']
                 month = selected_budget.month
                 year = selected_budget.year
                 total_expenses = budget_expense_total(user=request.user, month=month, year=year)
                 total_incomes = budget_income_total(user=request.user, month=month, year=year)
-                # Debug prints
-                print("Selected budget:", selected_budget)
-                print("Month:", month, "Year:", year)
-                print("Expenses count:", Expenses.objects.filter(user_id=request.user, budget__month=month, budget__year=year).count())
-                print("Incomes count:", Income.objects.filter(user_id=request.user, budget__month=month, budget__year=year).count())
     
     #___________
-    # category variables for charts
-    categories = Category.objects.all()
-    category_names = [cat.name for cat in categories]
-    expenses = Expenses.objects.
-
+    # Variables
     context = {
         "budget_select_form": budget_select_form,
         "selected_budget": selected_budget,
