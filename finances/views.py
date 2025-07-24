@@ -124,7 +124,6 @@ def DashboardView(request):
     # category variables for charts
     categories = Category.objects.all()
     category_names = [cat.name for cat in categories]
-    category_count = {name: 0 for name in category_names}
 
     #___________
 
@@ -173,6 +172,8 @@ def DashboardView(request):
                 year = selected_budget.year
                 total_expenses = budget_expense_total(user=request.user, month=month, year=year)
                 total_incomes = budget_income_total(user=request.user, month=month, year=year)
+                category_name_data = category_chart_data(user=request.user, month=month, year=year)
+                print(category_name_data(1))
     
     #___________
     # Variables
@@ -182,6 +183,7 @@ def DashboardView(request):
         "total_expenses": total_expenses,
         "total_incomes": total_incomes,
         "category_names": json.dumps(category_names),
+        # "category_name_data": json.dumps(category_name_data),
     }
         
             
