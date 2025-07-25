@@ -7,12 +7,14 @@
     <h1>Hey, Welcome to your Dashboard!</h1>
     <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
 </div>
+<!-- Budget select form -->
 <div class="container mt-4">
     <form class="text-center" method="POST" action="{% url 'dashboard' %}">
         {% csrf_token %}
         {{ budget_select_form.budget }}
         <button type="submit" class="btn btn-secondary">Calculate </button>
     </form>
+    <!-- Budget summary -->
     <div class="row text-center">
         <div class="col-md-4">
             <h2>Budgets</h2>
@@ -27,12 +29,14 @@
             <p>Total Expenses: {{ total_expenses }}</p>
         </div>
     </div>
+    <!-- Summary chart -->
     <div>
         <canvas id="dashboardChart" ></canvas>
     </div>
 {% endblock %}
 {% block scripts %}
     <script>
+        // Displaying invalid syntax, but everything renders without issues
         const categoryLabels = {{ category_names|safe }};
         const categoryData = {{ category_name_data|safe }};
         console.log('Category Labels:', categoryLabels);

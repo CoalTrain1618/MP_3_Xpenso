@@ -7,40 +7,42 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-    <div class="container">
+<div class="container">
     <div class="row justify-content-center align-items-center view-height">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card shadow p-4">
                 <h2 class="text-center mb-4">{% trans "Sign In" %}</h2>
-                <form method="POST" action="{% url 'account_login' %}">
+                <!-- Login Form -->
+                <form class="text-center" method="POST" action="{% url 'account_login' %}">
                     {% csrf_token %}
                     {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {% for error in form.non_field_errors %}
-                                {{ error }}
-                            {% endfor %}
-                        </div>
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
                     {% endif %}
                     <div>
-                        {{ form.login.label_tag }}
-                        <br>
-                        {{ form.login}}
-                        {% if form.login.help_text %}
+                        <!-- Username/email field -->
+                        <div class="mb-2">
+                            {{ form.login}}
+                            {% if form.login.help_text %}
                             <small class="form-text text-muted">{{ form.login.help_text }}</small>
-                        {% endif %}
-                        <br>
-                        {{ form.password.label_tag }}
-                        <br>
-                        {{ form.password }}
-                        <br>
+                            {% endif %}
+                        </div>
+                        <!-- Password Field -->
+                        <div class="mb-2">
+                            {{ form.password }}
+                        </div>
                         <!-- Forgot Password Link -->
                         {% if form.password.help_text %}
-                            <small class="form-text text-muted">{{ form.password.help_text }}</small>
+                        <small class="form-text text-muted">{{ form.password.help_text }}</small>
                         {% endif %}
                     </div>
                     {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
                     {% endif %}
+                    <!-- Submit button -->
                     <button type="submit" class="btn btn-primary w-100 mt-2">{% trans "Sign In" %}</button>
                 </form>
                 <div class="text-center mt-3">

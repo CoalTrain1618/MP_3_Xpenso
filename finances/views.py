@@ -84,9 +84,15 @@ class ExpenseView(LoginRequiredMixin, CreateView):
     It only allows authorised users to see their own expenses. 
     """
     model = Expenses
-    fields = ['amount', 'expense_date', 'category', 'description', 'budget']
+    form_class = ExpenseForm
     template_name = 'finances/expense_form.html'
     success_url = reverse_lazy('dashboard')
+
+    # Passes the user key word argument to the form.
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def form_valid(self, form):
         form.instance.user_id = self.request.user
@@ -163,6 +169,7 @@ def DashboardView(request):
         return category_names, category_name_data 
 
     #___________
+
     # Handles which post request should action, based on prefix 
     if request.method == "POST":
         if "budget_select-budget" in request.POST:
@@ -177,6 +184,7 @@ def DashboardView(request):
                 print(category_names, category_name_data)
     
     #___________
+
     # Variables
     context = {
         "budget_select_form": budget_select_form,

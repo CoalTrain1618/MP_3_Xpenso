@@ -13,7 +13,7 @@
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="card shadow p-4">
                     <h2 class="text-center mb-4">{% trans "Sign Up" %}</h2>
-                    <form class="signup" method="POST" action="{% url 'account_signup' %}">
+                    <form class="signup text-center" method="POST" action="{% url 'account_signup' %}">
                         {% csrf_token %}
                         {% if form.non_field_errors %}
                         <div class="alert alert-danger">
@@ -23,31 +23,30 @@
                         </div>
                         {% endif %}
                         <div>
-                            {{ form.username.label_tag }}
-                            <br>
-                            {{ form.username }}
-                            {% if form.username.help_text %}
-                                <small class="form-text text-muted">{{ form.username.help_text }}</small>
-                            {% endif %}
-                            <br>
-                            {{ form.email.label_tag }}
-                            <br>
-                            {{ form.email }}
-                            {% if form.email.help_text %}
-                                <small class="form-text text-muted">{{ form.email.help_text }}</small>
-                            {% endif %}
-                            <br>
-                            {{ form.password1.label_tag }}
-                            <br>
-                            {{ form.password1 }}
-                            {% if form.password1.help_text %}
-                                <small class="form-text text-muted">{{ form.password1.help_text }}</small>
-                            {% endif %}
-                            <br>
-                            {{ form.password2.label_tag }}
-                            <br>
-                            {{ form.password2 }}
+                            <!-- Username field -->
+                            <div class="mb-2">
+                                {{ form.username }}
+                                {% if form.username.help_text %}
+                                    <small class="form-text text-muted">{{ form.username.help_text }}</small>
+                                {% endif %}
+                            </div>
+                            <!-- Email Field -->
+                            <div class="mb-2">
+                                {{ form.email }}
+                                {% if form.email.help_text %}
+                                    <small class="form-text text-muted">{{ form.email.help_text }}</small>
+                                {% endif %}
+                            </div>
+                            <!-- Password fields -->
+                            <div class="mb-2">
+                                {{ form.password1 }}
+                                {% if form.password1.help_text %}
+                                    <small class="form-text text-muted">{{ form.password1.help_text }}</small>
+                                {% endif %}
+                                {{ form.password2 }}
+                            </div>
                         </div>
+                        <!-- Submit Button -->
                         <button class="btn btn-primary w-100 mt-2" type="submit">{% trans "Sign Up" %}</button>
                     </form>
                     <div class="text-center mt-3">
