@@ -12,10 +12,6 @@ from .forms import BudgetForm, IncomeForm, ExpenseForm,DashboardBudgetSelect
 
 #_____________________________________________________________________
 
-# Function for displaying dashboard
-
-#_____________________________________________________________________
-
 class BudgetView(LoginRequiredMixin ,CreateView):
     """
     This budget view allows the user to submit budget data.
@@ -26,16 +22,20 @@ class BudgetView(LoginRequiredMixin ,CreateView):
     template_name = 'finances/budget_form.html'
     success_url = reverse_lazy('dashboard')
 
+    # Method to add context variable to template for budgets
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['budgets'] = Budget.objects.filter(user_id=self.request.user)
         return context
 
+    # Handles form submission: assigns the user, saves the budget, displays a success message,
+    # and redirects to the dashboard upon successful creation.
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Budget created successfully!")
         return super().form_valid(form)
 
+# Method to allow user to delete created budgets
 def delete_budget(request, pk):
     budget = get_object_or_404(Budget, pk=pk, user_id=request.user)
     if request.method == "POST":
@@ -55,12 +55,20 @@ class IncomeView(LoginRequiredMixin, CreateView):
     template_name = 'finances/income_form.html'
     success_url = reverse_lazy('dashboard')
 
-    # Passes user as requested user to IncomeForm for user specific filtering
+    # Passes requested user to IncomeForm for user specific filtering
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
 
+    # Method to add context variable to template for Income
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['incomes'] = Income.objects.filter(user_id=self.request.user)
+        return context
+
+    # Handles form submission: assigns the user, saves the income, displays a success message,
+    # and redirects if the user wishes to add more income records.
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Income successfully created!")
@@ -69,12 +77,8 @@ class IncomeView(LoginRequiredMixin, CreateView):
             return redirect('income_create')
         else:
             return response
-        
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['incomes'] = Income.objects.filter(user_id=self.request.user)
-        return context
 
+# Method to allow users to delected created income records
 def delete_income(request, pk):
     income = get_object_or_404(Income, pk=pk, user_id=request.user)
     if request.method == "POST":
@@ -100,6 +104,8 @@ class ExpenseView(LoginRequiredMixin, CreateView):
         kwargs['user'] = self.request.user
         return kwargs
 
+    # Handles form submission: sets the user, saves the expense, shows a success message,
+    # and redirects if the user wants to add more expenses.
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Expense successfully created!")
@@ -108,12 +114,14 @@ class ExpenseView(LoginRequiredMixin, CreateView):
             return redirect('expense_create')
         else:
             return response
-
+    
+    # Method to pass expenses as context variable to template
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['expenses'] = Expenses.objects.filter(user_id=self.request.user)
         return context
-    
+
+#   Method which allows user to delete created expense records
 def delete_expense(request, pk):
     expense = get_object_or_404(Expenses, pk=pk, user_id=request.user)
     if request.method == "POST":
