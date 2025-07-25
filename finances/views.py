@@ -78,7 +78,7 @@ class IncomeView(LoginRequiredMixin, CreateView):
         else:
             return response
 
-# Method to allow users to delected created income records
+# Method to allow users to delete created income records
 def delete_income(request, pk):
     income = get_object_or_404(Income, pk=pk, user_id=request.user)
     if request.method == "POST":
@@ -148,7 +148,7 @@ def DashboardView(request):
 
     #___________
 
-    # Function for calculating Expense total
+    # Function to calculate budget's Expense total
     def budget_expense_total(user, month, year):
         expenses = Expenses.objects.filter(user_id=user, budget__month=month, budget__year=year,)
         result = expenses.aggregate(Sum('amount'))
@@ -157,7 +157,7 @@ def DashboardView(request):
             return 0 
         return total
 
-    # Function for calculating Income total here
+    # Function to calculate budget's Income total here
     def budget_income_total(user, month, year):
         incomes = Income.objects.filter(user_id=user, budget__month=month, budget__year=year)
         result = incomes.aggregate(Sum('amount'))
