@@ -51,9 +51,15 @@ class IncomeView(LoginRequiredMixin, CreateView):
     On success, logged in user will be redirected to dashboard.
     """
     model = Income
-    fields = ['source', 'amount', 'budget']
+    form_class = IncomeForm
     template_name = 'finances/income_form.html'
     success_url = reverse_lazy('dashboard')
+
+    # Passes user as requested user to IncomeForm for user specific filtering
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def form_valid(self, form):
         form.instance.user_id = self.request.user
@@ -88,7 +94,7 @@ class ExpenseView(LoginRequiredMixin, CreateView):
     template_name = 'finances/expense_form.html'
     success_url = reverse_lazy('dashboard')
 
-    # Passes the user key word argument to the form.
+    # Passes user as requested user to ExpenseForm for user specific filtering
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
