@@ -35,7 +35,7 @@ class ExpenseForm(ModelForm):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
-        self.fields['category'].queryset = Category.objects.filter(user_id=user)
+        self.fields['category'].queryset = Category.objects.all()
 
 
 #Dashboard budget select form 
