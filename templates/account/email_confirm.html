@@ -21,7 +21,7 @@
                                 Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ user_display }}.
                             {% endblocktrans %}
                         </p>
-                        <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                        <form class="text-center" method="post" action="{% url 'account_confirm_email' confirmation.key %}">
                             {% csrf_token %}
                             {{ redirect_field }}
                             <button type="submit" class="btn btn-primary w-100 mt-2">{% trans 'Confirm' %}</button>

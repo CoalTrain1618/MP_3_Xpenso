@@ -12,7 +12,7 @@
             <div class="card shadow p-4">
                 <h2 class="text-center mb-4">{% trans "Sign Out" %}</h2>
                 <p class="text-center text-muted">{% trans "Are you sure you want to sign out?" %}</p>
-                <form method="post" action="{% url 'account_logout' %}">
+                <form class="text-center" method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     {{ redirect_field }}
                     <button type="submit" class="btn btn-primary w-100 mt-2">{% trans "Sign Out" %}</button>
