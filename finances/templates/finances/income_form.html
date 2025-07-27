@@ -25,6 +25,7 @@
                             <th>Income Source</th>
                             <th>Income Amount</th>
                             <th>Budget</th>
+                            <th>Edit</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
@@ -34,6 +35,12 @@
                                 <td>{{ income.source }}</td>
                                 <td>{{ income.amount }}</td>
                                 <td>{{ income.budget.get_month_display }}, {{ income.budget.get_year_display }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'edit_income' income.pk %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                                    </form>
+                                </td>
                                 <td>
                                     <form method="POST" action="{% url 'delete_income' income.pk %}">
                                         {% csrf_token %}

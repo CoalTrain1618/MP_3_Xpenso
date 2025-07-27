@@ -97,6 +97,26 @@ def delete_income(request, pk):
         messages.success(request, 'Income deleted successfully!')
     return redirect('income_create')
 
+# View to handle edit records for CRUD functionality
+class IncomeEditView(LoginRequiredMixin, UpdateView):
+    model = Income
+    form_class = IncomeForm
+    template_name = "finances/income_form.html"
+    success_url = reverse_lazy('income_create')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['incomes'] = Income.objects.filter(user_id=self.request.user)
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def get_queryset(self):
+        return Income.objects.filter(user_id=self.request.user)
+
 #_____________________________________________________________________
 
 class ExpenseView(LoginRequiredMixin, CreateView):
