@@ -141,6 +141,7 @@ def DashboardView(request):
     selected_budget = None
     total_expenses = None
     total_incomes = None
+    budget_amount = None
     # Prepare category names and default (zero) data for charts
     categories = Category.objects.all()
     category_names = [cat.name for cat in categories]
@@ -192,6 +193,7 @@ def DashboardView(request):
                 selected_budget = budget_select_form.cleaned_data['budget']
                 month = selected_budget.month
                 year = selected_budget.year
+                budget_amount = selected_budget.amount
                 total_expenses = budget_expense_total(user=request.user, month=month, year=year)
                 total_incomes = budget_income_total(user=request.user, month=month, year=year)
                 category_names, category_name_data = category_chart_data(user=request.user, month=month, year=year)
@@ -205,6 +207,7 @@ def DashboardView(request):
         "selected_budget": selected_budget,
         "total_expenses": total_expenses,
         "total_incomes": total_incomes,
+        "budget_amount": budget_amount,
         "category_names": json.dumps(category_names),
         "category_name_data": json.dumps(category_name_data),
     }
