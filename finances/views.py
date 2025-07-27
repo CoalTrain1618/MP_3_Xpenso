@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.views.generic.edit import CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin 
 from django.db.models import Sum
 import json
 from .models import Budget, Income, Category, Expenses
@@ -42,6 +42,19 @@ def delete_budget(request, pk):
         budget.delete()
         messages.success(request, 'Budget deleted successfully!')
     return redirect('budget_create')
+
+
+# View to handle edit records for CRUD functionality
+class BudgetEditView(LoginRequiredMixin, UpdateView):
+    model = Budget
+    form_class = BudgetForm
+    template_name = 'finances/budget_form.html'
+    success_url = reverse_lazy('budget_create')
+
+    def get_queryset(self):
+        return Budget.objects.filter(user_id=self.request.user)
+
+
 
 #_____________________________________________________________________
 

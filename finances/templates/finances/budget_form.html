@@ -28,6 +28,7 @@
                             <th scope="col">Month</th>
                             <th scope="col">Year</th>
                             <th scope="col">Amount</th>
+                            <th scope="col">Edit</th>
                             <th scope="col">Remove</th>
                         </tr>
                     </thead>
@@ -37,6 +38,12 @@
                                 <td>{{ budget.get_month_display }}</td>
                                 <td>{{ budget.year }}</td>
                                 <td>{{ budget.amount }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'edit_budget' budget.pk %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                                    </form>
+                                </td>
                                 <td>
                                     <form method="POST" action="{% url 'delete_budget' budget.pk %}">
                                         {% csrf_token %}
