@@ -29,11 +29,11 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md mt-4">
         <div class="container">
-            <a class="navbar-brand" href="#"><strong class="highlight-colour">X</strong>pensoLog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand ms-3" href="#"><strong class="highlight-colour">X</strong>pensoLog</a>
+            <button class="navbar-toggler rounded-pill me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon custom-toggler"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                 {% if user.is_authenticated %}
                     <a class="nav-item nav-link active" href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a>
