@@ -27,6 +27,7 @@
                             <th>Category</th>
                             <th>Date</th>
                             <th>Budget</th>
+                            <th>Edit</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
@@ -38,6 +39,12 @@
                                 <td>{{ expense.category.name }}</td>
                                 <td>{{ expense.expense_date }}</td>
                                 <td>{{ expense.budget.get_month_display }}, {{ expense.budget.year }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'edit_expense' expense.pk %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                                    </form>
+                                </td>
                                 <td>
                                     <form method="POST" action="{% url 'delete_expense' expense.pk %}">
                                         {% csrf_token %}

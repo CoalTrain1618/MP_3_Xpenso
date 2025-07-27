@@ -53,9 +53,7 @@ class BudgetEditView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         return Budget.objects.filter(user_id=self.request.user)
-
-
-
+    
 #_____________________________________________________________________
 
 class IncomeView(LoginRequiredMixin, CreateView):
@@ -141,6 +139,26 @@ def delete_expense(request, pk):
         expense.delete()
         messages.success(request, 'Expense deleted successfully!')
     return redirect('expense_create')
+
+# View to handle edit records for CRUD functionality
+class ExpenseEditView(LoginRequiredMixin, UpdateView):
+    model = Expenses
+    form_class = ExpenseForm
+    template_name = "finances/expense_form.html"
+    success_url = reverse_lazy('expense_create')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['expenses'] = Expenses.objects.filter(user_id=self.request.user)
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def get_queryset(self):
+        return Expenses.objects.filter(user_id=self.request.user)
 
 #_____________________________________________________________________
 
