@@ -30,6 +30,9 @@ class ExpenseForm(ModelForm):
     class Meta:
         model = Expenses
         fields = ['expense_date', 'amount', 'category', 'description', 'budget']
+        widgets = {
+            'expense_date': forms.DateInput(attrs={'type': 'date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
