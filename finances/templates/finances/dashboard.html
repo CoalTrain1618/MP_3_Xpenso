@@ -5,28 +5,46 @@
 {% block content %}
 <div class="container mt-5 text-center">
     <h1>Hey, Welcome to your Dashboard!</h1>
-    <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
+    <!-- Guidance models -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#helpModal">Get Started Here</button>
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">Quick Start Guide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Create your first budget to get started!
+                    <br>
+                    Further instruction content
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Budget select form -->
 <div class="container mt-4">
+    
     <form class="text-center" method="POST" action="{% url 'dashboard' %}">
+        <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
         {% csrf_token %}
-        {{ budget_select_form.budget }}
+        <p>Let's select a budget to get your analytics: {{ budget_select_form.budget }}</P>
         <button type="submit" class="btn btn-secondary">Calculate </button>
     </form>
     <!-- Budget summary -->
     <div class="row text-center">
         <div class="col-md-4">
-            <h2>Budget</h2>
-            <p>Budget Amount: {{ budget_amount }}</p>
+            <h2>Budgets</h2>
+            <p>Total Budgets: £{{ budget_amount }}</p>
         </div>
         <div class="col-md-4">
             <h2>Incomes</h2>
-            <p>Total Incomes: {{ total_incomes }}</p>
+            <p>Total Incomes: £{{ total_incomes }}</p>
         </div>
         <div class="col-md-4">
             <h2>Expenses</h2>
-            <p>Total Expenses: {{ total_expenses }}</p>
+            <p>Total Expenses: £{{ total_expenses }}</p>
         </div>
     </div>
     <!-- Summary chart -->
