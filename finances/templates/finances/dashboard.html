@@ -15,9 +15,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    Create your first budget to get started!
+                    <p>Hey, {{ user.username }}!</p>
+                    <p>Welcome to your dashboard! Here you can manage your finances effectively.</p>
+                    <p>To get started, you can:</p>
+                    <ul>
+                        <li>Create a budget to track your spending.</li>    
+                        <li>Create Expenses and Incomes to keep track of your financial activities.</li>
+                        <li>When you have created a budget, along with some expenses, we can track where your money goes.</li>
                     <br>
-                    Further instruction content
+                    <p>Let's get started by creating a budget!<a href="{% url 'budget_create' %}"> Create Budget</a></p>
+                    <p>
                 </div>
             </div>
         </div>
@@ -30,7 +37,7 @@
         <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
         {% csrf_token %}
         <p>Let's select a budget to get your analytics: {{ budget_select_form.budget }}</P>
-        <button type="submit" class="btn btn-secondary">Calculate </button>
+        <button type="submit" class="btn btn-secondary mb-2">Calculate </button>
     </form>
     <!-- Budget summary -->
     <div class="row text-center">
