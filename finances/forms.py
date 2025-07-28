@@ -44,6 +44,7 @@ class ExpenseForm(ModelForm):
         amount = self.cleaned_data.get('amount')
         if amount is not None and amount <= 0:
             raise forms.ValidationError("Amount must be greater than zero.")
+        return amount
 
 
 #Dashboard budget select form 
