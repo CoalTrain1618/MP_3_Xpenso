@@ -40,6 +40,11 @@ class ExpenseForm(ModelForm):
         self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
         self.fields['category'].queryset = Category.objects.all()
 
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        if amount is not None and amount <= 0:
+            raise forms.ValidationError("Amount must be greater than zero.")
+
 
 #Dashboard budget select form 
 class DashboardBudgetSelect(forms.Form):
