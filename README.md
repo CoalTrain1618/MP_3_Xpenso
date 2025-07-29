@@ -173,7 +173,11 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 
 [Back to top](#contents)
 
-## Webapp Features
+## XpensoLog Pages
+
+### Pages Overview
+
+- XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customization to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
 
 <details>
 <summary><strong>Login Page</strong></summary>
@@ -187,6 +191,111 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
  - The Sign Up page allows new users to quickly create an account. You’ll need to enter a username, email address, and password, following the password guidance shown. The form helps you choose a secure password, and there’s a clear button to complete registration. If you have an account already, you can easily switch to the sign in page. The layout is modern and simple, making it easy for anyone to get started.
 <br>
 <img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="400"/>
+</details>
+
+<details>
+<summary><strong>Forgot Password Page</strong></summary>
+ - The Password Reset page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page.
+<br>
+<img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="400"/>
+</details>
+
+<details>
+<summary><strong>Email Verification Page</strong></summary>
+ - The Email Verification page lets users confirm their email address for security. The site sends a verification email with a link to click. There’s a helpful note that you can change your email if needed. The instructions are clear, and the layout matches the clean, modern style of the app.
+<br>
+<img src="./documentation/images/app-pages/verify-email.png" alt="email verification" width="400"/>
+</details>
+
+<details>
+<summary><strong>Confirmation Email</strong></summary>
+ - Users receive this email to confirm their address after signing up. Click the link in the email to finish registration and verify your account.
+<br>
+<img src="./documentation/images/app-pages/custom-email.png" alt="custom email" width="700"/>
+</details>
+
+<details>
+<summary><strong>Confirm Email Address Page</strong></summary>
+ - The Confirm Email Address page asks users to verify that the provided email address belongs to them. Simply click the “Confirm” button once you recognise your email. This step ensures account security and helps prevent mistakes. The page is straightforward, with a clear message and a bold confirmation button for easy use.
+<br>
+<img src="./documentation/images/app-pages/confirm-email.png" alt="confirm email" width="400"/>
+</details>
+
+<details>
+<summary><strong>Dashboard</strong></summary>
+ - The Dashboard gives a quick overview of your budgets, incomes, and expenses. Select a budget to view analytics, then press Calculate for details. All totals and a chart by category are displayed for easy tracking.
+<br>
+<img src="./documentation/images/app-pages/dashboard.png" alt="dashboard" width="400"/>
+</details>
+
+<details>
+<summary><strong>Navigation Menu</strong></summary>
+ - The Navigation menu provides quick access to Dashboard, Budget, Expenses, Income, Profile, and Logout. It’s easy to find what you need from any page.
+<br>
+<img src="./documentation/images/app-pages/navigation.png" alt="navigation menu" width="400"/>
+</details>
+
+<details>
+<summary><strong>Quick Start Guide Modal</strong></summary>
+ - The Quick Start Guide modal greets users and gives a simple overview of how to get started. It explains how to create a budget, track expenses and incomes, and begin managing finances right away.
+<br>
+<img src="./documentation/images/app-pages/quickstart-modal.png" alt="quick start guide" width="400"/>
+</details>
+
+<details>
+<summary><strong>Create Budget Page</strong></summary>
+ - The Create Budget page lets users set a budget by entering an amount, month, and year. Budgets can be saved, edited, or deleted easily in the table below the form.
+<br>
+<img src="./documentation/images/app-pages/budget-create.png" alt="create budget" width="400"/>
+</details>
+
+<details>
+<summary><strong>Create Expense Page</strong></summary>
+ - The Create Expense page lets users add expenses by entering the date, amount, category, description, and budget. You can save each entry or add more. Existing expenses are listed in a table below, with options to edit or delete.
+<br>
+<img src="./documentation/images/app-pages/create-expense.png" alt="create expense" width="400"/>
+</details>
+
+<details>
+<summary><strong>Create Income Page</strong></summary>
+ - The Create Income page lets users add income by entering the amount, source, and budget. Entries appear in a table below, where you can edit or delete each item.
+<br>
+<img src="./documentation/images/app-pages/create-income.png" alt="create income" width="400"/>
+</details>
+
+<details>
+<summary><strong>Profile Page</strong></summary>
+ - The Profile page lets users update their username, email, and password. There’s also an option to delete the account under Account Removal.
+<br>
+<img src="./documentation/images/app-pages/profile.png" alt="profile page" width="400"/>
+</details>
+
+<details>
+<summary><strong>Manage Email Addresses Page</strong></summary>
+ - The Manage Email Addresses page lets users view, verify, set as primary, or remove email addresses on their account. You can also add a new email address at the bottom.
+<br>
+<img src="./documentation/images/app-pages/manage-email.png" alt="manage email" width="400"/>
+</details>
+
+<details>
+<summary><strong>Change Password Page</strong></summary>
+ - The Change Password page allows users to update their password by entering their current password and new password twice. There’s also a link for forgotten passwords.
+<br>
+<img src="./documentation/images/app-pages/change-password.png" alt="change password" width="400"/>
+</details>
+
+<details>
+<summary><strong>Delete Account Confirmation Page</strong></summary>
+ - The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel.
+<br>
+<img src="./documentation/images/app-pages/delete-account-confirmation.png" alt="delete account confirmation" width="400"/>
+</details>
+
+<details>
+<summary><strong>Sign Out Page</strong></summary>
+ - The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action.
+<br>
+<img src="./documentation/images/app-pages/sign-out.png" alt="sign out" width="400"/>
 </details>
 
 #### Custom error page
