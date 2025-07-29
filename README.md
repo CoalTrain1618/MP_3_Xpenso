@@ -288,14 +288,14 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 <summary><strong>Delete Account Confirmation Page</strong></summary>
  - The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel.
 <br>
-<img src="./documentation/images/app-pages/delete-account-confirmation.png" alt="delete account confirmation" width="400"/>
+<img src="./documentation/images/app-pages/delete-account.png" alt="delete account confirmation" width="400"/>
 </details>
 
 <details>
 <summary><strong>Sign Out Page</strong></summary>
  - The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action.
 <br>
-<img src="./documentation/images/app-pages/sign-out.png" alt="sign out" width="400"/>
+<img src="./documentation/images/app-pages/signout.png" alt="sign out" width="400"/>
 </details>
 
 #### Custom error page
