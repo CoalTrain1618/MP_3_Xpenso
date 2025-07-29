@@ -35,7 +35,7 @@ As part of the project planning process, I will apply the MoSCoW prioritisation 
 ### GitHub Project Board
 In line with Agile development methodology, I have made extensive use of GitHub’s project board by organising the development process into Epics, which are further broken down into user stories and manageable tasks. I have also utilised the Milestones feature, allowing me to group tasks into Sprint sections, each with a defined due date. By following this structured approach, I aim to maintain effective time management throughout the development of the web application, while also remaining adaptable to any necessary changes.
 
-[INSERT IMAGE OF PROJECT BOARD]
+![Project](./documentation/images/app-pages/projectboard.png)
 
 [Back to top](#contents)
 
@@ -129,19 +129,20 @@ This database ERD visualises the structure and relationships between the databas
 
 This ERD was designed using [dbdiagram.io](https://dbdiagram.io)
 
-[ERD Design Here]
+![dbdiagram](./documentation/images/dbdiagram/dbdiagram.png)
 
-#### Chnages
+#### Changes
 While creating the finances models, I made some adjustments to the database schema and the relationships between tables. Initially, the tables did not include any month or year fields. However, I soon realised that adding these fields was necessary to allow users to view financial data specific to a selected month and year. I also decided to link Budget as a Foreign Key to both Expenses and Incomes, making it much easier to group and filter data by month and date.
 
 
 ## Design Choices
 
 #### Fonts 
-The font choice for this web application is [Inter](https://fonts.google.com/specimen/Inter?query=Inter), which offers a professional, modern look that fits well with fintech applications. Inter is easy to read and accessible to all users. For headings, I have chosen [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity), providing a clear visual distinction between sections of text while remaining in line with the fintech style.
+## Fonts
+This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inter) for most text, giving it a modern and professional appearance that suits financial tools. Inter is chosen for its clarity and ease of reading, helping to make the site accessible for all users. For headings, [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity) is used, creating a clear difference between sections whilst keeping with the fintech style.
 
 #### Colour Scheme
-[Colour Scheme information here]
+![Colour Palette](./documentation/images/app-pages/colours.png)
 
 #### Images
 
@@ -174,7 +175,19 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 
 ## Webapp Features
 
-[Features listed here]
+<details>
+<summary><strong>Login Page</strong></summary>
+ - The Sign In page gives users a simple and secure way to access their account. Enter your username or email, and password to log in. If you've forgotten your password, there's an easy link to reset it. New users can quickly sign up with the link provided. The design is clean and modern, with a clear call-to-action button and accessible layout.
+<br>
+<img src="./documentation/images/app-pages/sign-in.png" alt="signin" width="400"/>
+</details>
+
+<details>
+<summary><strong>Sign Up Page</strong></summary>
+ - The Sign Up page allows new users to quickly create an account. You’ll need to enter a username, email address, and password, following the password guidance shown. The form helps you choose a secure password, and there’s a clear button to complete registration. If you have an account already, you can easily switch to the sign in page. The layout is modern and simple, making it easy for anyone to get started.
+<br>
+<img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="400"/>
+</details>
 
 #### Custom error page
 
