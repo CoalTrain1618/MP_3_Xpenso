@@ -3,18 +3,8 @@ from django.forms import ModelForm
 from .models import Budget, Income, Category, Expenses
 import datetime
 
-#_____________________________________________________________________
-
-#Budget form for user to create budget.
-class BudgetForm(forms.ModelForm):
-    month = forms.ChoiceField(choices=Budget.MONTH_CHOICES, initial=datetime.date.today().month)
-    year = forms.ChoiceField(choices=Budget.YEAR_CHOICES, initial=datetime.date.today().year)
-    
-    class Meta:
-        model = Budget
-        fields = ['amount', 'month', 'year']
-
-    # Ensures form amount cannot be posted with <= 0
+# Method ensures amount data must be above 0.
+class CleanAmountMixin:
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
         if amount is not None and amount <= 0:
@@ -23,8 +13,19 @@ class BudgetForm(forms.ModelForm):
 
 #_____________________________________________________________________
 
+#Budget form for user to create budget.
+class BudgetForm(CleanAmountMixin, forms.ModelForm):
+    month = forms.ChoiceField(choices=Budget.MONTH_CHOICES, initial=datetime.date.today().month)
+    year = forms.ChoiceField(choices=Budget.YEAR_CHOICES, initial=datetime.date.today().year)
+    
+    class Meta:
+        model = Budget
+        fields = ['amount', 'month', 'year']
+
+#_____________________________________________________________________
+
 #Income form for user to create Income
-class IncomeForm(ModelForm):
+class IncomeForm(CleanAmountMixin, ModelForm):
     class Meta:
         model = Income
         fields = ['amount', 'source', 'budget']
@@ -34,17 +35,11 @@ class IncomeForm(ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['budget'].queryset= Budget.objects.filter(user_id=user)
 
-    # Ensures form amount cannot be posted with <= 0
-    def clean_amount(self):
-        amount = self.cleaned_data.get('amount')
-        if amount is not None and amount <= 0:
-            raise forms.ValidationError("Amount must be greater than zero.")
-        return amount
 
 #_____________________________________________________________________
 
 #Expense form  for user to create expenses
-class ExpenseForm(ModelForm):
+class ExpenseForm(CleanAmountMixin, ModelForm):
     class Meta:
         model = Expenses
         fields = ['expense_date', 'amount', 'category', 'description', 'budget']
@@ -59,12 +54,6 @@ class ExpenseForm(ModelForm):
         self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
         self.fields['category'].queryset = Category.objects.all()
 
-    # Ensures form amount cannot be posted with <= 0
-    def clean_amount(self):
-        amount = self.cleaned_data.get('amount')
-        if amount is not None and amount <= 0:
-            raise forms.ValidationError("Amount must be greater than zero.")
-        return amount
 
 #_____________________________________________________________________
 

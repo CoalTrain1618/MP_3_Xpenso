@@ -89,6 +89,8 @@ class IncomeView(LoginRequiredMixin, CreateView):
         else:
             return response
 
+#___________
+
 # Method to allow users to delete created income records
 def delete_income(request, pk):
     income = get_object_or_404(Income, pk=pk, user_id=request.user)
@@ -96,6 +98,8 @@ def delete_income(request, pk):
         income.delete()
         messages.success(request, 'Income deleted successfully!')
     return redirect('income_create')
+
+#___________
 
 # View to handle edit records for CRUD functionality
 class IncomeEditView(LoginRequiredMixin, UpdateView):
@@ -152,6 +156,8 @@ class ExpenseView(LoginRequiredMixin, CreateView):
         context['expenses'] = Expenses.objects.filter(user_id=self.request.user)
         return context
 
+#___________
+
 #   Method which allows user to delete created expense records
 def delete_expense(request, pk):
     expense = get_object_or_404(Expenses, pk=pk, user_id=request.user)
@@ -159,6 +165,8 @@ def delete_expense(request, pk):
         expense.delete()
         messages.success(request, 'Expense deleted successfully!')
     return redirect('expense_create')
+
+#___________
 
 # View to handle edit records for CRUD functionality
 class ExpenseEditView(LoginRequiredMixin, UpdateView):
