@@ -3,6 +3,8 @@ from django.forms import ModelForm
 from .models import Budget, Income, Category, Expenses
 import datetime
 
+#_____________________________________________________________________
+
 #Budget form for user to create budget.
 class BudgetForm(forms.ModelForm):
     month = forms.ChoiceField(choices=Budget.MONTH_CHOICES, initial=datetime.date.today().month)
@@ -12,6 +14,14 @@ class BudgetForm(forms.ModelForm):
         model = Budget
         fields = ['amount', 'month', 'year']
 
+    # Ensures form amount cannot be posted with <= 0
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        if amount is not None and amount <= 0:
+            raise forms.ValidationError("Amount must be greater than zero.")
+        return amount
+
+#_____________________________________________________________________
 
 #Income form for user to create Income
 class IncomeForm(ModelForm):
@@ -24,6 +34,14 @@ class IncomeForm(ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['budget'].queryset= Budget.objects.filter(user_id=user)
 
+    # Ensures form amount cannot be posted with <= 0
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        if amount is not None and amount <= 0:
+            raise forms.ValidationError("Amount must be greater than zero.")
+        return amount
+
+#_____________________________________________________________________
 
 #Expense form  for user to create expenses
 class ExpenseForm(ModelForm):
@@ -34,18 +52,21 @@ class ExpenseForm(ModelForm):
             'expense_date': forms.DateInput(attrs={'type': 'date'}),
         }
 
+    # Pops user to filter user specfic data
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
         self.fields['category'].queryset = Category.objects.all()
 
+    # Ensures form amount cannot be posted with <= 0
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
         if amount is not None and amount <= 0:
             raise forms.ValidationError("Amount must be greater than zero.")
         return amount
 
+#_____________________________________________________________________
 
 #Dashboard budget select form 
 class DashboardBudgetSelect(forms.Form):

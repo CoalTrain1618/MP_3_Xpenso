@@ -21,7 +21,7 @@
 - [Security Measures](#security-measures)
 
 ## Project Introduction
-XpensoLog is a user-friendly finance budgeting web application that enables users to input their monthly income or budget and track their expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
+XpensoLog is a user-friendly finance budgeting web application that enables users to create budgets, track income and log expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
 
 This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts — with a strong focus on backend functionality — using Python and the Django framework.
 
