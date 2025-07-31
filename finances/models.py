@@ -37,7 +37,7 @@ class Budget(models.Model):
         return f"{self.get_month_display()} {self.year}"
 
     def __str__(self):
-        return self.month_year()
+        return f"{self.month_year()} ({self.user_id})"
 
 #_____________________________________________________________________
 
@@ -48,6 +48,8 @@ class Income(models.Model):
     date_set = models.DateField(auto_now_add=True)
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.source} ({self.user_id})"
 #_____________________________________________________________________
 
 class Category(models.Model):
@@ -66,3 +68,6 @@ class Expenses(models.Model):
     date_set = models.DateField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.description} ({self.user_id})"
