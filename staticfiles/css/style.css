@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* _________________________________________________________________ */
+
+
 /* General Styles */
 
 body {
@@ -19,11 +22,17 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 80vh;
 }
 
-/* Spacing for forms */
+.min-height {
+    min-height: 80vh;
+}
+
+/* _________________________________________________________________ */
+
 br {
     margin-top: 0.5rem;
 }
 
+/* Anchor styling */
 a {
     color: #274c77;
     text-decoration: none;
@@ -33,6 +42,7 @@ a:hover {
     color: #d5f716;
     text-decoration: underline;
 }
+/* _________________________________________________________________ */
 
 /* Navigation and Footer Styles */
 nav {
@@ -45,11 +55,17 @@ footer {
     background-color: #111111 !important;
 }
 
-
+/* Overide bootstrap colours */
 .navbar-brand, .navbar-nav .nav-link, .footer{
     color: #E7ECEF !important;
 }
 
+/* Overide styling to show active page */
+.active {
+    text-decoration: underline;
+}
+
+/* Override Bootstrap colour */
 .navbar-toggler {
     border-color: #d5f716;
 }
@@ -59,7 +75,10 @@ footer {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(231,236,239, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+/* _________________________________________________________________ */
+
 /* Buttons */
+
 .btn-primary {
     background-color: #d5f716;
     border-color: #111111;
@@ -85,16 +104,17 @@ footer {
     color: black;
 }
 
+/* _________________________________________________________________ */
+
 /* Form Styles */
 input {
     border-radius: 5px;
 }
 
-.min-height {
-    min-height: 80vh;
-}
+/* _________________________________________________________________ */
 
 /* Custom card */
+
 .custom-card {
     background-color: #fff;
     border-radius: 10px;
@@ -109,6 +129,10 @@ input {
 .custom-border-danger {
     border: 2px dashed red; 
 }
+
+/* _________________________________________________________________ */
+
+/* navbar link grid styling when collapsed */
 
 @media (max-width: 767.98px) {
   .navbar-nav.grid-layout {
