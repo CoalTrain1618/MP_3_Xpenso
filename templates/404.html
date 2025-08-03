@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1>Oops! Page Not Found (404)</h1>
+    <p>Sorry, the page you requested does not exist.</p>
+    {% if user.is_authenticated %}
+        <p>You can return to your <a href="{% url 'dashboard' %}">Dashboard</a> or explore other sections.</p>
+    {% else %}
+        <p>Please <a href="{% url 'account_login' %}">login</a> or <a href="{% url 'account_signup' %}">register</a> to access your account.</p>
+    {% endif %}
+
+{% endblock %}
