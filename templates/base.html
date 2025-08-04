@@ -1,5 +1,11 @@
 {% load static %}
 
+<!-- URL Definitions -->
+{% url 'dashboard' as dashboard_url %}
+{% url 'budget_create' as budget_url %}
+{% url 'expense_create' as expense_url %}
+{% url 'income_create' as income_url %}
+{% url 'profile' as profile_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -43,17 +49,17 @@
                 <div class="navbar-nav grid-layout">
                 <!-- Navigation links -->
                 {% if user.is_authenticated %}
-                    <a class="nav-item nav-link text-center" aria-label="Dashboard" href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link text-center" aria-label="Budget" href="{% url 'budget_create' %}">Budget</a>
-                    <a class="nav-item nav-link text-center" aria-label="Expenses" href="{% url 'expense_create' %}">Expenses</a>
-                    <a class="nav-item nav-link text-center" aria-label="Income" href="{% url 'income_create' %}">Income</a>
+                    <a class="nav-item nav-link text-center {% if request.path == dashboard_url %}active{% endif %}" aria-label="Dashboard" href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link text-center {% if request.path == budget_url %}active{% endif %}" aria-label="Budget" href="{% url 'budget_create' %}">Budget</a>
+                    <a class="nav-item nav-link text-center {% if request.path == expense_url %}active{% endif %}" aria-label="Expenses" href="{% url 'expense_create' %}">Expenses</a>
+                    <a class="nav-item nav-link text-center {% if request.path == income_url %}active{% endif %}" aria-label="Income" href="{% url 'income_create' %}">Income</a>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <a class="nav-item nav-link text-center" aria-current="page" aria-label="Profile" href="{% url 'profile' %}">Profile</a>
-                    <a class="nav-item nav-link text-center" aria-current="page" aria-label="Logout" href="{% url 'account_logout' %}">Logout</a>
+                    <a class="nav-item nav-link text-center {% if request.path == profile_url %}active{% endif %}" aria-current="page" aria-label="Profile" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link text-center {% if request.path == logout_url %}active{% endif %}" aria-current="page" aria-label="Logout" href="{% url 'account_logout' %}">Logout</a>
                 {% else %}
-                    <a class="nav-item nav-link text-center" aria-current="page" aria-label="Register" href="{% url 'account_signup' %}">Register</a>
-                    <a class="nav-item nav-link text-center" aria-current="page" aria-label="Login" href="{% url 'account_login' %}">Login</a>
+                    <a class="nav-item nav-link text-center {% if request.path == signup_url %}active{% endif %}" aria-current="page" aria-label="Register" href="{% url 'account_signup' %}">Register</a>
+                    <a class="nav-item nav-link text-center {% if request.path == login_url %}active{% endif %}" aria-current="page" aria-label="Login" href="{% url 'account_login' %}">Login</a>
                 {% endif %}
             </div>
         </div>
