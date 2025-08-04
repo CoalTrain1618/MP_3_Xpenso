@@ -400,3 +400,108 @@ class IncomeFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn('amount', form.errors)
         self.assertEqual(form.errors['amount'], ["Amount must be greater than zero."])
+
+# ________________________________________________________________________________
+
+class UserIsolationTestingExpenses(TestCase):
+    """
+    This will test that users cannot access each other's data.
+    """
+    def setUp(self):
+        self.user_a = User.objects.create_user(username='user_a', password='pass_a')
+        self.user_b = User.objects.create_user(username='user_b', password='pass_b')
+
+        # Test Budgets
+        self.budget_a = Budget.objects.create(
+            user_id=self.user_a,
+            amount=1000,
+            month=datetime.date.today().month,
+            year=datetime.date.today().year
+        )
+        self.budget_b = Budget.objects.create(
+            user_id=self.user_b,
+            amount=1500,
+            month=datetime.date.today().month,
+            year=datetime.date.today().year
+        )   
+
+        # Test Category
+        self.category = Category.objects.create(name="TestCat")
+
+        # test expenses
+        self.expense_a = Expenses.objects.create(
+            user_id=self.user_a,
+            amount=200,
+            category=self.category,
+            budget=self.budget_a,
+            expense_date=datetime.date.today()
+        )
+        self.expense_b = Expenses.objects.create(
+            user_id=self.user_b,
+            amount=300,
+            category=self.category,
+            budget=self.budget_b,
+            expense_date=datetime.date.today()
+        )
+
+    def test_user_cannot_view_other_user_expenses(self):
+        """
+        Test that user A cannot access user B's expenses.
+        """
+        self.client.login(username='user_a', password='pass_a')
+        url = reverse('edit_expense', args=[self.expense_b.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_user_only_see_own_expenses(self):
+        """
+        Test that user A can only see their own expenses.
+        """
+        self.client.login(username='user_a', password='pass_a')
+        url = reverse('edit_expense', args=[self.expense_a.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+# ________________________________________________________________________________
+
+class UserIsolationTestingBudget(TestCase):
+    """
+    This will test that users cannot access each other's budget data.
+    """
+
+    def setUp(self):
+        
+        self.user_a = User.objects.create_user(username="user_a", password="pass_a")
+        self.user_b = User.objects.create_user(username="user_b", password="pass_b")
+        
+        # test Budgets
+        self.budget_a = Budget.objects.create(
+            user_id = self.user_a,
+            amount = 1000,
+            month = datetime.date.today().month,
+            year = datetime.date.today().year,
+        )
+        self.budget_b = Budget.objects.create(
+            user_id = self.user_b,
+            amount = 1500,
+            month = datetime.date.today().month,
+            year = datetime.date.today().year,
+        )
+
+    def test_user_cannot_view_other_user_budget(self):
+        """
+        Test that user A cannot access user B's budget.
+        """
+        self.client.login(username="user_a", password="pass_a")
+        url = reverse('edit_budget', args=[self.budget_b.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_user_only_see_their_budget(self):
+        """
+        Test that user A can only see their own budget.
+        """
+        self.client.login(username="user_b", password="pass_b")
+        url = reverse('edit_budget', args=[self.budget_b.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
