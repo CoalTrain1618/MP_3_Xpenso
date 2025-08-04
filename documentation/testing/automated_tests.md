@@ -72,6 +72,7 @@ This time I decided to move both templates into a finance folder, within templat
 ##### During test 5, test passed
 - Yay !!
 
+----
 
 ### IncomeView Testing
 Income view will allow logged in user to record an income using a form. The form will be it's own page income_form.html. The form will use the Income model and contain the following fields ['amount', 'source', 'budget selection']. 
@@ -88,6 +89,8 @@ Created view to requirments. Developed testcases to test income creation functio
 
 #### Test One: 
 Test Passed first time. 
+
+----
 
 ### ExpenseView Testing
 Expense view will allow authorised users to record expenses and subit their expenses to the Expense DB table using a post form. The formm will contain the following fields ['amount', 'expense_date', 'category', 'description', 'budget'].
@@ -117,6 +120,7 @@ Failed with one main error:
 #### Test Three: 
 Test passed.
 
+----
 
 ## Forms validation testing 
 
@@ -132,6 +136,7 @@ Second test we will attempt to input a negative amount and post the form, this s
 #### Test One:
 Pass - All tests passed as expected. 
 
+----
 
 ### ExpenseForm Testing
 
@@ -139,6 +144,8 @@ The first test should pass, confirming that the ExpenseForm is valid when all fi
 
 #### Test One:
 Pass - All tests passed as expected.
+
+----
 
 ### IncomeForm Testing
 
@@ -156,3 +163,30 @@ Passed - All tests passed.
 Testing to ensure users are isolated to their own records and cannot modify another users
 data. This ensures user security. 
 
+
+### UserIsolationTestingExpenses Test
+#### Expected Outcome
+The first test should fail with a 404 when user A tries to access user B’s budget, confirming that users cannot view or edit each other’s data. The second test should pass, as user B is allowed to access and edit their own budget. This makes sure user isolation is enforced and only the relevant data is visible to each user.
+
+#### Test One:
+Passed - All tests passed as expected.
+
+----
+
+### UserIsolationTestingBudget Test
+#### Expected Outcome
+The first test should fail with a 404 when user A tries to access user B’s expenses, making sure users can’t view or edit each other’s records. The second test should pass, as user A is allowed to access their own expense. This confirms that user isolation is enforced and only the correct data is available to each user.
+
+#### Test One:
+Passed - All tests passed.
+
+----
+
+### UserIsolationTestingIncome Test
+#### Expected Outcome
+The first test should fail with a 404 when user A tries to access user B’s income data, ensuring users can’t view or edit each other’s income records. The second test should pass, as user B is able to access their own income. This confirms user isolation is working and only the correct income data is accessible to each user.
+
+#### Test One: 
+Passed - All tests passed.
+
+----

@@ -505,3 +505,62 @@ class UserIsolationTestingBudget(TestCase):
         url = reverse('edit_budget', args=[self.budget_b.pk])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+# ________________________________________________________________________________
+
+class UserIsolationTestingIncome(TestCase):
+    """
+    This will test that users cannot access each other's income data.
+    """
+
+    def setUp(self):
+
+        self.user_a = User.objects.create_user(username="user_a", password="pass_a")
+        self.user_b = User.objects.create_user(username="user_b", password="pass_b")
+
+        # Test Budgets
+        self.budget_a = Budget.objects.create(
+            user_id = self.user_a,
+            amount = 1000,
+            month = datetime.date.today().month,
+            year = datetime.date.today().year,
+        )
+        self.budget_b = Budget.objects.create(
+            user_id = self.user_b,
+            amount = 1500,
+            month = datetime.date.today().month,
+            year = datetime.date.today().year,
+        )
+
+        # Test Incomes
+        self.income_a = Income.objects.create(
+            user_id = self.user_a,
+            amount = 100,
+            source = "freelancing",
+            budget = self.budget_a,
+        )
+        self.income_b = Income.objects.create(
+            user_id = self.user_b,
+            amount = 100,
+            source = "freelancing",
+            budget = self.budget_b,
+        )
+
+    def test_user_cannot_see_other_user_income(self):
+        """
+        Test that user A cannot access user B's income.
+        """
+        self.client.login(username="user_a", password="pass_a")
+        url = reverse('edit_income', args=[self.income_b.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_user_only_see_their_income(self):
+        """
+        Test that user_b can only see their own income.
+        """
+        self.client.login(username="user_b", password="pass_b")
+        url = reverse('edit_income', args=[self.income_b.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+    
