@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from .models import Budget, Income, Category, Expenses
+from .forms import BudgetForm, IncomeForm, ExpenseForm, DashboardBudgetSelect
 
 import datetime
 
@@ -273,3 +274,129 @@ class FinanceExpenseViewTest(TestCase):
         self.assertTrue(any("Expense successfully created!" in str(m) for m in messages))
 
 # ________________________________________________________________________________
+
+class BudgetFormTest(TestCase):
+    """
+    This will test the validation of BudgetForm, to ensure all data is handled correctly.
+    """
+    # User creation
+    def setUp(self):
+        self.user = User.objects.create_user(username="testform", password="testpass")
+        self.client.login(username="testform", password="testpass")
+    
+    def  test_budget_form_valid(self):
+        """
+        Test that the form is valid with correct data.
+        """
+        form_data = {
+            'amount': 500,
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year,
+        }
+        form = BudgetForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_budget_form_invalid_amount(self):
+        """
+        Test that the form is picks up invalid data
+        """
+        form_data = {
+            'amount': -100,
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year,
+        }
+        form = BudgetForm(data=form_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('amount', form.errors)
+        self.assertEqual(form.errors['amount'], ["Amount must be greater than zero."])
+    
+# ________________________________________________________________________________
+
+class ExpenseFormTest(TestCase):
+    """
+    This will test the validation of ExpenseForm, to ensure all data is handled correctly.
+    """
+    # User creation
+    def setUp(self):
+        self.user = User.objects.create_user(username="testexpense", password="testpass")
+        self.client.login(username="testexpense", password="testpass")
+        self.budget = Budget.objects.create(
+            user_id=self.user,
+            amount=1000,
+            month=datetime.date.today().month,
+            year=datetime.date.today().year,
+        )
+        self.category = Category.objects.create(name="Utilities")
+
+    def test_expense_form_valid(self):
+        """
+        Test that the form is valid with correct data.
+        """
+        form_data = {
+            'amount': 200,
+            'expense_date': '2025-07-15',
+            'category': self.category.pk,
+            'description': 'Electricity bill',
+            'budget': self.budget.pk,
+        }
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+    def test_expense_form_invalid_amount(self):
+        """
+        Test that the form picks up invalid data for amount.
+        """
+        form_data = {
+            'amount': -50,
+            'expense_date': '2025-07-15',
+            'category': self.category.pk,
+            'description': 'Water bill',
+            'budget': self.budget.pk,
+        }
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('amount', form.errors)
+        self.assertEqual(form.errors['amount'], ["Amount must be greater than zero."])
+
+# ________________________________________________________________________________
+
+class IncomeFormTest(TestCase):
+    """
+    This will test the validation of IncomeForm, to ensure all data is handled correctly.
+    """
+    # User creation
+    def setUp(self):
+        self.user = User.objects.create_user(username="testincome", password="testpass")
+        self.client.login(username="testincome", password="testpass")
+        self.budget = Budget.objects.create(
+            user_id=self.user,
+            amount=1000,
+            month=datetime.date.today().month,
+            year=datetime.date.today().year,
+        )
+
+    def test_income_form_valid(self):
+        """
+        Test that the form is valid with correct data.
+        """
+        form_data = {
+            'amount': 300,
+            'source': 'Freelance',
+            'budget': self.budget.pk,
+        }
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+    def test_income_form_invalid_amount(self):
+        """
+        Test that the form picks up invalid data for amount.
+        """
+        form_data = {
+            'amount': -100,
+            'source': 'Freelance',
+            'budget': self.budget.pk,
+        }
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('amount', form.errors)
+        self.assertEqual(form.errors['amount'], ["Amount must be greater than zero."])

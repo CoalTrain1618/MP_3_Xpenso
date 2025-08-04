@@ -116,3 +116,35 @@ Failed with one main error:
 
 #### Test Three: 
 Test passed.
+
+
+## Forms validation testing 
+
+### BudgetForm Testing
+
+BudgetFormTest will test the validation handling of the forms. This will ensure users can only enter valid data into the input fields and prevent unexpected data errors.
+
+#### Expected Outcome
+
+First test will input valid data, positive amount. The test should pass as expected. 
+Second test we will attempt to input a negative amount and post the form, this should raise the error. 
+
+#### Test One:
+Pass - All tests passed as expected. 
+
+
+### ExpenseForm Testing
+
+The first test should pass, confirming that the ExpenseForm is valid when all fields are filled in with correct data. The second test should fail as expected, with the form picking up the negative amount and raising the “Amount must be greater than zero.” error. This ensures the form validation is working and only allows valid expense entries.
+
+#### Test One:
+Pass - All tests passed as expected.
+
+### IncomeForm Testing
+
+#### Expected Outcome
+
+The first test should pass, showing that the IncomeForm accepts valid data and is correctly validated. The second test should fail as expected, with the form catching the negative amount and displaying the “Amount must be greater than zero.” error message. This confirms the form validation is working and prevents users from entering invalid income amounts.
+
+#### Test One
+Passed - All tests passed.
