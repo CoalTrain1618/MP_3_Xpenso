@@ -28,7 +28,7 @@ class Budget(models.Model):
     YEAR_CHOICES = [(y, y) for y in range(datetime.date.today().year, datetime.date.today().year + 5)]
 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
     date_set = models.DateField(auto_now_add=True)
     month = models.IntegerField(choices=MONTH_CHOICES, default=datetime.date.today().month)
     year = models.IntegerField(choices=YEAR_CHOICES, default=datetime.date.today().month)
@@ -43,7 +43,7 @@ class Budget(models.Model):
 
 class Income(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
     source = models.CharField(max_length=60)
     date_set = models.DateField(auto_now_add=True)
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
@@ -62,7 +62,7 @@ class Category(models.Model):
 
 class Expenses(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
     expense_date = models.DateField(default=datetime.date.today)
     description = models.CharField(max_length=50, null=True, blank=True)
     date_set = models.DateField(auto_now_add=True)

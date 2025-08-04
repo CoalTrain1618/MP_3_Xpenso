@@ -190,3 +190,8 @@ The first test should fail with a 404 when user A tries to access user B’s inc
 Passed - All tests passed.
 
 ----
+
+Form validation tests (high priority)
+User isolation tests (high priority for security)
+Edge case tests (medium priority)
+Model method tests (medium priority)
