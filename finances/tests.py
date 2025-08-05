@@ -565,3 +565,46 @@ class UserIsolationTestingIncome(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
     
+# ________________________________________________________________________________
+
+class  EdgeCaseTestBudget(TestCase):
+    """
+    Tests for edgecase testing budget
+    """
+    def setUp(self):
+
+        self.user = User.objects.create_user(username="testuser", password="testpass")
+
+#______________________   
+
+    def test_max_digits_amount_field(self):
+        """
+        
+        """
+        form_data = {
+            'amount': 9999.99,
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year, 
+        }
+        
+        self.client.login(username="testuser", password="testpass")
+        form = BudgetForm(data=form_data)
+        self.assertTrue(form.is_valid)
+    
+#______________________
+
+    def test_exceeding_max_digit_amount_field(self):
+        """
+        
+        """
+        form_data = {
+            'amount': 99999.99, #added extra 9 for test
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = BudgetForm(data=form_data)
+        self.assertFalse(form.is_valid)
+        self.assertIn('amount', form.errors)
+        self.assertContains(form.errors('Ensure that there are no more than 6 digits in total.'))

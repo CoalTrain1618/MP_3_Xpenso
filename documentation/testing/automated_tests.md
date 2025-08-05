@@ -191,7 +191,11 @@ Passed - All tests passed.
 
 ----
 
-Form validation tests (high priority)
-User isolation tests (high priority for security)
-Edge case tests (medium priority)
+## Edge case tests
+I am implemeneting edge case testing to pressure test the validation at it's maximum and minimum. This protects forms from unexpected error and potential malicious user trying to break through. 
+
+
+
+
+
 Model method tests (medium priority)
