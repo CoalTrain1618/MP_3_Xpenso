@@ -579,7 +579,7 @@ class  EdgeCaseTestBudget(TestCase):
 
     def test_max_digits_amount_field(self):
         """
-        
+        Testing max digit input
         """
         form_data = {
             'amount': 9999.99,
@@ -589,13 +589,13 @@ class  EdgeCaseTestBudget(TestCase):
         
         self.client.login(username="testuser", password="testpass")
         form = BudgetForm(data=form_data)
-        self.assertTrue(form.is_valid)
+        self.assertTrue(form.is_valid())
     
 #______________________
 
     def test_exceeding_max_digit_amount_field(self):
         """
-        
+        Test exceeding the max digit input
         """
         form_data = {
             'amount': 99999.99, #added extra 9 for test
@@ -605,6 +605,23 @@ class  EdgeCaseTestBudget(TestCase):
 
         self.client.login(username="testuser", password="testpass")
         form = BudgetForm(data=form_data)
-        self.assertFalse(form.is_valid)
-        self.assertIn('amount', form.errors)
-        self.assertContains(form.errors('Ensure that there are no more than 6 digits in total.'))
+        self.assertFalse(form.is_valid())
+        self.assertIn('Ensure that there are no more than 6 digits in total.', form.errors['amount'][0])
+
+#______________________
+
+    def test_mininum_digit_amount_field(self):
+        """
+        
+        """
+        form_data = {
+            'amount': 1,
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = BudgetForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+#______________________
