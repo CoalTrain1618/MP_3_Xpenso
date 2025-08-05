@@ -610,9 +610,9 @@ class  EdgeCaseTestBudget(TestCase):
 
 #______________________
 
-    def test_mininum_digit_amount_field(self):
+    def test_minimum_digit_amount_field(self):
         """
-        
+            Testing the mininum digit amount field
         """
         form_data = {
             'amount': 1,
@@ -625,3 +625,64 @@ class  EdgeCaseTestBudget(TestCase):
         self.assertTrue(form.is_valid())
 
 #______________________
+
+    def test_below_minimum_digit_amount_field(self):
+        """
+        
+        """
+        form_data = {
+            'amount': -1,
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = BudgetForm(data=form_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
+
+#______________________
+
+    def test_zero_digit_amount_field(self):
+        """
+        
+        """
+        form_data = {
+            'amount': 0,
+            'month': datetime.date.today().month,
+            'year': datetime.date.today().year,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = BudgetForm(data=form_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
+
+
+# ________________________________________________________________________________
+
+class EdgeCaseTestExpense(TestCase):
+    """
+    
+    """
+    def setUp(self):
+        self.user = User.objects.create_user(username="testuser", password="testpass")
+
+        self.budget_test = Budget.objects.create(
+            user_id = self.user,
+            amount = 1000,
+            month = datetime.date.today().month,
+            year = datetime.date.today().year,
+        )
+
+        self.category = Category.objects.create(name='testCat')
+
+#______________________
+
+    def test_description_blank_input(self):
+        """
+        
+        """
+        form_data = {
+            
+        }
