@@ -855,4 +855,22 @@ class EdgeCaseTestIncome(TestCase):
 
         self.client.login(username="testuser", password="testpass")
         form = IncomeForm(data=form_data, user=self.user)
-        self.assertTrue(form.is_valid())
+        self.assertFalse(form.is_valid())
+        self.assertIn('This field is required.', form.errors['source'][0])
+
+#______________________
+
+    def test_source_max_length(self):
+        """
+        Test that the form accepts source with maximum length.
+        """
+        form_data = {
+            'amount': 100,
+            'source': 'a' * 61,
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Ensure this value has at most 60 characters (it has 61).', form.errors['source'][0])
