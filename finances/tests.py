@@ -684,5 +684,68 @@ class EdgeCaseTestExpense(TestCase):
         
         """
         form_data = {
-            
+            'expense_date': datetime.date.today(),
+            'amount': 5,
+            'category': self.category.pk,
+            'description': '',
+            'budget': self.budget_test.pk,
         }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+#______________________
+
+    def test_description_max_length(self):
+        """
+        
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': 5,
+            'category': self.category.pk,
+            'description': 'a' * 50,  # 50 characters
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+#______________________
+
+    def test_description_exceeding_max_length(self):
+        """
+        
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': 5,
+            'category': self.category.pk,
+            'description': 'a' * 51,  # 51 characters, exceeding max length
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Ensure this value has at most 50 characters (it has 51).', form.errors['description'][0])
+
+#______________________
+
+    def test_amount_max_digits(self):
+        """
+        
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': 9999.99,  # max digits
+            'category': self.category.pk,
+            'description': 'Test expense',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
