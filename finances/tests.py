@@ -612,7 +612,7 @@ class  EdgeCaseTestBudget(TestCase):
 
     def test_minimum_digit_amount_field(self):
         """
-            Testing the mininum digit amount field
+            Testing the minimum digit amount field
         """
         form_data = {
             'amount': 1,
@@ -628,7 +628,7 @@ class  EdgeCaseTestBudget(TestCase):
 
     def test_below_minimum_digit_amount_field(self):
         """
-        
+        Test that the form does not accept zero as a valid amount.
         """
         form_data = {
             'amount': -1,
@@ -645,7 +645,7 @@ class  EdgeCaseTestBudget(TestCase):
 
     def test_zero_digit_amount_field(self):
         """
-        
+        Test that the form does not accept zero as a valid amount.
         """
         form_data = {
             'amount': 0,
@@ -663,7 +663,7 @@ class  EdgeCaseTestBudget(TestCase):
 
 class EdgeCaseTestExpense(TestCase):
     """
-    
+    Tests for edgecase testing ExpenseForm
     """
     def setUp(self):
         self.user = User.objects.create_user(username="testuser", password="testpass")
@@ -681,7 +681,7 @@ class EdgeCaseTestExpense(TestCase):
 
     def test_description_blank_input(self):
         """
-        
+        Test that the form accepts blank description.
         """
         form_data = {
             'expense_date': datetime.date.today(),
@@ -699,7 +699,7 @@ class EdgeCaseTestExpense(TestCase):
 
     def test_description_max_length(self):
         """
-        
+        Test that the form accepts description with maximum length.
         """
         form_data = {
             'expense_date': datetime.date.today(),
@@ -717,7 +717,7 @@ class EdgeCaseTestExpense(TestCase):
 
     def test_description_exceeding_max_length(self):
         """
-        
+        Test that the form does not accept description exceeding max length.
         """
         form_data = {
             'expense_date': datetime.date.today(),
@@ -736,7 +736,7 @@ class EdgeCaseTestExpense(TestCase):
 
     def test_amount_max_digits(self):
         """
-        
+        Test that the form is valid with maximum digits for amount.
         """
         form_data = {
             'expense_date': datetime.date.today(),
@@ -749,3 +749,59 @@ class EdgeCaseTestExpense(TestCase):
         self.client.login(username="testuser", password="testpass")
         form = ExpenseForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
+
+#______________________
+
+    def test_amount_exceeding_max_digits(self):
+        """
+        Test that the form does not accept amounts exceeding max digits.
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': 99999.99,  # exceeding max digits
+            'category': self.category.pk,
+            'description': 'TestExpense',
+            'budget': self.budget_test.pk
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Ensure that there are no more than 6 digits in total.', form.errors['amount'][0])
+
+#______________________
+    
+    def test_minimum_amount(self):
+        """
+        Test that the form is valid with minimum amount.
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': 1,  
+            'category': self.category.pk,
+            'description': 'Test expense',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+#______________________
+
+    def test_below_minimum_amount(self):
+        """
+        Test that the form does not accept amounts below minimum.
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': -1, 
+            'category': self.category.pk,
+            'description': 'Test expense',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
