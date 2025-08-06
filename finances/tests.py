@@ -805,3 +805,54 @@ class EdgeCaseTestExpense(TestCase):
         form = ExpenseForm(data=form_data, user=self.user)
         self.assertFalse(form.is_valid())
         self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
+
+#______________________
+
+    def test_zero_amount(self):
+        """
+        Test that the form does not accept zero as a valid amount.
+        """
+        form_data = {
+            'expense_date': datetime.date.today(),
+            'amount': 0,  
+            'category': self.category.pk,
+            'description': 'Test expense',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = ExpenseForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
+
+# ________________________________________________________________________________
+
+class EdgeCaseTestIncome(TestCase):
+    """
+    Tests for edgecase testing IncomeForm
+    """
+    def setUp(self):
+        self.user = User.objects.create_user(username="testuser", password="testpass")
+
+        self.budget_test = Budget.objects.create(
+            user_id = self.user,
+            amount = 1000,
+            month = datetime.date.today().month,
+            year = datetime.date.today().year,
+        )
+    
+#______________________
+
+    def test_source_blank_input(self):
+        """
+        Test that the form accepts blank source.
+        """
+        form_data = {
+            'amount': 100,
+            'source': '',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
