@@ -860,13 +860,13 @@ class EdgeCaseTestIncome(TestCase):
 
 #______________________
 
-    def test_source_max_length(self):
+    def test_source_exceeding_max_length(self):
         """
-        Test that the form accepts source with maximum length.
+        Test that the form does not accept source exceeding max length.
         """
         form_data = {
             'amount': 100,
-            'source': 'a' * 61,
+            'source': 'a' * 61,  
             'budget': self.budget_test.pk,
         }
 
@@ -874,3 +874,88 @@ class EdgeCaseTestIncome(TestCase):
         form = IncomeForm(data=form_data, user=self.user)
         self.assertFalse(form.is_valid())
         self.assertIn('Ensure this value has at most 60 characters (it has 61).', form.errors['source'][0])
+
+#______________________
+
+    def test_amount_max_digits(self):
+        """
+        Test that the form is valid with maximum digits for amount.
+        """
+        form_data = {
+            'amount': 9999.99,  
+            'source': 'Job',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+#______________________
+
+    def test_amount_exceeding_max_digits(self):
+        """
+        Test that the form does not accept amounts exceeding max digits.
+        """
+        form_data = {
+            'amount': 99999.99,  
+            'source': 'Job',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Ensure that there are no more than 6 digits in total.', form.errors['amount'][0])
+
+#______________________
+
+    def test_minimum_amount(self):
+        """
+        Test that the form is valid with minimum amount.
+        """
+        form_data = {
+            'amount': 1,  
+            'source': 'Job',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid())
+
+#______________________
+
+    def test_below_minimum_amount(self):
+        """
+        Test that the form does not accept amounts below minimum.
+        """
+        form_data = {
+            'amount': -1,  
+            'source': 'Job',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
+
+#______________________
+
+    def test_zero_amount(self):
+        """
+        Test that the form does not accept zero as a valid amount.
+        """
+        form_data = {
+            'amount': 0,  
+            'source': 'Job',
+            'budget': self.budget_test.pk,
+        }
+
+        self.client.login(username="testuser", password="testpass")
+        form = IncomeForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid())
+        self.assertIn('Amount must be greater than zero.', form.errors['amount'][0])
+
+# ________________________________________________________________________________
