@@ -1,201 +1,230 @@
 # Automated Testing Document
 
+---
+
+## Contents
+
+- [Introduction](#introduction)
+- [Model Tests](#model-tests)
+- [View Tests](#view-tests)
+    - [BudgetView](#budgetview)
+    - [IncomeView](#incomeview)
+    - [ExpenseView](#expenseview)
+- [Form Validation Tests](#form-validation-tests)
+    - [BudgetForm](#budgetform)
+    - [ExpenseForm](#expenseform)
+    - [IncomeForm](#incomeform)
+- [User Isolation Tests](#user-isolation-tests)
+    - [Budget](#userisolation-budget)
+    - [Expenses](#userisolation-expenses)
+    - [Income](#userisolation-income)
+- [Edge Case Tests](#edge-case-tests)
+    - [ExpenseForm](#edge-case-expenseform)
+    - [IncomeForm](#edge-case-incomeform)
+
+---
+
 ## Introduction
-For this project, I wanted to use Test Driven Development (TDD) to make sure my code works as expected and is easy to maintain. TDD means writing tests before writing the actual code, which helps me think about what each part of the project should do from the start.
 
-Using TDD and automated tests brings a lot of benefits: 
-- I can spot mistakes early, before they become bigger problems.
-- It’s easier to change or improve my code later, because the tests will catch anything that breaks.
-- I spend less time manually checking if things work, since the tests do it for me.
-- My project is more reliable and ready for future updates.
+For this project, I used Test Driven Development (TDD) to ensure code quality and maintainability. TDD means writing tests before writing the actual code, helping define the behaviour of each part of the project from the outset.
 
+**Benefits of TDD and automated tests:**
+- Catch mistakes early, before they escalate.
+- Enable safer changes and improvements, as tests flag any breaking changes.
+- Save time by automating checks for correctness.
+- Improve reliability and prepare the project for future updates.
 
-### Finances app - Testing Models
-I wrote unit tests for all the main models in my finance app, including Budget, Income, Category, and Expenses. These tests check that each model can be created correctly, that relationships between models (like linking an income to a budget or an expense to a category) work as expected, and that the right data is stored in the database.
+---
 
-After running the tests with `python manage.py test finances`, all tests passed successfully. This gives me confidence that the core parts of my app are working as intended and that future changes can be made safely, knowing that the tests will catch any major issues.
+## Model Tests
 
-## Finance app - Testing Views
+I wrote unit tests for all main models in the finance app: **Budget, Income, Category, and Expenses**. These tests verify:
+- Correct model creation.
+- Proper relationships (e.g., linking income to budgets, expenses to categories).
+- Accurate data storage in the database.
 
-### Initial Test - BudgetView
-I want the user to go to the budget_form.html, input amount, month and year. I want them to only see their budget. Upon sumbission, they get redirected, maybe back to dashboard, where the list will be, and a success message.
+**Test Command:**  
+`python manage.py test finances`  
+All tests passed, confirming the core app functionality works and future changes can be made confidently.
 
-Test Outcome: Failure 
+---
 
-Expected Outcomes:
+## View Tests
+
+### BudgetView
+
+**Scenario:**  
+Users should be able to access `budget_form.html`, input amount, month, and year, and only see their own budgets. On submission, they are redirected (e.g., to dashboard) with a success message.
+
+**Expected Outcomes:**
 - Only logged-in users can access the budget creation page.
-- The for display for a GET request.
-- Submitting valid data creates a new Budget for the logged in user.
-- The user is redirected to the dashboard after submission.
+- The form displays on GET requests.
+- Submitting valid data creates a new Budget for the logged-in user.
+- User is redirected to the dashboard after submission.
 - A success message is displayed.
 
-#### Test 1 Outcomes:
-##### During the test, three errors were produced. 
-- TemplateDoesNotExist: 
-    - The template finances/budget_form.html could not be found, causing the test to fail. 
-- NoReverseMatch: 
-    - The url pattern named 'dashboard' could not be found.
-- Dependant test failure:
-    - Since two test failed, the proceeding failed.
+#### Test Outcomes
 
-##### Remedial Work: 
-- Create budget_form.html template.
-    - This way totally missed prior to origianl test.
-- Create Dashboard template, add url and create simple render view.
-    - I wans't plannig to create the dashboard this early originally, but I clearly overlooked that it would be needed during testing. 
+| Test | Outcome | Errors | Remedial Work |
+|------|---------|--------|--------------|
+| 1    | Fail    | - `TemplateDoesNotExist` (finances/budget_form.html)<br>- `NoReverseMatch` ('dashboard' URL missing)<br>- Dependant test failure | - Create `budget_form.html`<br>- Create dashboard template, URL, and view |
+| 2    | Fail    | - `ImportError` (import 'h') | - Fix typo in views.py import |
+| 3    | Fail    | - `TemplateDoesNotExist` | - Move `budget_form.html` to `finances/templates` directory, adjust structure |
+| 4    | Fail    | - `TemplateDoesNotExist` | - Move templates into `finance` folder within `templates` |
+| 5    | Pass    | - None | - N/A |
 
-#### Test 2 Outcome: 
-##### During this test, one error was found. 
-- ImportError:
-    - Django could not import 'h'
+---
 
-##### Remedial Work: 
-- I traced back to where the error was found in views.py
-    - Small typo in the import, I typed a h and commited. This is now removed. 
+### IncomeView
 
-#### Test 3 Outcome:
-##### During test 3, Two errors were found:
-- TemplateDoesNotExist
-    - I believe the file structure is making an error.
+**Scenario:**  
+Logged-in users record income via `income_form.html` using fields: `amount`, `source`, and `budget selection`. The view ensures users only access their own data. On success, users are redirected to the dashboard with a message.
 
-##### Remidial Work:
-- I removed budget_form to finances/templates and deleted /finances/templates/budget_form dir ready for test 4.
+**Expected Outcomes:**
+- Authorised users can input income.
+- Submission posts data to Income DB table.
 
-#### Test 4 Outcome:
-##### During test 4, the saem errors were recorded.
-- TemplateDoesNotExist
+#### Test Outcomes
 
-##### Remidial work:
-This time I decided to move both templates into a finance folder, within templates dir. 
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
-#### Test 5 Outcome:
-##### During test 5, test passed
-- Yay !!
+---
 
-----
+### ExpenseView
 
-### IncomeView Testing
-Income view will allow logged in user to record an income using a form. The form will be it's own page income_form.html. The form will use the Income model and contain the following fields ['amount', 'source', 'budget selection']. 
+**Scenario:**  
+Authorised users record expenses via a form (`expense_form.html`) with fields: `amount`, `expense_date`, `category`, `description`, `budget`. On submission, the data is posted to the Expenses DB table.
 
-I will need to create a view and urls pattern to link this up. The view will be designed to ensure the logged in user can only access their own data. Upon successful submit, the user will be ported back to dashboard and should be able to see a success message. 
+**Expected Outcomes:**
+- Authorised users can input expense data.
+- Submission posts data to Expenses DB table.
 
-Initial test: Fail
+#### Test Outcomes
 
-Created view to requirments. Developed testcases to test income creation functionality. 
+| Test | Outcome | Errors | Remedial Work |
+|------|---------|--------|--------------|
+| 1    | Fail    | - Incorrect URL names in navigation (`create_budget` vs `budget_create`)<br>- Missing Category object FK in tests.py | - Correct URL names<br>- Add user ID FK to Category object |
+| 2    | Fail    | - No HttpResponse from Expense view | - Add proper return in Expense view |
+| 3    | Pass    | - None | - N/A |
 
-#### Expected outcomes:
-- Authorised user can input Income into form field
-- User can submit Income data and it will post the data to DB Income table
+---
 
-#### Test One: 
-Test Passed first time. 
+## Form Validation Tests
 
-----
+### BudgetForm
 
-### ExpenseView Testing
-Expense view will allow authorised users to record expenses and subit their expenses to the Expense DB table using a post form. The formm will contain the following fields ['amount', 'expense_date', 'category', 'description', 'budget'].
+**Purpose:**  
+Test validation to ensure only valid data is accepted.
 
-I will need to creat a view, url patterns and make the expense_form.html. The template will display the form and the view will allows the user to submit the form data to the Expenses model. 
+**Expected Outcome:**  
+- Valid data (positive amount) passes.
+- Negative amount raises validation error.
 
-Initial test: Fail
+#### Test Results
 
-Created view to requirments. Developed testcases to test expense creation functionality.
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
-#### Expected Outcome: 
-- Authorised user can input expense data into form fields
-- Authorised user can submit for and post data to DB Expenses table
+---
 
-##### Test One: 
-Fail - Two main errors:
-- Incorrect url names in base.html navigation.
-    - url names back to front was 'create_budget' neds to be 'budget_create', same for others.
-- Missing Category object in tests.py
-    - Didn't include user_id FK field.
+### ExpenseForm
 
-#### Test Two: 
-Failed with one main error: 
-- No HttpRespons
-    - Forgot to finish off Expense view return. Now completed. 
-
-#### Test Three: 
-Test passed.
-
-----
-
-## Forms validation testing 
-
-### BudgetForm Testing
-
-BudgetFormTest will test the validation handling of the forms. This will ensure users can only enter valid data into the input fields and prevent unexpected data errors.
-
-#### Expected Outcome
-
-First test will input valid data, positive amount. The test should pass as expected. 
-Second test we will attempt to input a negative amount and post the form, this should raise the error. 
-
-#### Test One:
-Pass - All tests passed as expected. 
-
-----
-
-### ExpenseForm Testing
-
+**Expected Outcome:**  
 The first test should pass, confirming that the ExpenseForm is valid when all fields are filled in with correct data. The second test should fail as expected, with the form picking up the negative amount and raising the “Amount must be greater than zero.” error. This ensures the form validation is working and only allows valid expense entries.
 
-#### Test One:
-Pass - All tests passed as expected.
+#### Test Results
 
-----
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
-### IncomeForm Testing
+---
 
-#### Expected Outcome
+### IncomeForm
 
+**Expected Outcome:**  
 The first test should pass, showing that the IncomeForm accepts valid data and is correctly validated. The second test should fail as expected, with the form catching the negative amount and displaying the “Amount must be greater than zero.” error message. This confirms the form validation is working and prevents users from entering invalid income amounts.
 
-#### Test One
-Passed - All tests passed.
+#### Test Results
 
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
+---
 
 ## User Isolation Tests
 
-Testing to ensure users are isolated to their own records and cannot modify another users
-data. This ensures user security. 
+Tests to ensure users are restricted to their own records, protecting user security.
 
+### UserIsolationTestingBudget
 
-### UserIsolationTestingExpenses Test
-#### Expected Outcome
+**Expected Outcome:**  
 The first test should fail with a 404 when user A tries to access user B’s budget, confirming that users cannot view or edit each other’s data. The second test should pass, as user B is allowed to access and edit their own budget. This makes sure user isolation is enforced and only the relevant data is visible to each user.
 
-#### Test One:
-Passed - All tests passed as expected.
+#### Test Results
 
-----
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
-### UserIsolationTestingBudget Test
-#### Expected Outcome
+---
+
+### UserIsolationTestingExpenses
+
+**Expected Outcome:**  
 The first test should fail with a 404 when user A tries to access user B’s expenses, making sure users can’t view or edit each other’s records. The second test should pass, as user A is allowed to access their own expense. This confirms that user isolation is enforced and only the correct data is available to each user.
 
-#### Test One:
-Passed - All tests passed.
+#### Test Results
 
-----
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
-### UserIsolationTestingIncome Test
-#### Expected Outcome
+---
+
+### UserIsolationTestingIncome
+
+**Expected Outcome:**  
 The first test should fail with a 404 when user A tries to access user B’s income data, ensuring users can’t view or edit each other’s income records. The second test should pass, as user B is able to access their own income. This confirms user isolation is working and only the correct income data is accessible to each user.
 
-#### Test One: 
-Passed - All tests passed.
+#### Test Results
 
-----
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
 
-## Edge case tests
-I am implemeneting edge case testing to pressure test the validation at it's maximum and minimum. This protects forms from unexpected error and potential malicious user trying to break through. 
+---
 
+## Edge Case Tests
 
+Edge case tests pressure test validation at maximum and minimum values, protecting forms from unexpected errors and potential malicious input.
 
+### EdgeCaseTestExpenseForm
 
+**Expected Outcome:**  
+The form should accept blank descriptions and descriptions up to 50 characters, but reject anything longer. Amounts are valid up to 9999.99 and must be greater than zero, so tests with values at the limit should pass, while negative, zero, or overly large amounts should fail with the correct error messages. This confirms the form properly handles all common and edge case inputs.
 
-Model method tests (medium priority)
+#### Test Results
+
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
+
+---
+
+### EdgeCaseTestIncomeForm
+
+**Expected Outcome:**  
+The form should reject blank sources and sources longer than 60 characters, while accepting valid source names within the limit. Amounts up to 9999.99 are valid, but anything zero, negative, or exceeding the digit limit should fail with the right error message. This shows the form catches all edge cases and only allows sensible income entries.
+
+#### Test Results
+
+| Test | Outcome |
+|------|---------|
+| 1    | Pass    |
+
+---
