@@ -417,20 +417,20 @@ Manual testing was also an important part of this project. I created a CSV file 
 <summary><strong>login.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-login-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/html-login-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>signup.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="./documentation/validation/html-signup-error-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/html-signup-error-validation.png" alt="" width="400"/>
 
 - **How I fixed it:**  
 Added ID to respective password helper and then replaced the password helper small element with a div.
 
 - **Final result:** Passed  
-<img src="./documentation/validation/html-signup-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/html-signup-validation.png" alt="" width="400"/>
 </details>
 
 
@@ -445,7 +445,7 @@ Added ID to respective password helper and then replaced the password helper sma
 <summary><strong>style.css</strong></summary>
 
 - **Result:** Passed  
-<img src="./documentation/validation/css-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/css-validation.png" alt="" width="400"/>
 
 </details>
 
@@ -461,7 +461,7 @@ Added ID to respective password helper and then replaced the password helper sma
 <summary><strong>main.js</strong></summary>
 
 - **Result:** Passed with warning shown
-<img src="./documentation/validation/js-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/js-validation.png" alt="" width="400"/>
 
 - **Warning:**  
 JS Hint presented a warning, however the warning is irrelevant, since 'new' is needed for chart.js, therefore ignored warning.
@@ -480,49 +480,49 @@ JS Hint presented a warning, however the warning is irrelevant, since 'new' is n
 <summary><strong>finances/views.py</strong></summary>
 
 - **Result:** Passed  
-<img src="./documentation/validation/finances-views-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-views-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>finances/urls.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-urls-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-urls-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>finances/tests.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-tests-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-tests-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>finances/models.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-models-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-models-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>finances/forms.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-forms-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-forms-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>finances/apps.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-apps-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-apps-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>finances/admin.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-admin-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/finances-admin-validation.png" alt="" width="400"/>
 </details>
 
 #### Let's Talk Money Project - Python Files
@@ -531,7 +531,7 @@ JS Hint presented a warning, however the warning is irrelevant, since 'new' is n
 <summary><strong>letstalkmoney/urls.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/letstalkmoney-urls-validation.png" alt="" width="600"/>
+<img src="./documentation/validation/letstalkmoney-urls-validation.png" alt="" width="400"/>
 </details>
 
 ## Technologies
