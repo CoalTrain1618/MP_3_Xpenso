@@ -35,7 +35,7 @@
                             <div class="mb-2">
                                 {{ form.email }}
                                 {% if form.email.help_text %}
-                                    <small class="form-text text-muted">{{ form.email.help_text }}</small>
+                                    <div class="form-text text-muted">{{ form.email.help_text }}</div>
                                 {% endif %}
                             </div>
                             <!-- Password fields -->
@@ -43,7 +43,7 @@
                                 {{ form.password1.errors }}
                                 {{ form.password1 }}
                                 {% if form.password1.help_text %}
-                                    <small class="form-text text-muted">{{ form.password1.help_text }}</small>
+                                    <div id="id_password1_helptext" class="form-text text-muted">{{ form.password1.help_text }}</div>
                                 {% endif %}
                                 {{ form.password2.errors }}
                                 {{ form.password2 }}
