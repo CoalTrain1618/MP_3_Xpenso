@@ -511,6 +511,13 @@ Added ID to respective password helper and then replaced the password helper sma
 - **Result:** Passed
 <img src="./documentation/validation/html-delete_user-validation.png" alt="" width="550"/>
 </details>
+
+<details>
+<summary><strong>logout.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-logout-validation.png" alt="" width="550"/>
+</details>
 ---
 
 ### CSS 
