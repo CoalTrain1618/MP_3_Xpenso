@@ -137,7 +137,6 @@ While creating the finances models, I made some adjustments to the database sche
 
 ## Design Choices
 
-#### Fonts 
 ## Fonts
 This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inter) for most text, giving it a modern and professional appearance that suits financial tools. Inter is chosen for its clarity and ease of reading, helping to make the site accessible for all users. For headings, [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity) is used, creating a clear difference between sections whilst keeping with the fintech style.
 
@@ -177,7 +176,7 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 
 ### Pages Overview
 
-- XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customization to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
+XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customization to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
 
 <details>
 <summary><strong>Login Page</strong></summary>
@@ -298,23 +297,74 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 <img src="./documentation/images/app-pages/signout.png" alt="sign out" width="400"/>
 </details>
 
-#### Custom error page
-
-[custom error page herer]
+<details>
+<summary><strong>Custom 404 page</strong></summary>
+ - The Custom 404 page ensures continuity of style accross the website even when a is faced with page not found. This helps the user have a seemless experience, allowing them to easily navigate back into desired pages. 
+<br>
+<img src="./documentation/images/app-pages/404.png" alt="sign out" width="400"/>
+</details>
 
 ## Admin Portal
 
-[Admin portal section]
+### Admin Panel Design 
+The admin panel is simple in design, allowing the superuser to navigate easily. All objects are displayed with __str__ which allows the model objects to be easily identifiable. Unlike projects such as blogs, this site doesn't require extensive admin panel use. It still allows the Super user to create, edit and delete data.
+
+![Admin panel overview](./documentation/images/app-pages/admin-overview.png)
+
+The __str__ method is used to display objects in the admin panel, here's an example.
+
+![Admin panel example](./documentation/images/app-pages/admin-layout-example.png)
 
 ## Testing
 
-[Link testing documentation here]
+### Automated Testing
+My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation, making sure that users couldn’t access each other’s information, and helping to prevent malicious users from breaking the website.
+
+Tests can be run with following command: __python3 manage.py test finances__
+
+#### [Automated Testing Document](./documentation/testing/automated_tests.md)
+
+### Manual Testing
+Manual testing was also an important part of this project. I created a CSV file to track and record all my manual tests, as this let me design the layout to suit my needs. Once all the tests were complete, I converted them into a .md file using [tabletomarkdown.com](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/). This produced tables for each test section.
+
+#### [Manual Testing Document](./documentation/testing/manual_tests.md)
 
 ## Deployment
 
 ### Deployment process for Heroku
 
-[Fill in step process of deployment here]
+
+To get this project live on Heroku, follow these steps:
+
+1. Go to the [Heroku website](https://heroku.com) and sign in, or set up a new account if you haven’t got one already.
+2. On your dashboard, click the “New” button in the top-right corner and select “Create new app”.
+3. Choose a unique name for your app in the “App name” box. Heroku will show a green tick if it’s available.
+4. Pick your region (“United States” or “Europe”) to match where most of your users are based.
+5. Click “Create app” to continue.
+6. Once your app is made, open the “Settings” tab along the top.
+7. Find the “Config Vars” section and click “Reveal Config Vars” to access your environment variable settings.
+8. Add all required environment variables here (these are usually in your local `env.py`). For this project, set at least:
+
+    - **DATABASE_URL**: xxxx  
+    - **SECRET_KEY**: xxxx  
+    - **DEBUG**: xxxx  
+    - **EMAIL_HOST_PASS**: xxxx  
+    - **EMAIL_HOST_USER**: xxxx  
+
+    Enter each variable name under “KEY” and its value under “VALUE”.
+
+9. Go to the “Deploy” tab at the top of the page.
+10. Under “Deployment method”, select “GitHub”.
+11. Use the “Search” box to find your repository, then click “Connect”.
+12. Scroll down and hit “Deploy Branch” to start deployment.
+13. If you’d like, you can enable automatic deploys so Heroku will redeploy every time you push to GitHub.
+14. Watch the build log at the bottom of the page. Once it’s done, you’ll get a link to your live app.
+
+**Important:**  
+- Make sure your Heroku app’s URL is included in the `ALLOWED_HOSTS` list in your `settings.py`.
+- Set `DEBUG = False` for your live site. This is automatically handled via env.
+- Double-check that your `requirements.txt` and `Procfile` are both up to date and committed to GitHub before deploying.
+
 
 
 ## Technologies
