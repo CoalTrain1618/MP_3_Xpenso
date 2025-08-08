@@ -12,7 +12,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="helpModalLabel">Quick Start Guide</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" aria-label="Close" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <p>Hey, {{ user.username }}!</p>
@@ -22,9 +22,9 @@
                         <li>Create a budget to track your spending.</li>    
                         <li>Create Expenses and Incomes to keep track of your financial activities.</li>
                         <li>When you have created a budget, along with some expenses, we can track where your money goes.</li>
+                    </ul>
                     <br>
                     <p>Let's get started by creating a budget!<a href="{% url 'budget_create' %}"> Create Budget</a></p>
-                    <p>
                 </div>
             </div>
         </div>
@@ -58,6 +58,7 @@
     <div>
         <canvas id="dashboardChart" ></canvas>
     </div>
+</div>    
 {% endblock %}
 {% block scripts %}
     <script>

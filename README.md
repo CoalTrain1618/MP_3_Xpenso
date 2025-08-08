@@ -177,28 +177,28 @@ XpensoLog uses a combination of custom templates and Django Allauth templates to
 <summary><strong>Login Page</strong></summary>
  - The Sign In page gives users a simple and secure way to access their account. Enter your username or email, and password to log in. If you've forgotten your password, there's an easy link to reset it. New users can quickly sign up with the link provided. The design is clean and modern, with a clear call-to-action button and accessible layout.
 <br>
-<img src="./documentation/images/app-pages/sign-in.png" alt="signin" width="400"/>
+<img src="./documentation/images/app-pages/sign-in.png" alt="signin" width="550"/>
 </details>
 
 <details>
 <summary><strong>Sign Up Page</strong></summary>
  - The Sign Up page allows new users to quickly create an account. You’ll need to enter a username, email address, and password, following the password guidance shown. The form helps you choose a secure password, and there’s a clear button to complete registration. If you have an account already, you can easily switch to the sign in page. The layout is modern and simple, making it easy for anyone to get started.
 <br>
-<img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="400"/>
+<img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="550"/>
 </details>
 
 <details>
 <summary><strong>Forgot Password Page</strong></summary>
  - The Password Reset page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page.
 <br>
-<img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="400"/>
+<img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="550"/>
 </details>
 
 <details>
 <summary><strong>Email Verification Page</strong></summary>
  - The Email Verification page lets users confirm their email address for security. The site sends a verification email with a link to click. There’s a helpful note that you can change your email if needed. The instructions are clear, and the layout matches the clean, modern style of the app.
 <br>
-<img src="./documentation/images/app-pages/verify-email.png" alt="email verification" width="400"/>
+<img src="./documentation/images/app-pages/verify-email.png" alt="email verification" width="550"/>
 </details>
 
 <details>
@@ -212,91 +212,91 @@ XpensoLog uses a combination of custom templates and Django Allauth templates to
 <summary><strong>Confirm Email Address Page</strong></summary>
  - The Confirm Email Address page asks users to verify that the provided email address belongs to them. Simply click the “Confirm” button once you recognise your email. This step ensures account security and helps prevent mistakes. The page is straightforward, with a clear message and a bold confirmation button for easy use.
 <br>
-<img src="./documentation/images/app-pages/confirm-email.png" alt="confirm email" width="400"/>
+<img src="./documentation/images/app-pages/confirm-email.png" alt="confirm email" width="550"/>
 </details>
 
 <details>
 <summary><strong>Dashboard</strong></summary>
  - The Dashboard gives a quick overview of your budgets, incomes, and expenses. Select a budget to view analytics, then press Calculate for details. All totals and a chart by category are displayed for easy tracking.
 <br>
-<img src="./documentation/images/app-pages/dashboard.png" alt="dashboard" width="400"/>
+<img src="./documentation/images/app-pages/dashboard.png" alt="dashboard" width="550"/>
 </details>
 
 <details>
 <summary><strong>Navigation Menu</strong></summary>
  - The Navigation menu provides quick access to Dashboard, Budget, Expenses, Income, Profile, and Logout. It’s easy to find what you need from any page.
 <br>
-<img src="./documentation/images/app-pages/navigation.png" alt="navigation menu" width="400"/>
+<img src="./documentation/images/app-pages/navigation.png" alt="navigation menu" width="550"/>
 </details>
 
 <details>
 <summary><strong>Quick Start Guide Modal</strong></summary>
  - The Quick Start Guide modal greets users and gives a simple overview of how to get started. It explains how to create a budget, track expenses and incomes, and begin managing finances right away.
 <br>
-<img src="./documentation/images/app-pages/quickstart-modal.png" alt="quick start guide" width="400"/>
+<img src="./documentation/images/app-pages/quickstart-modal.png" alt="quick start guide" width="550"/>
 </details>
 
 <details>
 <summary><strong>Create Budget Page</strong></summary>
  - The Create Budget page lets users set a budget by entering an amount, month, and year. Budgets can be saved, edited, or deleted easily in the table below the form.
 <br>
-<img src="./documentation/images/app-pages/budget-create.png" alt="create budget" width="400"/>
+<img src="./documentation/images/app-pages/budget-create.png" alt="create budget" width="550"/>
 </details>
 
 <details>
 <summary><strong>Create Expense Page</strong></summary>
  - The Create Expense page lets users add expenses by entering the date, amount, category, description, and budget. You can save each entry or add more. Existing expenses are listed in a table below, with options to edit or delete.
 <br>
-<img src="./documentation/images/app-pages/create-expense.png" alt="create expense" width="400"/>
+<img src="./documentation/images/app-pages/create-expense.png" alt="create expense" width="550"/>
 </details>
 
 <details>
 <summary><strong>Create Income Page</strong></summary>
  - The Create Income page lets users add income by entering the amount, source, and budget. Entries appear in a table below, where you can edit or delete each item.
 <br>
-<img src="./documentation/images/app-pages/create-income.png" alt="create income" width="400"/>
+<img src="./documentation/images/app-pages/create-income.png" alt="create income" width="550"/>
 </details>
 
 <details>
 <summary><strong>Profile Page</strong></summary>
  - The Profile page lets users update their username, email, and password. There’s also an option to delete the account under Account Removal.
 <br>
-<img src="./documentation/images/app-pages/profile.png" alt="profile page" width="400"/>
+<img src="./documentation/images/app-pages/profile.png" alt="profile page" width="550"/>
 </details>
 
 <details>
 <summary><strong>Manage Email Addresses Page</strong></summary>
  - The Manage Email Addresses page lets users view, verify, set as primary, or remove email addresses on their account. You can also add a new email address at the bottom.
 <br>
-<img src="./documentation/images/app-pages/manage-email.png" alt="manage email" width="400"/>
+<img src="./documentation/images/app-pages/manage-email.png" alt="manage email" width="550"/>
 </details>
 
 <details>
 <summary><strong>Change Password Page</strong></summary>
  - The Change Password page allows users to update their password by entering their current password and new password twice. There’s also a link for forgotten passwords.
 <br>
-<img src="./documentation/images/app-pages/change-password.png" alt="change password" width="400"/>
+<img src="./documentation/images/app-pages/change-password.png" alt="change password" width="550"/>
 </details>
 
 <details>
 <summary><strong>Delete Account Confirmation Page</strong></summary>
  - The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel.
 <br>
-<img src="./documentation/images/app-pages/delete-account.png" alt="delete account confirmation" width="400"/>
+<img src="./documentation/images/app-pages/delete-account.png" alt="delete account confirmation" width="550"/>
 </details>
 
 <details>
 <summary><strong>Sign Out Page</strong></summary>
  - The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action.
 <br>
-<img src="./documentation/images/app-pages/signout.png" alt="sign out" width="400"/>
+<img src="./documentation/images/app-pages/signout.png" alt="sign out" width="550"/>
 </details>
 
 <details>
 <summary><strong>Custom 404 page</strong></summary>
  - The Custom 404 page ensures continuity of style accross the website even when a is faced with page not found. This helps the user have a seemless experience, allowing them to easily navigate back into desired pages. 
 <br>
-<img src="./documentation/images/app-pages/404.png" alt="sign out" width="400"/>
+<img src="./documentation/images/app-pages/404.png" alt="sign out" width="550"/>
 </details>
 
 ## Admin Portal
@@ -417,24 +417,100 @@ Manual testing was also an important part of this project. I created a CSV file 
 <summary><strong>login.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-login-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/html-login-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>signup.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="./documentation/validation/html-signup-error-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/html-signup-error-validation.png" alt="" width="550"/>
 
 - **How I fixed it:**  
 Added ID to respective password helper and then replaced the password helper small element with a div.
 
 - **Final result:** Passed  
-<img src="./documentation/validation/html-signup-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/html-signup-validation.png" alt="" width="550"/>
 </details>
 
+<details>
+<summary><strong>Verified_email_required.html</strong></summary>
 
+- **Result:** Passed
+<img src="./documentation/validation/html-verified_email_required-validation.png" alt="" width="550"/>
+</details>
 
+<details>
+<summary><strong>dashboard.html</strong></summary>
+
+- **Result:** Initial run failed  
+<img src="./documentation/validation/html-dashboard-error-validation.png" alt="" width="550"/>
+
+- **How I fixed it:**  
+    - Closed open ul.
+    - Closed div
+    - removed stray p element
+    - Changed capital P to lowercase p on element
+
+- **Final result:** Passed  
+<img src="./documentation/validation/html-dashboard-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>budget_form.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-budget-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>expense_form.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-expense-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>income_form.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-income-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>profile.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-profile-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>email.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-email-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>password_change.html</strong></summary>
+
+- **Result:** Initial run failed  
+<img src="./documentation/validation/html-password_change-error-validation.png" alt="" width="550"/>
+
+- **How I fixed it:**  
+    - id_password1_helptext ID missing a related element. Added if satement for password helper
+    and added the missing ID.
+
+- **Final result:** Passed  
+<img src="./documentation/validation/html-password_change-validation.png" alt="" width="550"/>
+</details>
+
+<details>
+<summary><strong>delete_user.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-delete_user-validation.png" alt="" width="550"/>
+</details>
 ---
 
 ### CSS 
@@ -445,7 +521,7 @@ Added ID to respective password helper and then replaced the password helper sma
 <summary><strong>style.css</strong></summary>
 
 - **Result:** Passed  
-<img src="./documentation/validation/css-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/css-validation.png" alt="" width="550"/>
 
 </details>
 
@@ -461,7 +537,7 @@ Added ID to respective password helper and then replaced the password helper sma
 <summary><strong>main.js</strong></summary>
 
 - **Result:** Passed with warning shown
-<img src="./documentation/validation/js-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/js-validation.png" alt="" width="550"/>
 
 - **Warning:**  
 JS Hint presented a warning, however the warning is irrelevant, since 'new' is needed for chart.js, therefore ignored warning.
@@ -480,49 +556,49 @@ JS Hint presented a warning, however the warning is irrelevant, since 'new' is n
 <summary><strong>finances/views.py</strong></summary>
 
 - **Result:** Passed  
-<img src="./documentation/validation/finances-views-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-views-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/urls.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-urls-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-urls-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/tests.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-tests-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-tests-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/models.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-models-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-models-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/forms.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-forms-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-forms-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/apps.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-apps-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-apps-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/admin.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-admin-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/finances-admin-validation.png" alt="" width="550"/>
 </details>
 
 #### Let's Talk Money Project - Python Files
@@ -531,7 +607,7 @@ JS Hint presented a warning, however the warning is irrelevant, since 'new' is n
 <summary><strong>letstalkmoney/urls.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/letstalkmoney-urls-validation.png" alt="" width="400"/>
+<img src="./documentation/validation/letstalkmoney-urls-validation.png" alt="" width="550"/>
 </details>
 
 ## Technologies
