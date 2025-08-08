@@ -23,7 +23,7 @@
 ## Project Introduction
 XpensoLog is a user-friendly finance budgeting web application that enables users to create budgets, track income and log expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
 
-This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts — with a strong focus on backend functionality — using Python and the Django framework.
+This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts, with a strong focus on backend functionality using Python and the Django framework.
 
 ## Agile Methodology
 ### Overview
@@ -143,10 +143,6 @@ This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inte
 #### Colour Scheme
 ![Colour Palette](./documentation/images/app-pages/colours.png)
 
-#### Images
-
-All images were produced using [Adobe Firefly](https://www.adobe.com/products/firefly.html) with custom prompts. I chose this option to avoid any copyright issues with images.
-
 [Back to top](#contents)
 
 ## Security Measures
@@ -154,7 +150,6 @@ All images were produced using [Adobe Firefly](https://www.adobe.com/products/fi
 #### User Authentication
 
 - Django’s `LoginRequiredMixin` is implemented to ensure that users must be logged in to access protected pages. Any unauthenticated requests are redirected to the login screen.
-- The `UserPassesTestMixin` is used to restrict certain actions, such as editing or deleting content, so that only the original author has permission. If a user does not meet the required conditions, a 403 Forbidden error is displayed.
 
 #### Password Management
 
@@ -400,7 +395,7 @@ To get this project live on Heroku, follow these steps:
 ## Testing
 
 ### Automated Testing
-My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation, making sure that users couldn’t access each other’s information, and helping to prevent malicious users from breaking the website.
+My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation. This made sure that users couldn’t access each other’s information, and helping to prevent malicious users from breaking the website.
 
 Tests can be run with following command: __python3 manage.py test finances__
 
