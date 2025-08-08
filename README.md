@@ -315,19 +315,50 @@ The __str__ method is used to display objects in the admin panel, here's an exam
 
 ![Admin panel example](./documentation/images/app-pages/admin-layout-example.png)
 
-## Testing
+---
 
-### Automated Testing
-My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation, making sure that users couldn’t access each other’s information, and helping to prevent malicious users from breaking the website.
+## Automated Email Handling
 
-Tests can be run with following command: __python3 manage.py test finances__
+### Setting Up Email with Gmail for Xpenso
 
-#### [Automated Testing Document](./documentation/testing/automated_tests.md)
+Xpenso uses Gmail to send important account emails, such as:
+- Email verification links (when you sign up or change your email)
+- Notifications about password changes
 
-### Manual Testing
-Manual testing was also an important part of this project. I created a CSV file to track and record all my manual tests, as this let me design the layout to suit my needs. Once all the tests were complete, I converted them into a .md file using [tabletomarkdown.com](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/). This produced tables for each test section.
+All emails sent by Xpenso include a link for the user to confirm their email address. This helps keep accounts secure and makes sure only the intended user can access their account.
 
-#### [Manual Testing Document](./documentation/testing/manual_tests.md)
+### Steps for Gmail Integration
+
+1. **Make Sure You Have a Gmail Account**  
+   You’ll need an active Gmail (Google) account for Xpenso to send emails. Log in or create a new one if needed.
+
+2. **Enable Two-Step Verification on Gmail**  
+   - Go to your Google Account (click your profile picture, then “Manage your Google Account”).
+   - Open the “Security” tab.
+   - In “Signing in to Google”, enable 2-Step Verification and follow the steps.
+
+3. **Create an App Password for Xpenso**  
+   - Once 2-Step Verification is set up, stay on the Security page and click “App passwords”.
+   - If asked, log in again.
+   - Select “Mail” as the app type and “Other (Custom name)” for device (e.g., “Xpenso App”).
+   - Click “Generate” to get a 16-character app password. **Copy this somewhere safe—you won’t see it again.**
+
+4. **Configure Xpenso’s Email Settings**  
+   In your project’s environment variables (not in the code), add:
+   - `EMAIL_HOST_USER`: your Gmail address (e.g., youremail@gmail.com)
+   - `EMAIL_HOST_PASSWORD`: the 16-character app password you just generated
+
+5. **Keep Credentials Safe**  
+   Never put your Gmail address or app password directly in your code. Use environment variables or a secrets manager to keep them secure.
+
+---
+
+With this setup, Xpenso will reliably send account-related emails to your users, helping them verify their email address and manage their account securely.
+
+
+
+
+
 
 ## Deployment
 
@@ -364,12 +395,28 @@ To get this project live on Heroku, follow these steps:
 - Make sure your Heroku app’s URL is included in the `ALLOWED_HOSTS` list in your `settings.py`.
 - Set `DEBUG = False` for your live site. This is automatically handled via env.
 - Double-check that your `requirements.txt` and `Procfile` are both up to date and committed to GitHub before deploying.
+---
+
+## Testing
+
+### Automated Testing
+My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation, making sure that users couldn’t access each other’s information, and helping to prevent malicious users from breaking the website.
+
+Tests can be run with following command: __python3 manage.py test finances__
+
+#### [Automated Testing Document](./documentation/testing/automated_tests.md)
+
+### Manual Testing
+Manual testing was also an important part of this project. I created a CSV file to track and record all my manual tests, as this let me design the layout to suit my needs. Once all the tests were complete, I converted them into a .md file using [tabletomarkdown.com](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/). This produced tables for each test section.
+
+#### [Manual Testing Document](./documentation/testing/manual_tests.md)
 
 
 
 ## Technologies
 
 #### Languages
+
 
 #### Framework
 
