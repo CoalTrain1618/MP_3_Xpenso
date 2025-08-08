@@ -4,9 +4,11 @@ import datetime
 
 # Create your models here.
 
+
 User = get_user_model()
 
-#_____________________________________________________________________
+# _____________________________________________________________________
+
 
 class Budget(models.Model):
 
@@ -25,13 +27,22 @@ class Budget(models.Model):
         (12, 'December'),
     ]
 
-    YEAR_CHOICES = [(y, y) for y in range(datetime.date.today().year, datetime.date.today().year + 5)]
+    YEAR_CHOICES = [
+        (y, y) for y in range(
+            datetime.date.today().year,
+            datetime.date.today().year + 5
+        )
+    ]
 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     date_set = models.DateField(auto_now_add=True)
-    month = models.IntegerField(choices=MONTH_CHOICES, default=datetime.date.today().month)
-    year = models.IntegerField(choices=YEAR_CHOICES, default=datetime.date.today().month)
+    month = models.IntegerField(
+        choices=MONTH_CHOICES, default=datetime.date.today().month
+    )
+    year = models.IntegerField(
+        choices=YEAR_CHOICES, default=datetime.date.today().month
+    )
 
     def month_year(self):
         return f"{self.get_month_display()} {self.year}"
@@ -39,7 +50,9 @@ class Budget(models.Model):
     def __str__(self):
         return f"{self.month_year()} ({self.user_id})"
 
-#_____________________________________________________________________
+
+# _____________________________________________________________________
+
 
 class Income(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -50,7 +63,10 @@ class Income(models.Model):
 
     def __str__(self):
         return f"{self.source} ({self.user_id})"
-#_____________________________________________________________________
+
+
+# _____________________________________________________________________
+
 
 class Category(models.Model):
     name = models.CharField(max_length=60)
@@ -58,7 +74,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-#_____________________________________________________________________
+
+# _____________________________________________________________________
+
 
 class Expenses(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)

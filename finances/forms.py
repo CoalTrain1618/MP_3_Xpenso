@@ -3,67 +3,92 @@ from django.forms import ModelForm
 from .models import Budget, Income, Category, Expenses
 import datetime
 
+
 # Method ensures amount data must be above 0.
 class CleanAmountMixin:
+
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
         if amount is not None and amount <= 0:
-            raise forms.ValidationError("Amount must be greater than zero.")
+            raise forms.ValidationError(
+                "Amount must be greater than zero."
+            )
         return amount
 
-#_____________________________________________________________________
 
-#Budget form for user to create budget.
+# _____________________________________________________________________
+
+
+# Budget form for user to create budget.
 class BudgetForm(CleanAmountMixin, forms.ModelForm):
-    month = forms.ChoiceField(choices=Budget.MONTH_CHOICES, initial=datetime.date.today().month)
-    year = forms.ChoiceField(choices=Budget.YEAR_CHOICES, initial=datetime.date.today().year)
-    
+    month = forms.ChoiceField(
+        choices=Budget.MONTH_CHOICES,
+        initial=datetime.date.today().month,
+    )
+    year = forms.ChoiceField(
+        choices=Budget.YEAR_CHOICES,
+        initial=datetime.date.today().year,
+    )
+
     class Meta:
         model = Budget
         fields = ['amount', 'month', 'year']
 
-#_____________________________________________________________________
 
-#Income form for user to create Income
+# _____________________________________________________________________
+
+
+# Income form for user to create Income
 class IncomeForm(CleanAmountMixin, ModelForm):
+
     class Meta:
         model = Income
         fields = ['amount', 'source', 'budget']
 
-    def __init__(self,*args,**kwargs):
+    def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
-        self.fields['budget'].queryset= Budget.objects.filter(user_id=user)
+        self.fields['budget'].queryset = Budget.objects.filter(
+            user_id=user
+        )
 
 
-#_____________________________________________________________________
+# _____________________________________________________________________
 
-#Expense form  for user to create expenses
+
+# Expense form for user to create expenses
 class ExpenseForm(CleanAmountMixin, ModelForm):
+
     class Meta:
         model = Expenses
-        fields = ['expense_date', 'amount', 'category', 'description', 'budget']
+        fields = [
+            'expense_date', 'amount', 'category', 'description',
+            'budget'
+        ]
         widgets = {
             'expense_date': forms.DateInput(attrs={'type': 'date'}),
         }
 
-    # Pops user to filter user specfic data
+    # Pops user to filter user specific data
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
-        self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
+        self.fields['budget'].queryset = Budget.objects.filter(
+            user_id=user
+        )
         self.fields['category'].queryset = Category.objects.all()
 
 
-#_____________________________________________________________________
+# _____________________________________________________________________
 
-#Dashboard budget select form 
+
+# Dashboard budget select form
 class DashboardBudgetSelect(forms.Form):
     budget = forms.ModelChoiceField(queryset=Budget.objects.none())
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         if user is not None:
-            self.fields['budget'].queryset = Budget.objects.filter(user_id=user)
-            
+            self.fields['budget'].queryset = Budget.objects.filter(
+                user_id=user
+            )
