@@ -2,17 +2,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 import json
 from .models import Budget, Income, Category, Expenses
-from .forms import BudgetForm, IncomeForm, ExpenseForm,DashboardBudgetSelect
+from .forms import BudgetForm, IncomeForm, ExpenseForm, DashboardBudgetSelect
 
 # Create your views here.
 
-#_____________________________________________________________________
+# _____________________________________________________________________
 
-class BudgetView(LoginRequiredMixin ,CreateView):
+
+class BudgetView(LoginRequiredMixin, CreateView):
     """
     This budget view allows the user to submit budget data.
     The user will be redirected to dashboard on success.
@@ -28,12 +29,14 @@ class BudgetView(LoginRequiredMixin ,CreateView):
         context['budgets'] = Budget.objects.filter(user_id=self.request.user)
         return context
 
-    # Handles form submission: assigns the user, saves the budget, displays a success message,
+    # Handles form submission: assigns the user,
+    # saves the budget, displays a success message,
     # and redirects to the dashboard upon successful creation.
     def form_valid(self, form):
         form.instance.user_id = self.request.user
         messages.success(self.request, "Budget created successfully!")
         return super().form_valid(form)
+
 
 # Method to allow user to delete created budgets
 def delete_budget(request, pk):
@@ -53,12 +56,13 @@ class BudgetEditView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         return Budget.objects.filter(user_id=self.request.user)
-    
-#_____________________________________________________________________
+
+# _____________________________________________________________________
+
 
 class IncomeView(LoginRequiredMixin, CreateView):
     """
-    This Income View will allow users to record an Income. 
+    This Income View will allow users to record an Income.
     On success, logged in user will be redirected to dashboard.
     """
     model = Income
@@ -78,7 +82,8 @@ class IncomeView(LoginRequiredMixin, CreateView):
         context['incomes'] = Income.objects.filter(user_id=self.request.user)
         return context
 
-    # Handles form submission: assigns the user, saves the income, displays a success message,
+    # Handles form submission: assigns the user,
+    # saves the income, displays a success message,
     # and redirects if the user wishes to add more income records.
     def form_valid(self, form):
         form.instance.user_id = self.request.user
@@ -89,7 +94,6 @@ class IncomeView(LoginRequiredMixin, CreateView):
         else:
             return response
 
-#___________
 
 # Method to allow users to delete created income records
 def delete_income(request, pk):
@@ -99,7 +103,6 @@ def delete_income(request, pk):
         messages.success(request, 'Income deleted successfully!')
     return redirect('income_create')
 
-#___________
 
 # View to handle edit records for CRUD functionality
 class IncomeEditView(LoginRequiredMixin, UpdateView):
@@ -121,12 +124,13 @@ class IncomeEditView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Income.objects.filter(user_id=self.request.user)
 
-#_____________________________________________________________________
+# _____________________________________________________________________
+
 
 class ExpenseView(LoginRequiredMixin, CreateView):
     """
-    This view allows users to post expense data to the expense Model. 
-    It only allows authorised users to see their own expenses. 
+    This view allows users to post expense data to the expense Model.
+    It only allows authorised users to see their own expenses.
     """
     model = Expenses
     form_class = ExpenseForm
@@ -139,7 +143,8 @@ class ExpenseView(LoginRequiredMixin, CreateView):
         kwargs['user'] = self.request.user
         return kwargs
 
-    # Handles form submission: sets the user, saves the expense, shows a success message,
+    # Handles form submission: sets the user,
+    # saves the expense, shows a success message,
     # and redirects if the user wants to add more expenses.
     def form_valid(self, form):
         form.instance.user_id = self.request.user
@@ -149,16 +154,17 @@ class ExpenseView(LoginRequiredMixin, CreateView):
             return redirect('expense_create')
         else:
             return response
-    
+
     # Method to pass expenses as context variable to template
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['expenses'] = Expenses.objects.filter(user_id=self.request.user)
+        context['expenses'] = Expenses.objects.filter(
+            user_id=self.request.user
+            )
         return context
 
-#___________
 
-#   Method which allows user to delete created expense records
+# Method which allows user to delete created expense records
 def delete_expense(request, pk):
     expense = get_object_or_404(Expenses, pk=pk, user_id=request.user)
     if request.method == "POST":
@@ -166,7 +172,6 @@ def delete_expense(request, pk):
         messages.success(request, 'Expense deleted successfully!')
     return redirect('expense_create')
 
-#___________
 
 # View to handle edit records for CRUD functionality
 class ExpenseEditView(LoginRequiredMixin, UpdateView):
@@ -177,7 +182,9 @@ class ExpenseEditView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['expenses'] = Expenses.objects.filter(user_id=self.request.user)
+        context['expenses'] = Expenses.objects.filter(
+            user_id=self.request.user
+            )
         return context
 
     def get_form_kwargs(self):
@@ -188,15 +195,19 @@ class ExpenseEditView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Expenses.objects.filter(user_id=self.request.user)
 
-#_____________________________________________________________________
+# _____________________________________________________________________
+
 
 def DashboardView(request):
     """
-    This function based view will hand the summary of the users financial
-    data. The function based view allows us to handle multiple form POST requests. 
+    This function based view will hand the summary of
+    the users financial data. The function based view
+    allows us to handle multiple form POST requests.
     """
     # Variables
-    budget_select_form = DashboardBudgetSelect(user=request.user, prefix='budget_select')
+    budget_select_form = DashboardBudgetSelect(
+        user=request.user, prefix='budget_select'
+    )
     selected_budget = None
     total_expenses = None
     total_incomes = None
@@ -206,33 +217,40 @@ def DashboardView(request):
     category_names = [cat.name for cat in categories]
     category_name_data = [0 for _ in category_names]
 
-    #___________
+    # ___________
 
     # Function to calculate budget's Expense total
     def budget_expense_total(user, month, year):
-        expenses = Expenses.objects.filter(user_id=user, budget__month=month, budget__year=year,)
+        expenses = Expenses.objects.filter(
+            user_id=user, budget__month=month, budget__year=year
+        )
         result = expenses.aggregate(Sum('amount'))
         total = result['amount__sum']
         if total is None:
-            return 0 
+            return 0
         return total
 
     # Function to calculate budget's Income total here
     def budget_income_total(user, month, year):
-        incomes = Income.objects.filter(user_id=user, budget__month=month, budget__year=year)
+        incomes = Income.objects.filter(
+            user_id=user, budget__month=month, budget__year=year
+        )
         result = incomes.aggregate(Sum('amount'))
         total = result['amount__sum']
         if total is None:
             return 0
         return total
-    
+
     # Function to process category data into chart
     def category_chart_data(user, month, year):
-        expenses = Expenses.objects.filter(user_id=user, budget__month=month, budget__year=year,)
+        expenses = Expenses.objects.filter(
+            user_id=user, budget__month=month, budget__year=year
+        )
         categories = Category.objects.all()
         # list for chart labels
         category_names = [cat.name for cat in categories]
-        # dic to increment value based on how many times a category in recorded expenses
+        # dic to increment value based on how
+        # many times a category in recorded expenses
         category_count = {name: 0 for name in category_names}
         for expense in expenses:
             cat_name = expense.category.name
@@ -240,25 +258,33 @@ def DashboardView(request):
                 category_count[cat_name] += 1
         # Extracts value list from dictionary ready for chart data
         category_name_data = [category_count[name] for name in category_names]
-        return category_names, category_name_data 
+        return category_names, category_name_data
 
-    #___________
+    # ___________
 
-    # Handles which post request should action, based on prefix 
+    # Handles which post request should action, based on prefix
     if request.method == "POST":
         if "budget_select-budget" in request.POST:
-            budget_select_form = DashboardBudgetSelect(user=request.user, data=request.POST, prefix="budget_select")
+            budget_select_form = DashboardBudgetSelect(
+                user=request.user, data=request.POST, prefix="budget_select"
+            )
             if budget_select_form.is_valid():
                 selected_budget = budget_select_form.cleaned_data['budget']
                 month = selected_budget.month
                 year = selected_budget.year
                 budget_amount = selected_budget.amount
-                total_expenses = budget_expense_total(user=request.user, month=month, year=year)
-                total_incomes = budget_income_total(user=request.user, month=month, year=year)
-                category_names, category_name_data = category_chart_data(user=request.user, month=month, year=year)
+                total_expenses = budget_expense_total(
+                    user=request.user, month=month, year=year
+                )
+                total_incomes = budget_income_total(
+                    user=request.user, month=month, year=year
+                )
+                category_names, category_name_data = category_chart_data(
+                    user=request.user, month=month, year=year
+                )
                 print(category_names, category_name_data)
-    
-    #___________
+
+    # ___________
 
     # Variables
     context = {
@@ -270,6 +296,5 @@ def DashboardView(request):
         "category_names": json.dumps(category_names),
         "category_name_data": json.dumps(category_name_data),
     }
-        
-            
+
     return render(request, 'finances/dashboard.html', context)
