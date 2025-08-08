@@ -27,16 +27,17 @@
                         <div class="mb-2">
                             {{ form.login}}
                             {% if form.login.help_text %}
-                            <small class="form-text text-muted">{{ form.login.help_text }}</small>
+                                <small class="form-text text-muted">{{ form.login.help_text }}</small>
                             {% endif %}
                         </div>
                         <!-- Password Field -->
                         <div class="mb-2">
                             {{ form.password }}
+                            
                         </div>
                         <!-- Forgot Password Link -->
                         {% if form.password.help_text %}
-                        <small class="form-text text-muted">{{ form.password.help_text }}</small>
+                            <small id="id_password_helptext" class="form-text text-muted">{{ form.password.help_text }}</small>
                         {% endif %}
                     </div>
                     {% if redirect_field_value %}
