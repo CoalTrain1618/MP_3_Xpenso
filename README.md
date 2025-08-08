@@ -407,6 +407,132 @@ Manual testing was also an important part of this project. I created a CSV file 
 #### [Manual Testing Document](./documentation/testing/manual_tests.md)
 
 
+## Code Validation
+
+### HTML  
+
+<sub>All HTML files were validated using the [W3C Markup Validation Service](https://validator.w3.org/).</sub>
+
+<details>
+<summary><strong>login.html</strong></summary>
+
+- **Result:** Passed
+<img src="./documentation/validation/html-login-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>signup.html</strong></summary>
+
+- **Result:** Initial run failed  
+<img src="./documentation/validation/html-signup-error-validation.png" alt="" width="600"/>
+
+- **How I fixed it:**  
+Added ID to respective password helper and then replaced the password helper small element with a div.
+
+- **Final result:** Passed  
+<img src="./documentation/validation/html-signup-validation.png" alt="" width="600"/>
+</details>
+
+
+
+---
+
+### CSS 
+
+<sub>All CSS files were validated using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).</sub>
+
+<details>
+<summary><strong>style.css</strong></summary>
+
+- **Result:** Passed  
+<img src="./documentation/validation/css-validation.png" alt="" width="600"/>
+
+</details>
+
+
+
+---
+
+### JavaScript
+
+<sub>All JavaScript files were checked using [JSHint](https://jshint.com/).</sub>
+
+<details>
+<summary><strong>main.js</strong></summary>
+
+- **Result:** Passed with warning shown
+<img src="./documentation/validation/js-validation.png" alt="" width="600"/>
+
+- **Warning:**  
+JS Hint presented a warning, however the warning is irrelevant, since 'new' is needed for chart.js, therefore ignored warning.
+</details>
+
+
+
+---
+
+### Python
+
+<sub>All Python files were checked using [Code Institute's Python Linter (PEP8CI)](https://pep8ci.herokuapp.com/).</sub>
+
+ #### Finances App - Python Files
+<details>
+<summary><strong>finances/views.py</strong></summary>
+
+- **Result:** Passed  
+<img src="./documentation/validation/finances-views-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>finances/urls.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/finances-urls-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>finances/tests.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/finances-tests-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>finances/models.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/finances-models-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>finances/forms.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/finances-forms-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>finances/apps.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/finances-apps-validation.png" alt="" width="600"/>
+</details>
+
+<details>
+<summary><strong>finances/admin.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/finances-admin-validation.png" alt="" width="600"/>
+</details>
+
+#### Let's Talk Money Project - Python Files
+
+<details>
+<summary><strong>letstalkmoney/urls.py</strong></summary>
+
+- **Result:** Passed 
+<img src="./documentation/validation/letstalkmoney-urls-validation.png" alt="" width="600"/>
+</details>
 
 ## Technologies
 
