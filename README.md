@@ -125,14 +125,32 @@ The wireframe designs serve as an initial blueprint for the website’s layout a
 **[Wireframes](./documentation/wireframes.md)**
 
 ## Database Design
-This database ERD visualises the structure and relationships between the database tables for this web application.
 
-This ERD was designed using [dbdiagram.io](https://dbdiagram.io)
+A clear and purposeful data model underpins XpensoLog’s ability to help users organise and track their finances effectively. The Entity Relationship Diagram (ERD) below provides a visual overview of the application’s database structure, showing how different tables interact to support core features such as budgeting, expense logging, and income tracking.
 
 ![dbdiagram](./documentation/images/dbdiagram/dbdiagram.png)
 
-#### Changes
-While creating the finances models, I made some adjustments to the database schema and the relationships between tables. Initially, the tables did not include any month or year fields. However, I soon realised that adding these fields was necessary to allow users to view financial data specific to a selected month and year. I also decided to link Budget as a Foreign Key to both Expenses and Incomes, making it much easier to group and filter data by month and date.
+This ERD was designed using [dbdiagram.io](https://dbdiagram.io).
+
+### Data Model Description
+
+The data model consists of the following main tables:
+- **User:** Stores user account information and provides a link to each user’s financial data.
+- **Budget:** Represents a user’s budget for a particular month and year, enabling time-specific financial planning. Each budget is associated with a user and serves as a parent for related expense and income records.
+- **Expense:** Records individual expenses, each linked to a budget. This allows expenses to be grouped and filtered by month and year, and by user.
+- **Income:** Similar to Expense, this table records sources of income and is also linked to a specific budget for time-based tracking.
+- **Category:** Defines categories for expenses and income, such as ‘Groceries’ or ‘Salary’. Each expense/income entry is assigned a category to support clear reporting and visualisation.
+
+#### Rationale and Design Decisions
+
+During development, I identified the need to include `month` and `year` fields in the Budget table. This change ensures users can view and analyse their financial data on a monthly or yearly basis. Additionally, linking both Expenses and Incomes to their respective Budget entries (via foreign keys) enables efficient grouping, filtering, and reporting of financial data by time period. These changes were made to make the application more intuitive and to better support typical budgeting workflows.
+
+The final schema supports:
+- User-specific data segregation and security
+- Flexible categorisation of transactions
+- Accurate, time-based reporting and data visualisation
+
+This approach to the data model ensures that XpensoLog is robust, scalable, and aligned with the practical needs of personal finance management.
 
 
 ## Design Choices
@@ -426,9 +444,20 @@ Code validation is an important step in maintaining the quality and reliability 
 
 #### Languages
 
+ - **[Python](https://www.python.org/)**: The primary language used for backend development.
+ - **[JavaScript](https://www.javascript.com/)**: Used for frontend interactivity and dynamic content.
+ - **[HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)**: The standard markup language for creating web pages.
+ - **[CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)**: Used for styling the visual presentation of web pages.
+
 
 #### Framework
 
+- **[Django](https://www.djangoproject.com/)**: The web framework used for building the backend of the application, providing a robust structure for development.
+- **[Django Allauth](https://django-allauth.readthedocs.io/en/latest/)**: A Django app that provides user authentication, registration, and account management features.
+
 #### Libraries
+
+- **[Bootstrap](https://getbootstrap.com/)**: A CSS framework used for responsive design and styling, ensuring the application looks good on all devices.
+- **[Chart.js](https://www.chartjs.org/)**: A JavaScript library used for creating interactive charts and graphs to visualise financial data.
 
 #### Tools
