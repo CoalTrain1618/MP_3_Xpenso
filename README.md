@@ -417,34 +417,34 @@ Manual testing was also an important part of this project. I created a CSV file 
 <summary><strong>login.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-login-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-login-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>signup.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="./documentation/validation/html-signup-error-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-signup-error-validation.png" alt="" width="550"/>
 
 - **How I fixed it:**  
 Added ID to respective password helper and then replaced the password helper small element with a div.
 
 - **Final result:** Passed  
-<img src="./documentation/validation/html-signup-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-signup-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>Verified_email_required.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-verified_email_required-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-verified_email_required-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>dashboard.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="./documentation/validation/html-dashboard-error-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-dashboard-error-validation.png" alt="" width="550"/>
 
 - **How I fixed it:**  
     - Closed open ul.
@@ -453,71 +453,72 @@ Added ID to respective password helper and then replaced the password helper sma
     - Changed capital P to lowercase p on element
 
 - **Final result:** Passed  
-<img src="./documentation/validation/html-dashboard-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-dashboard-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>budget_form.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-budget-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-budget-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>expense_form.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-expense-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-expense-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>income_form.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-income-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-income-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>profile.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-profile-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-profile-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>email.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-email-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-email-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>password_change.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="./documentation/validation/html-password_change-error-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-password_change-error-validation.png" alt="" width="550"/>
 
 - **How I fixed it:**  
     - id_password1_helptext ID missing a related element. Added if satement for password helper
     and added the missing ID.
 
 - **Final result:** Passed  
-<img src="./documentation/validation/html-password_change-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-password_change-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>delete_user.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-delete_user-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-delete_user-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>logout.html</strong></summary>
 
 - **Result:** Passed
-<img src="./documentation/validation/html-logout-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/html-logout-validation.png" alt="" width="550"/>
 </details>
+
 ---
 
 ### CSS 
@@ -528,7 +529,7 @@ Added ID to respective password helper and then replaced the password helper sma
 <summary><strong>style.css</strong></summary>
 
 - **Result:** Passed  
-<img src="./documentation/validation/css-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/css-validation.png" alt="" width="550"/>
 
 </details>
 
@@ -544,7 +545,7 @@ Added ID to respective password helper and then replaced the password helper sma
 <summary><strong>main.js</strong></summary>
 
 - **Result:** Passed with warning shown
-<img src="./documentation/validation/js-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/js-validation.png" alt="" width="550"/>
 
 - **Warning:**  
 JS Hint presented a warning, however the warning is irrelevant, since 'new' is needed for chart.js, therefore ignored warning.
@@ -563,49 +564,49 @@ JS Hint presented a warning, however the warning is irrelevant, since 'new' is n
 <summary><strong>finances/views.py</strong></summary>
 
 - **Result:** Passed  
-<img src="./documentation/validation/finances-views-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-views-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/urls.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-urls-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-urls-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/tests.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-tests-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-tests-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/models.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-models-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-models-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/forms.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-forms-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-forms-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/apps.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-apps-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-apps-validation.png" alt="" width="550"/>
 </details>
 
 <details>
 <summary><strong>finances/admin.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/finances-admin-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/finances-admin-validation.png" alt="" width="550"/>
 </details>
 
 #### Let's Talk Money Project - Python Files
@@ -614,7 +615,7 @@ JS Hint presented a warning, however the warning is irrelevant, since 'new' is n
 <summary><strong>letstalkmoney/urls.py</strong></summary>
 
 - **Result:** Passed 
-<img src="./documentation/validation/letstalkmoney-urls-validation.png" alt="" width="550"/>
+<img src="./documentation/validation/code-validation/letstalkmoney-urls-validation.png" alt="" width="550"/>
 </details>
 
 ## Technologies
