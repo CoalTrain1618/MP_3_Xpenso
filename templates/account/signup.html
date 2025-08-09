@@ -12,7 +12,7 @@
         <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="card shadow p-4">
-                    <h2 class="text-center mb-4">{% trans "Sign Up" %}</h2>
+                    <h1 class="text-center mb-4">{% trans "Sign Up" %}</h2>
                     <form class="signup text-center" method="POST" action="{% url 'account_signup' %}">
                         {% csrf_token %}
                         <!-- handles error messages -->
@@ -26,6 +26,7 @@
                         <div>
                             <!-- Username field -->
                             <div class="mb-2">
+                                <label for="id_username" class="form-label">Username or email</label>
                                 {{ form.username }}
                                 {% if form.username.help_text %}
                                     <small class="form-text text-muted">{{ form.username.help_text }}</small>
@@ -33,6 +34,7 @@
                             </div>
                             <!-- Email Field -->
                             <div class="mb-2">
+                                <label for="id_email" class="form-label">Email</label>
                                 {{ form.email }}
                                 {% if form.email.help_text %}
                                     <div class="form-text text-muted">{{ form.email.help_text }}</div>
@@ -41,11 +43,13 @@
                             <!-- Password fields -->
                             <div class="mb-2">
                                 {{ form.password1.errors }}
+                                <label for="id_password1" class="form-label">Password</label>
                                 {{ form.password1 }}
                                 {% if form.password1.help_text %}
                                     <div id="id_password1_helptext" class="form-text text-muted">{{ form.password1.help_text }}</div>
                                 {% endif %}
                                 {{ form.password2.errors }}
+                                <label for="id_password2" class="form-label">Confirm Password</label>
                                 {{ form.password2 }}
                             </div>
                         </div>

@@ -7,9 +7,7 @@ Lighthouse is an automated tool built into Chrome that audits web pages for perf
 <details>
 <summary><strong>login.html</strong></summary>
 
-- **Result:** Initial run failed  
-<img src="../images/login-html-lighthouse-fail.png" alt="Lighthouse test errors for login.html" width="550"/>
+- **Result:** 
+<img src="../images/lighthouse-results/lighthouse-login.png" alt="Lighthouse test errors for login.html" width="550"/>
 
-- **Final result:** Passed  
-<img src="../images/login-html-lighthouse-pass.png" alt="Lighthouse test passed for login.html" width="550"/>
 </details>

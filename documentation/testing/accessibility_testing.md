@@ -17,3 +17,16 @@ base.html: changed text to white by removing text muted class.
 - **Final result:** Passed  
 <img src="../images/accessibility-results/wave-login-passed.png" alt="WAVE accessibility passed for login.html" width="550"/>
 </details>
+
+<details>
+<summary><strong>signup.html</strong></summary>
+
+- **Result:** Initial run failed  
+<img src="../images/accessibility-results/" alt="WAVE accessibility errors for signup.html" width="550"/>
+
+- **How I fixed it:**  
+
+
+- **Final result:** Passed  
+<img src="../images/accessibility-results/" alt="WAVE accessibility passed for signup.html" width="550"/>
+</details>
