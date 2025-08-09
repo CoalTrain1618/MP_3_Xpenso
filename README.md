@@ -411,7 +411,10 @@ Accessibility testing is a crucial part of the development process, ensuring tha
 
 #### [Accessibility Testing Document](./documentation/testing/accessibility_testing.md)
 
+### Lighthouse Tests
+Lighthouse testing helps to assess the overall quality of a web application, covering key areas such as performance, accessibility, best practices, and SEO. Running Lighthouse audits on XpensoLog’s main pages has enabled me to spot and resolve issues early on, leading to a more robust and efficient site. The results and improvements are documented in the Lighthouse testing section. Including these tests demonstrates a dedication to delivering a high standard of web development.
 
+#### [Lighthouse Testing Document](./documentation/testing/lighthouse_tests.md)
 
 
 ## Code Validation
