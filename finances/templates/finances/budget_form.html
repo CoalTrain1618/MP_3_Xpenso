@@ -9,7 +9,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-md-8 col-lg-6">
-            <h2 class="text-center mb-4">Hey {{ profile.user.username }}, Let's create a budget.</h2>
+            <h1 class="text-center mb-4">Hey {{ profile.user.username }}, Let's create a budget.</h1>
             <form class="form" method="POST">
                 {% csrf_token %}
                 <div class="mb-4 ms-4">
@@ -22,9 +22,18 @@
                         </ul>
                     {% endif %}
                     <!-- Form fields -->
-                    <div class="mb-2">{{ form.amount.label_tag }}{{ form.amount }}</div>
-                    <div class="mb-2">{{ form.month.label }} {{ form.month }}</div>
-                    <div class="">{{ form.year.label }} {{ form.year }}</div>
+                    <div class="mb-2">
+                        {{ form.amount.label_tag }}
+                        {{ form.amount }}
+                    </div>
+                    <div class="mb-2">
+                        <label for="id_month" class="form-label">Month:</label>
+                        {{ form.month }}
+                    </div>
+                    <div class="">
+                        <label for="id_year" class="form-label">Year:</label>
+                        {{ form.year }}
+                    </div>
                 </div>
                 <!-- Buttons -->
                 <div class="text-center">

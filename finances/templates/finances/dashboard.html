@@ -36,7 +36,11 @@
     <form class="text-center" method="POST" action="{% url 'dashboard' %}">
         <p>Here you can see a summary of your budgets, incomes, and expenses.</p>
         {% csrf_token %}
-        <p>Let's select a budget to get your analytics: {{ budget_select_form.budget }}</P>
+        <p>
+            Let's select a budget to get your analytics: 
+            <label for="id_budget_select-budget" class="form-label visually-hidden">Select Budget</label>
+            {{ budget_select_form.budget }}
+        </p>
         <button type="submit" class="btn btn-secondary mb-2">Calculate </button>
     </form>
     <!-- Budget summary -->

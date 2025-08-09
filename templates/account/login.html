@@ -25,7 +25,7 @@
                     <div>
                         <!-- Username/email field -->
                         <div class="mb-2">
-                            <label for="id_login" class="form-label">Username or email</label>
+                            <label for="id_login" class="form-label visually-hidden">Username or email</label>
                             {{ form.login }}
                             {% if form.login.help_text %}
                                 <small class="form-text text-muted">{{ form.login.help_text }}</small>
@@ -33,7 +33,7 @@
                         </div>
                         <!-- Password Field -->
                         <div class="mb-2">
-                            <label for="id_password" class="form-label">Password</label>
+                            <label for="id_password" class="form-label visually-hidden">Password</label>
                             {{ form.password }}
                         </div>
                         <!-- Forgot Password Link -->
