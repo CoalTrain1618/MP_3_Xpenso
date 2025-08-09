@@ -11,7 +11,7 @@
     <div class="row justify-content-center align-items-center view-height">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card shadow p-4">
-                <h2 class="text-center mb-4">{% trans "Sign In" %}</h2>
+                <h1 class="text-center mb-4">{% trans "Sign In" %}</h1>
                 <!-- Login Form -->
                 <form class="text-center" method="POST" action="{% url 'account_login' %}">
                     {% csrf_token %}
@@ -25,15 +25,16 @@
                     <div>
                         <!-- Username/email field -->
                         <div class="mb-2">
-                            {{ form.login}}
+                            <label for="id_login" class="form-label">Username or email</label>
+                            {{ form.login }}
                             {% if form.login.help_text %}
                                 <small class="form-text text-muted">{{ form.login.help_text }}</small>
                             {% endif %}
                         </div>
                         <!-- Password Field -->
                         <div class="mb-2">
+                            <label for="id_password" class="form-label">Password</label>
                             {{ form.password }}
-                            
                         </div>
                         <!-- Forgot Password Link -->
                         {% if form.password.help_text %}
