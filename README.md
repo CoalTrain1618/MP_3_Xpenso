@@ -122,7 +122,7 @@ The user stories above have been grouped into Epics to align with the Agile meth
 ## WireFrames Design
 The wireframe designs serve as an initial blueprint for the website’s layout and user interface. While these designs provide a clear starting point for the placement of key elements across each page, they are intended to be flexible and may evolve throughout development as requirements and user needs become clearer. Creating wireframes has been instrumental in visualising the site’s structure and user flow, as well as aiding the development of the underlying database schema.
 
-[Wireframes doc link here]
+**[Wireframes](./documentation/wireframes.md)**
 
 ## Database Design
 This database ERD visualises the structure and relationships between the database tables for this web application.
