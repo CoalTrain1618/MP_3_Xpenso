@@ -406,6 +406,13 @@ Manual testing was also an important part of this project. I created a CSV file 
 
 #### [Manual Testing Document](./documentation/testing/manual_tests.md)
 
+### Code Accessibility Tests
+Accessibility testing is a crucial part of the development process, ensuring that XpensoLog can be used by everyone, regardless of ability. By running thorough accessibility checks, I’ve been able to identify and address potential barriers to usability. You can view the full details of these tests and outcomes in the accessibility testing document. Including this section highlights a commitment to creating an inclusive and user-friendly experience.
+
+#### [Accessibility Testing Document](./documentation/testing/accessibility_testing.md)
+
+
+
 
 ## Code Validation
 
