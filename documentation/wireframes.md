@@ -2,6 +2,7 @@
 
 This document presents the wireframes created for each main page in the Xpenso app. Wireframes are simple sketches or outlines used during the planning stage to visualise the layout and basic features of each page before development began.
 It’s likely the final product may differ from what is displayed in these sketches.
+
 ---
 
 <details>

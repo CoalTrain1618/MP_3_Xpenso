@@ -111,7 +111,7 @@ Lighthouse is an automated tool built into Chrome that audits web pages for perf
 <img src="../images/lighthouse-results/lighthouse-email-desktop.png" alt="Lighthouse test for email.html" width="480"/>
 
 - **Mobile Result:**  
-<img src="../images/lighthouse-results/lighthouse-email-mobile.png" alt="Lighthouse test for email.html" width="480"/>
+<img src="../images/lighthouse-results/lighthouse-emai-mobile.png" alt="Lighthouse test for email.html" width="480"/>
 </details>
 
 <details>
