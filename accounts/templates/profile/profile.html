@@ -9,22 +9,25 @@
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-md-8 col-lg-6">
-            <h2 class="text-center mb-4">Hey {{ profile.user.username }}, You can make profile changes here!</h2>
+            <h1 class="text-center mb-4">Hey {{ profile.user.username }}, You can make profile changes here!</h1>
+            <!-- Username -->
             <div class="mb-3 custom-card custom-border">
                 <strong class="text-muted">Username:</strong>
                 <span class="">{{ profile.user.username }}</span>
             </div>
+            <!-- Email -->
             <div class="mb-3 custom-card custom-border">
                 <strong class="text-muted">Email:</strong>
                 <span class="ms-2">{{ profile.user.email }}</span>
                 <br>
                 <a href="{% url 'account_email' %}">Change Email</a>
             </div>
+            <!-- Password -->
             <div class="mb-3 custom-card custom-border">
                 <strong class="text-muted">Password:</strong>
                 <a href="{% url 'account_change_password' %}" class="ms-2">Change Password</a>
             </div>
-            <h4 class="text-center">{% trans "Account Removal" %}</h4>
+            <h2 class="text-center">{% trans "Account Removal" %}</h2>
             <!-- Bootstrap dropdown -->
             <div class="text-center dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -11,7 +11,7 @@
     <div class="row justify-content-center align-items-center view-height">
         <div class="col-12 col-sm-10 col-md-8 col-lg-6">
             <div class="card shadow p-4 text-center">
-                <h2 class="text-center mb-4">{% trans "Email Addresses" %}</h2>
+                <h1 class="text-center mb-4">{% trans "Email Addresses" %}</h1>
                 {% if emailaddresses %}
                     <p class="text-muted">{% trans 'The following email addresses are associated with your account:' %}</p>
                     <form method="post" action="{% url 'account_email' %}">
@@ -50,7 +50,7 @@
                 {% endif %}
 
                 {% if can_add_email %}
-                    <h3 class="mt-4 mb-3">{% trans "Add New Email" %}</h3>
+                    <h2 class="mt-4 mb-3">{% trans "Add New Email" %}</h2>
                     <form method="post" action="{% url 'account_email' %}">
                         {% csrf_token %}
                         <div class="mb-3">
