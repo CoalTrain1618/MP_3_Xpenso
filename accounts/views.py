@@ -1,26 +1,19 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import logout
 
-
 # Create your views here.
 
-#_____________________________________________________________________
-
-# makes login the landing page if user is not authenticated.
+# Redirects unauthenticated users to the login page.
 def landing_login(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     else:
         return redirect('account_login')
 
-#_____________________________________________________________________
-
-# View to make Profiel a template variable
+# View to make profile a template variable
 def profile_view(request):
     profile = request.user.profile
     return render(request, 'profile/profile.html', {'profile': profile})
-
-#_____________________________________________________________________
 
 # view to delete user account
 def delete_user(request):
@@ -33,4 +26,3 @@ def delete_user(request):
         else:
             return render(request, 'profile/delete_user.html')
         
-#_____________________________________________________________________
