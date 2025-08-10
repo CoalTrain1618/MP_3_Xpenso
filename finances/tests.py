@@ -13,8 +13,9 @@ User = get_user_model()
 
 
 class FinanceModelsTest(TestCase):
-
-    # create and define example data to use in all tests
+    """
+    This will test the models in the finances app.
+    """
     def setUp(self):
         self.user = User.objects.create_user(
             username="testuser42",
@@ -26,14 +27,12 @@ class FinanceModelsTest(TestCase):
         )
         self.category = Category.objects.create(name="Groceries")
 
-    # Test that busget is created with correct values
     def test_budget_creation(self):
         self.assertEqual(self.budget.amount, 1000)
         self.assertEqual(self.budget.month, datetime.date.today().month)
         self.assertEqual(self.budget.year, datetime.date.today().year)
         self.assertEqual(self.budget.user_id, self.user)
 
-    # Test that income is created and linked to budget and user
     def test_income_creation(self):
         income = Income.objects.create(
             user_id=self.user,
@@ -45,11 +44,9 @@ class FinanceModelsTest(TestCase):
         self.assertEqual(income.budget, self.budget)
         self.assertEqual(income.user_id, self.user)
 
-    # Test that a category is created with correct name and with user link
     def test_category_creation(self):
         self.assertEqual(self.category.name, "Groceries")
 
-    # Test that an expense is created and linked to the correct user
     def test_expense_creation(self):
         expense = Expenses.objects.create(
             user_id=self.user,
@@ -63,12 +60,10 @@ class FinanceModelsTest(TestCase):
         self.assertEqual(expense.user_id, self.user)
 
 
-# ________________________________________________________________________________
-
-
 class FinanceBudgetViewTests(TestCase):
-
-    # Test user creation for test cases
+    """
+    Test the budget views.
+    """
     def setUp(self):
         self.user = User.objects.create_user(
             username='testuser43',
@@ -79,8 +74,6 @@ class FinanceBudgetViewTests(TestCase):
             password="testpass1"
         )
 
-    # __________
-
     def test_budget_create_view_get(self):
         """
         Test to ensure the budget form loads for logged in user.
@@ -89,8 +82,6 @@ class FinanceBudgetViewTests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "amount")
-
-    # __________
 
     def test_budget_create_view_post(self):
         """
@@ -111,8 +102,6 @@ class FinanceBudgetViewTests(TestCase):
             year=datetime.date.today().year
         ).exists())
 
-    # __________
-
     def test_budget_create_view_requires_login(self):
         """
         Test to ensure anonymous user are restricted, unless logged in.
@@ -123,11 +112,9 @@ class FinanceBudgetViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertIn("accounts/login", response.url)
 
-    # __________
-
     def test_budget_create_view_success_message(self):
         """
-        Test that django message is displayed upon budget completion
+        Test that Django message is displayed upon budget successful submission
         """
         url = reverse('budget_create')
         data = {
@@ -142,9 +129,6 @@ class FinanceBudgetViewTests(TestCase):
             )
 
 
-# ________________________________________________________________________________
-
-
 class FinanceIncomeViewTest(TestCase):
     """
     The following test will be to test if IncomeView is functional and valid.
@@ -152,7 +136,6 @@ class FinanceIncomeViewTest(TestCase):
     be successfully applied to the DB on submission.
     """
 
-    # Creating mock user for testcase.
     def setUp(self):
         self.user = User.objects.create_user(
             username='testuser33',
@@ -169,8 +152,6 @@ class FinanceIncomeViewTest(TestCase):
             year=datetime.date.today().year,
         )
 
-    # __________
-
     def test_income_create_view_get(self):
         """
         Test to check if Income form displays correctly
@@ -179,8 +160,6 @@ class FinanceIncomeViewTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "amount")
-
-    # __________
 
     def test_income_create_view_post(self):
         """
@@ -198,8 +177,6 @@ class FinanceIncomeViewTest(TestCase):
             user_id=self.user, amount=500, budget=self.budget
         ).exists())
 
-    # __________
-
     def test_income_create_view_requires_login(self):
         """
         Test to ensure anonymous users are restricted, unless logged in.
@@ -209,8 +186,6 @@ class FinanceIncomeViewTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
         self.assertIn("accounts/login", response.url)
-
-    # __________
 
     def test_income_create_view_success_message(self):
         """
@@ -229,16 +204,12 @@ class FinanceIncomeViewTest(TestCase):
         )
 
 
-# ________________________________________________________________________________
-
-
 class FinanceExpenseViewTest(TestCase):
     """
     To test if ExpenseView allows user to create and submit data to the Expense
     DB table.
     """
 
-    # Create mock user and data for testing
     def setUp(self):
         self.user = User.objects.create_user(
             username='testuser74',
@@ -258,8 +229,6 @@ class FinanceExpenseViewTest(TestCase):
             name='Fuel'
         )
 
-    # __________
-
     def test_expense_create_view_get(self):
         """
         To check Expense form loads and displays correctly
@@ -268,8 +237,6 @@ class FinanceExpenseViewTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'amount')
-
-    # __________
 
     def test_expense_create_view_post(self):
         """
@@ -294,8 +261,6 @@ class FinanceExpenseViewTest(TestCase):
             budget=self.budget,
         ))
 
-    # __________
-
     def test_expense_create_view_requires_login(self):
         """
         Test to ensure anonymous users are restricted, unless logged in.
@@ -305,8 +270,6 @@ class FinanceExpenseViewTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
         self.assertIn("accounts/login", response.url)
-
-    # __________
 
     def test_expense_create_view_success_message(self):
         """
@@ -328,16 +291,12 @@ class FinanceExpenseViewTest(TestCase):
         )
 
 
-# ________________________________________________________________________________
-
-
 class BudgetFormTest(TestCase):
     """
     This will test the validation of BudgetForm,
     to ensure all data is handled correctly.
     """
 
-    # User creation
     def setUp(self):
         self.user = User.objects.create_user(
             username="testform",
@@ -377,16 +336,12 @@ class BudgetFormTest(TestCase):
             )
 
 
-# ________________________________________________________________________________
-
-
 class ExpenseFormTest(TestCase):
     """
     This will test the validation of ExpenseForm,
     to ensure all data is handled correctly.
     """
 
-    # User creation
     def setUp(self):
         self.user = User.objects.create_user(
             username="testexpense", password="testpass"
@@ -435,16 +390,12 @@ class ExpenseFormTest(TestCase):
         )
 
 
-# ________________________________________________________________________________
-
-
 class IncomeFormTest(TestCase):
     """
     This will test the validation of IncomeForm,
     to ensure all data is handled correctly.
     """
 
-    # User creation
     def setUp(self):
         self.user = User.objects.create_user(
             username="testincome",
@@ -490,9 +441,6 @@ class IncomeFormTest(TestCase):
         )
 
 
-# ________________________________________________________________________________
-
-
 class UserIsolationTestingBudget(TestCase):
     """
     This will test that users cannot access each other's budget data.
@@ -506,7 +454,6 @@ class UserIsolationTestingBudget(TestCase):
             username="user_b", password="pass_b"
         )
 
-        # test Budgets
         self.budget_a = Budget.objects.create(
             user_id=self.user_a,
             amount=1000,
@@ -539,9 +486,6 @@ class UserIsolationTestingBudget(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-# ________________________________________________________________________________
-
-
 class UserIsolationTestingExpenses(TestCase):
     """
     This will test that users cannot access each other's data.
@@ -555,7 +499,6 @@ class UserIsolationTestingExpenses(TestCase):
             username='user_b', password='pass_b'
         )
 
-        # Test Budgets
         self.budget_a = Budget.objects.create(
             user_id=self.user_a,
             amount=1000,
@@ -569,10 +512,8 @@ class UserIsolationTestingExpenses(TestCase):
             year=datetime.date.today().year
         )
 
-        # Test Category
         self.category = Category.objects.create(name="TestCat")
 
-        # test expenses
         self.expense_a = Expenses.objects.create(
             user_id=self.user_a,
             amount=200,
@@ -607,9 +548,6 @@ class UserIsolationTestingExpenses(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-# ________________________________________________________________________________
-
-
 class UserIsolationTestingIncome(TestCase):
     """
     This will test that users cannot access each other's income data.
@@ -623,7 +561,6 @@ class UserIsolationTestingIncome(TestCase):
             username="user_b", password="pass_b"
         )
 
-        # Test Budgets
         self.budget_a = Budget.objects.create(
             user_id=self.user_a,
             amount=1000,
@@ -637,7 +574,6 @@ class UserIsolationTestingIncome(TestCase):
             year=datetime.date.today().year,
         )
 
-        # Test Incomes
         self.income_a = Income.objects.create(
             user_id=self.user_a,
             amount=100,
@@ -670,9 +606,6 @@ class UserIsolationTestingIncome(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-# ________________________________________________________________________________
-
-
 class EdgeCaseTestBudget(TestCase):
     """
     Tests for edgecase testing budget
@@ -682,8 +615,6 @@ class EdgeCaseTestBudget(TestCase):
         self.user = User.objects.create_user(
             username="testuser", password="testpass"
         )
-
-    # ______________________
 
     def test_max_digits_amount_field(self):
         """
@@ -699,14 +630,12 @@ class EdgeCaseTestBudget(TestCase):
         form = BudgetForm(data=form_data)
         self.assertTrue(form.is_valid())
 
-    # ______________________
-
     def test_exceeding_max_digit_amount_field(self):
         """
         Test exceeding the max digit input
         """
         form_data = {
-            'amount': 99999.99,  # added extra 9 for test
+            'amount': 99999.99,
             'month': datetime.date.today().month,
             'year': datetime.date.today().year,
         }
@@ -718,8 +647,6 @@ class EdgeCaseTestBudget(TestCase):
             'Ensure that there are no more than 6 digits in total.',
             form.errors['amount'][0]
         )
-
-    # ______________________
 
     def test_minimum_digit_amount_field(self):
         """
@@ -734,8 +661,6 @@ class EdgeCaseTestBudget(TestCase):
         self.client.login(username="testuser", password="testpass")
         form = BudgetForm(data=form_data)
         self.assertTrue(form.is_valid())
-
-    # ______________________
 
     def test_below_minimum_digit_amount_field(self):
         """
@@ -755,8 +680,6 @@ class EdgeCaseTestBudget(TestCase):
             form.errors['amount'][0]
         )
 
-    # ______________________
-
     def test_zero_digit_amount_field(self):
         """
         Test that the form does not accept zero as a valid amount.
@@ -774,9 +697,6 @@ class EdgeCaseTestBudget(TestCase):
             'Amount must be greater than zero.',
             form.errors['amount'][0]
         )
-
-
-# ________________________________________________________________________________
 
 
 class EdgeCaseTestExpense(TestCase):
@@ -798,8 +718,6 @@ class EdgeCaseTestExpense(TestCase):
 
         self.category = Category.objects.create(name='testCat')
 
-    # ______________________
-
     def test_description_blank_input(self):
         """
         Test that the form accepts blank description.
@@ -816,8 +734,6 @@ class EdgeCaseTestExpense(TestCase):
         form = ExpenseForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
 
-    # ______________________
-
     def test_description_max_length(self):
         """
         Test that the form accepts description with maximum length.
@@ -826,15 +742,13 @@ class EdgeCaseTestExpense(TestCase):
             'expense_date': datetime.date.today(),
             'amount': 5,
             'category': self.category.pk,
-            'description': 'a' * 50,  # 50 characters
+            'description': 'a' * 50,
             'budget': self.budget_test.pk,
         }
 
         self.client.login(username="testuser", password="testpass")
         form = ExpenseForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
-
-    # ______________________
 
     def test_description_exceeding_max_length(self):
         """
@@ -844,7 +758,7 @@ class EdgeCaseTestExpense(TestCase):
             'expense_date': datetime.date.today(),
             'amount': 5,
             'category': self.category.pk,
-            'description': 'a' * 51,  # 51 characters, exceeding max length
+            'description': 'a' * 51,
             'budget': self.budget_test.pk,
         }
 
@@ -856,15 +770,13 @@ class EdgeCaseTestExpense(TestCase):
             form.errors['description'][0]
         )
 
-    # ______________________
-
     def test_amount_max_digits(self):
         """
         Test that the form is valid with maximum digits for amount.
         """
         form_data = {
             'expense_date': datetime.date.today(),
-            'amount': 9999.99,  # max digits
+            'amount': 9999.99,
             'category': self.category.pk,
             'description': 'Test expense',
             'budget': self.budget_test.pk,
@@ -874,15 +786,13 @@ class EdgeCaseTestExpense(TestCase):
         form = ExpenseForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
 
-    # ______________________
-
     def test_amount_exceeding_max_digits(self):
         """
         Test that the form does not accept amounts exceeding max digits.
         """
         form_data = {
             'expense_date': datetime.date.today(),
-            'amount': 99999.99,  # exceeding max digits
+            'amount': 99999.99,
             'category': self.category.pk,
             'description': 'TestExpense',
             'budget': self.budget_test.pk
@@ -895,8 +805,6 @@ class EdgeCaseTestExpense(TestCase):
             'Ensure that there are no more than 6 digits in total.',
             form.errors['amount'][0]
         )
-
-    # ______________________
 
     def test_minimum_amount(self):
         """
@@ -913,8 +821,6 @@ class EdgeCaseTestExpense(TestCase):
         self.client.login(username="testuser", password="testpass")
         form = ExpenseForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
-
-    # ______________________
 
     def test_below_minimum_amount(self):
         """
@@ -935,8 +841,6 @@ class EdgeCaseTestExpense(TestCase):
             'Amount must be greater than zero.',
             form.errors['amount'][0]
         )
-
-    # ______________________
 
     def test_zero_amount(self):
         """
@@ -959,9 +863,6 @@ class EdgeCaseTestExpense(TestCase):
         )
 
 
-# ________________________________________________________________________________
-
-
 class EdgeCaseTestIncome(TestCase):
     """
     Tests for edgecase testing IncomeForm
@@ -979,8 +880,6 @@ class EdgeCaseTestIncome(TestCase):
             year=datetime.date.today().year,
         )
 
-    # ______________________
-
     def test_source_blank_input(self):
         """
         Test that the form accepts blank source.
@@ -995,8 +894,6 @@ class EdgeCaseTestIncome(TestCase):
         form = IncomeForm(data=form_data, user=self.user)
         self.assertFalse(form.is_valid())
         self.assertIn('This field is required.', form.errors['source'][0])
-
-    # ______________________
 
     def test_source_exceeding_max_length(self):
         """
@@ -1016,8 +913,6 @@ class EdgeCaseTestIncome(TestCase):
             form.errors['source'][0]
         )
 
-    # ______________________
-
     def test_amount_max_digits(self):
         """
         Test that the form is valid with maximum digits for amount.
@@ -1031,8 +926,6 @@ class EdgeCaseTestIncome(TestCase):
         self.client.login(username="testuser", password="testpass")
         form = IncomeForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
-
-    # ______________________
 
     def test_amount_exceeding_max_digits(self):
         """
@@ -1052,8 +945,6 @@ class EdgeCaseTestIncome(TestCase):
             form.errors['amount'][0]
         )
 
-    # ______________________
-
     def test_minimum_amount(self):
         """
         Test that the form is valid with minimum amount.
@@ -1067,8 +958,6 @@ class EdgeCaseTestIncome(TestCase):
         self.client.login(username="testuser", password="testpass")
         form = IncomeForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
-
-    # ______________________
 
     def test_below_minimum_amount(self):
         """
@@ -1087,8 +976,6 @@ class EdgeCaseTestIncome(TestCase):
             'Amount must be greater than zero.',
             form.errors['amount'][0]
         )
-
-    # ______________________
 
     def test_zero_amount(self):
         """
