@@ -527,4 +527,14 @@ Code validation is an important step in maintaining the quality and reliability 
 
 ## Acknowledgements
 
+- Special thanks to my mentor, [Mentor Name]()
+
+- Special thanks to my cohort facilitator, Marko and my fellow students for their support and feedback during the development of this project.
+
+- Thanks to the [Code Institute](https://codeinstitute.net/) for providing the resources and support that made this project possible.
+
+- Special thanks to the contributors of the open-source libraries and tools used in this project.
+- Gratitude to the Django community for their extensive documentation and support.
+- Appreciation for the developers of Bootstrap and Chart.js for their excellent frameworks that enhanced the UI/UX of the application.
+
 [Back to top](#contents)
