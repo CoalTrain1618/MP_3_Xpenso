@@ -3,15 +3,18 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from .models import Profile
 
-#this triggers when user instance is saved. Causing it to check if new use is created,
-# then proceeds to create the user profile link.
-@receiver(post_save, sender=User) 
+# Creates a profile when a new user is saved.
+
+
+@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
 
-# Ensures anytime the User is saved, the realting profile is also saved.
+# Creates or updates the user’s profile when the user is saved.
+
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     try:
