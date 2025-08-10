@@ -7,11 +7,11 @@ import datetime
 
 User = get_user_model()
 
-# _____________________________________________________________________
-
 
 class Budget(models.Model):
-
+    """
+    Model representing a user's budget.
+    """
     MONTH_CHOICES = [
         (1, 'January'),
         (2, 'February'),
@@ -51,10 +51,10 @@ class Budget(models.Model):
         return f"{self.month_year()} ({self.user_id})"
 
 
-# _____________________________________________________________________
-
-
 class Income(models.Model):
+    """
+    Model representing a user's income.
+    """
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     source = models.CharField(max_length=60)
@@ -65,20 +65,20 @@ class Income(models.Model):
         return f"{self.source} ({self.user_id})"
 
 
-# _____________________________________________________________________
-
-
 class Category(models.Model):
+    """
+    Model representing a category for expenses.
+    """
     name = models.CharField(max_length=60)
 
     def __str__(self):
         return self.name
 
 
-# _____________________________________________________________________
-
-
 class Expenses(models.Model):
+    """
+    Model representing a user's expenses.
+    """
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     expense_date = models.DateField(default=datetime.date.today)
