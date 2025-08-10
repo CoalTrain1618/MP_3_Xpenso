@@ -14,16 +14,42 @@
 - [Epics](#epics)
 - [Wireframes Design](#wireframes-design)
 - [Database Design](#database-design)
+    - [Data Model Description](#data-model-description)
+    - [Rationale and Design Decisions](#rationale-and-design-decisions)
 - [Design Choices](#design-choices)
     - [Fonts](#fonts)
     - [Colour Scheme](#colour-scheme)
-    - [Images](#images)
 - [Security Measures](#security-measures)
+- [XpensoLog Pages](#xpensolog-pages)
+    - [Pages Overview](#pages-overview)
+- [Admin Portal](#admin-portal)
+    - [Admin Panel Design](#admin-panel-design)
+- [Automated Email Handling](#automated-email-handling)
+    - [Setting Up Email with Gmail for Xpenso](#setting-up-email-with-gmail-for-xpenso)
+    - [Steps for Gmail Integration](#steps-for-gmail-integration)
+- [Deployment](#deployment)
+    - [Deployment process for Heroku](#deployment-process-for-heroku)
+- [Testing](#testing)
+    - [Automated Testing](#automated-testing)
+    - [Manual Testing](#manual-testing)
+    - [Code Accessibility Tests](#code-accessibility-tests)
+    - [Lighthouse Tests](#lighthouse-tests)
+    - [Code Validation](#code-validation)
+- [Technologies](#technologies)
+    - [Languages](#languages)
+    - [Framework](#framework)
+    - [Libraries](#libraries)
+    - [Tools](#tools)
 
+---
+
+<!-- [Project Introduction] -->
 ## Project Introduction
 XpensoLog is a user-friendly finance budgeting web application that enables users to create budgets, track income and log expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
 
 This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts, with a strong focus on backend functionality using Python and the Django framework.
+
+[Back to top](#contents)
 
 ## Agile Methodology
 ### Overview
@@ -67,14 +93,14 @@ In line with Agile development methodology, I have made extensive use of GitHub�
 [Back to top](#contents)
 
 --------------------------------------------------------------------------------------------
-### User Stories
+## User Stories
 Through the implementation of Agile methodology, I created the user stories with the website’s goals and objectives in mind. The result is a well-organised structure of user stories, divided between developer-focused and visitor-focused perspectives. A full list of these is provided below.
 
-#### Developer Stories
-- [#9](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/9) As a Developer I want to implement an Agile work method so that I can develop a high quality we application that meets the needs of the user.
+### Developer Stories
+- [#9](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/9) As a Developer I want to implement an Agile work method so that I can develop a high quality web application that meets the needs of the user.
 - [#10](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/10) As a Developer I want to design my database ERD to efficiently store and manage my web application content, ensuring optimal performance and flexibility.
 - [#11](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/11) As a developer I want to ensure the web app is visually engaging and follows a mobile first responsive design so that Users can navigate the website and access relevant information with ease.
-- [#12](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/12) As a developer I will create Wireframes so that I can Visually display my web application's design and structure.
+- [#12](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/12) As a developer I will create Wireframes so that I can visually display my web application's design and structure.
 - [#13](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/13) As a developer I will set up and configure the Django project so that I can create a secure working environment.
 - [#18](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/18) As a developer, I want to define the requirements and create the initial Budget and Income models so that the data structure is ready for further development.
 - [#19](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/19) As a developer, I want to migrate the new models to the database and register them with the Django admin so that they can be managed through the admin interface.
@@ -85,14 +111,14 @@ Through the implementation of Agile methodology, I created the user stories with
 - [#24](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/24) As a developer, I want to test the admin panel functionality and write unit tests for the Expense and Category models so that data management is reliable and robust.
 - [#25](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/25) As a developer, I want to document the models and admin setup for Expense and Category so that future developers can easily understand and maintain the code.
 - [#38](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/38) As a developer I can run automated tests for core features so that I am confident the application works as intended.
-- [#39](github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/39) As a tester I can manually test all user flows so that any bugs or usability issues are identified and fixed before release.
+- [#39](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/39) As a tester I can manually test all user flows so that any bugs or usability issues are identified and fixed before release.
 - [#40](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/40) As a developer I can read clear and up-to-date README documentation so that I can understand, set up, and contribute to the project easily.
 
-#### Visitor Stories
-- [#14](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/14) As a site user I want to register for an account so I Can create an account for when I revisit this site.
-- [#15](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/15) As a Visitor I want to Log in and out of my account each time I visit so my financial data is stored and saved after each visit.
-- [#16](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/16) As a User I want to be able to reset my password so If I forget my password I can still recover my account.
-- [#17](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/17) As a User I want to have access to a profile management page so that I can edit my information and delete my account if I desire to.
+### Visitor Stories
+- [#14](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/14) As a site user I want to register for an account so I can create an account for when I revisit this site.
+- [#15](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/15) As a visitor I want to log in and out of my account each time I visit so my financial data is stored and saved after each visit.
+- [#16](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/16) As a user I want to be able to reset my password so if I forget my password I can still recover my account.
+- [#17](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/17) As a user I want to have access to a profile management page so that I can edit my information and delete my account if I desire to.
 - [#26](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/26) As a user, I want to register for an account or log in so that my data is secure and personalised.
 - [#27](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/27) As a user, I can view a dashboard with my financial summary so that I can quickly understand my budget, income, and expenses at a glance.
 - [#28](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/28) As a user, I can set and view my budget so that I can plan my finances effectively.
@@ -106,7 +132,7 @@ Through the implementation of Agile methodology, I created the user stories with
 - [#36](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/36) As a user I can see clear error messages when something goes wrong or input is invalid so that I understand what needs to be fixed.
 - [#37](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/37) As a user I can only submit valid data in forms so that the site works reliably and prevents mistakes.
 
-#### Epics 
+## Epics 
 The user stories above have been grouped into Epics to align with the Agile methodology. The Epics are as follows:
 - [EPIC 1: Project Setup & Planning](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/1)
 - [EPIC 2: User Authentication & Access Control](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/2)
@@ -114,15 +140,17 @@ The user stories above have been grouped into Epics to align with the Agile meth
 - [EPIC 4: Expense Tracking & categorisation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/4)
 - [EPIC 5: Dashboard](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/5)
 - [EPIC 6: User interface & Responsive Design](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/6)
-- [EPIC 7: User Experiance Optimisation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/7)
+- [EPIC 7: User Experience Optimisation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/7)
 - [EPIC 8: Quality Assurance & Documentation](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/8)
 
 [Back to top](#contents)
 
-## WireFrames Design
+## Wireframes Design
 The wireframe designs serve as an initial blueprint for the website’s layout and user interface. While these designs provide a clear starting point for the placement of key elements across each page, they are intended to be flexible and may evolve throughout development as requirements and user needs become clearer. Creating wireframes has been instrumental in visualising the site’s structure and user flow, as well as aiding the development of the underlying database schema.
 
 **[Wireframes](./documentation/wireframes.md)**
+
+[Back to top](#contents)
 
 ## Database Design
 
@@ -141,7 +169,7 @@ The data model consists of the following main tables:
 - **Income:** Similar to Expense, this table records sources of income and is also linked to a specific budget for time-based tracking.
 - **Category:** Defines categories for expenses and income, such as ‘Groceries’ or ‘Salary’. Each expense/income entry is assigned a category to support clear reporting and visualisation.
 
-#### Rationale and Design Decisions
+### Rationale and Design Decisions
 
 During development, I identified the need to include `month` and `year` fields in the Budget table. This change ensures users can view and analyse their financial data on a monthly or yearly basis. Additionally, linking both Expenses and Incomes to their respective Budget entries (via foreign keys) enables efficient grouping, filtering, and reporting of financial data by time period. These changes were made to make the application more intuitive and to better support typical budgeting workflows.
 
@@ -152,13 +180,14 @@ The final schema supports:
 
 This approach to the data model ensures that XpensoLog is robust, scalable, and aligned with the practical needs of personal finance management.
 
+[Back to top](#contents)
 
 ## Design Choices
 
-## Fonts
+### Fonts
 This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inter) for most text, giving it a modern and professional appearance that suits financial tools. Inter is chosen for its clarity and ease of reading, helping to make the site accessible for all users. For headings, [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity) is used, creating a clear difference between sections whilst keeping with the fintech style.
 
-#### Colour Scheme
+### Colour Scheme
 ![Colour Palette](./documentation/images/app-pages/colours.png)
 
 [Back to top](#contents)
@@ -181,7 +210,7 @@ This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inte
 #### Database Security
 
 - Sensitive information such as the database URL and secret key are stored in an `env.py` file, keeping them out of version control and reducing the risk of unauthorised access. This was set up prior to the initial commit to GitHub.
-- CSRF (Cross-Site Request Forgery) protection is enabled on all forms to further safeguard user data.## Security Measures
+- CSRF (Cross-Site Request Forgery) protection is enabled on all forms to further safeguard user data.
 
 [Back to top](#contents)
 
@@ -189,138 +218,139 @@ This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inte
 
 ### Pages Overview
 
-XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customization to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
+XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customisation to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
 
 <details>
 <summary><strong>Login Page</strong></summary>
- - The Sign In page gives users a simple and secure way to access their account. Enter your username or email, and password to log in. If you've forgotten your password, there's an easy link to reset it. New users can quickly sign up with the link provided. The design is clean and modern, with a clear call-to-action button and accessible layout.
+The Sign In page lets users log in securely with their username or email and password. There are links to reset your password or sign up if you’re new. The layout is clean and accessible.
 <br>
-<img src="./documentation/images/app-pages/sign-in.png" alt="signin" width="550"/>
+<img src="./documentation/images/app-pages/sign-in.png" alt="signin" width="375"/>
 </details>
 
 <details>
 <summary><strong>Sign Up Page</strong></summary>
- - The Sign Up page allows new users to quickly create an account. You’ll need to enter a username, email address, and password, following the password guidance shown. The form helps you choose a secure password, and there’s a clear button to complete registration. If you have an account already, you can easily switch to the sign in page. The layout is modern and simple, making it easy for anyone to get started.
+The Sign Up page lets new users create an account by entering a username, email, and password. Password guidance is shown, and there’s a button to complete registration. Users can also switch easily to the sign in page.
 <br>
-<img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="550"/>
+<img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="375"/>
 </details>
 
 <details>
 <summary><strong>Forgot Password Page</strong></summary>
- - The Password Reset page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page.
+The Password Reset page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page.
 <br>
-<img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="550"/>
+<img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="350"/>
 </details>
 
 <details>
 <summary><strong>Email Verification Page</strong></summary>
- - The Email Verification page lets users confirm their email address for security. The site sends a verification email with a link to click. There’s a helpful note that you can change your email if needed. The instructions are clear, and the layout matches the clean, modern style of the app.
+The Email Verification page asks users to confirm their email address. A verification email is sent with a link to click, and you can change your email if needed.
 <br>
-<img src="./documentation/images/app-pages/verify-email.png" alt="email verification" width="550"/>
+<img src="./documentation/images/app-pages/verify-email.png" alt="email verification" width="350"/>
 </details>
 
 <details>
 <summary><strong>Confirmation Email</strong></summary>
- - Users receive this email to confirm their address after signing up. Click the link in the email to finish registration and verify your account.
+Users receive this email to confirm their address after signing up. Click the link in the email to finish registration and verify your account.
 <br>
 <img src="./documentation/images/app-pages/custom-email.png" alt="custom email" width="700"/>
 </details>
 
 <details>
 <summary><strong>Confirm Email Address Page</strong></summary>
- - The Confirm Email Address page asks users to verify that the provided email address belongs to them. Simply click the “Confirm” button once you recognise your email. This step ensures account security and helps prevent mistakes. The page is straightforward, with a clear message and a bold confirmation button for easy use.
+The Confirm Email Address page asks users to verify their email address. Click the “Confirm” button if the address is correct. This helps keep accounts secure and avoids mistakes.
 <br>
-<img src="./documentation/images/app-pages/confirm-email.png" alt="confirm email" width="550"/>
+<img src="./documentation/images/app-pages/confirm-email.png" alt="confirm email" width="350"/>
 </details>
 
 <details>
 <summary><strong>Dashboard</strong></summary>
- - The Dashboard gives a quick overview of your budgets, incomes, and expenses. Select a budget to view analytics, then press Calculate for details. All totals and a chart by category are displayed for easy tracking.
+The Dashboard gives a quick overview of your budgets, incomes, and expenses. Select a budget to view analytics, then press Calculate for details. All totals and a chart by category are displayed for easy tracking.
 <br>
-<img src="./documentation/images/app-pages/dashboard.png" alt="dashboard" width="550"/>
+<img src="./documentation/images/app-pages/dashboard.png" alt="dashboard" width="350"/>
 </details>
 
 <details>
 <summary><strong>Navigation Menu</strong></summary>
- - The Navigation menu provides quick access to Dashboard, Budget, Expenses, Income, Profile, and Logout. It’s easy to find what you need from any page.
+The Navigation menu provides quick access to Dashboard, Budget, Expenses, Income, Profile, and Logout. It’s easy to find what you need from any page.
 <br>
-<img src="./documentation/images/app-pages/navigation.png" alt="navigation menu" width="550"/>
+<img src="./documentation/images/app-pages/navigation.png" alt="navigation menu" width="350"/>
 </details>
 
 <details>
 <summary><strong>Quick Start Guide Modal</strong></summary>
- - The Quick Start Guide modal greets users and gives a simple overview of how to get started. It explains how to create a budget, track expenses and incomes, and begin managing finances right away.
+The Quick Start Guide modal greets users and gives a simple overview of how to get started. It explains how to create a budget, track expenses and incomes, and begin managing finances right away.
 <br>
-<img src="./documentation/images/app-pages/quickstart-modal.png" alt="quick start guide" width="550"/>
+<img src="./documentation/images/app-pages/quickstart-modal.png" alt="quick start guide" width="350"/>
 </details>
 
 <details>
 <summary><strong>Create Budget Page</strong></summary>
- - The Create Budget page lets users set a budget by entering an amount, month, and year. Budgets can be saved, edited, or deleted easily in the table below the form.
+The Create Budget page lets users set a budget by entering an amount, month, and year. Budgets can be saved, edited, or deleted easily in the table below the form.
 <br>
-<img src="./documentation/images/app-pages/budget-create.png" alt="create budget" width="550"/>
+<img src="./documentation/images/app-pages/budget-create.png" alt="create budget" width="350"/>
 </details>
 
 <details>
 <summary><strong>Create Expense Page</strong></summary>
- - The Create Expense page lets users add expenses by entering the date, amount, category, description, and budget. You can save each entry or add more. Existing expenses are listed in a table below, with options to edit or delete.
+The Create Expense page lets users add expenses by entering the date, amount, category, description, and budget. You can save each entry or add more. Existing expenses are listed in a table below, with options to edit or delete.
 <br>
-<img src="./documentation/images/app-pages/create-expense.png" alt="create expense" width="550"/>
+<img src="./documentation/images/app-pages/create-expense.png" alt="create expense" width="350"/>
 </details>
 
 <details>
 <summary><strong>Create Income Page</strong></summary>
- - The Create Income page lets users add income by entering the amount, source, and budget. Entries appear in a table below, where you can edit or delete each item.
+The Create Income page lets users add income by entering the amount, source, and budget. Entries appear in a table below, where you can edit or delete each item.
 <br>
-<img src="./documentation/images/app-pages/create-income.png" alt="create income" width="550"/>
+<img src="./documentation/images/app-pages/create-income.png" alt="create income" width="350"/>
 </details>
 
 <details>
 <summary><strong>Profile Page</strong></summary>
- - The Profile page lets users update their username, email, and password. There’s also an option to delete the account under Account Removal.
+The Profile page lets users update their username, email, and password. There’s also an option to delete the account under Account Removal.
 <br>
-<img src="./documentation/images/app-pages/profile.png" alt="profile page" width="550"/>
+<img src="./documentation/images/app-pages/profile.png" alt="profile page" width="350"/>
 </details>
 
 <details>
 <summary><strong>Manage Email Addresses Page</strong></summary>
- - The Manage Email Addresses page lets users view, verify, set as primary, or remove email addresses on their account. You can also add a new email address at the bottom.
+The Manage Email Addresses page lets users view, verify, set as primary, or remove email addresses on their account. You can also add a new email address at the bottom.
 <br>
-<img src="./documentation/images/app-pages/manage-email.png" alt="manage email" width="550"/>
+<img src="./documentation/images/app-pages/manage-email.png" alt="manage email" width="350"/>
 </details>
 
 <details>
 <summary><strong>Change Password Page</strong></summary>
- - The Change Password page allows users to update their password by entering their current password and new password twice. There’s also a link for forgotten passwords.
+The Change Password page allows users to update their password by entering their current password and new password twice. There’s also a link for forgotten passwords.
 <br>
-<img src="./documentation/images/app-pages/change-password.png" alt="change password" width="550"/>
+<img src="./documentation/images/app-pages/change-password.png" alt="change password" width="350"/>
 </details>
 
 <details>
 <summary><strong>Delete Account Confirmation Page</strong></summary>
- - The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel.
+The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel.
 <br>
-<img src="./documentation/images/app-pages/delete-account.png" alt="delete account confirmation" width="550"/>
+<img src="./documentation/images/app-pages/delete-account.png" alt="delete account confirmation" width="350"/>
 </details>
 
 <details>
 <summary><strong>Sign Out Page</strong></summary>
- - The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action.
+The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action.
 <br>
-<img src="./documentation/images/app-pages/signout.png" alt="sign out" width="550"/>
+<img src="./documentation/images/app-pages/signout.png" alt="sign out" width="350"/>
 </details>
 
 <details>
-<summary><strong>Custom 404 page</strong></summary>
- - The Custom 404 page ensures continuity of style accross the website even when a is faced with page not found. This helps the user have a seemless experience, allowing them to easily navigate back into desired pages. 
+<summary><strong>Custom 404 Page</strong></summary>
+The Custom 404 page ensures continuity of style across the website even when a user is faced with a page not found. This helps the user have a seamless experience, allowing them to easily navigate back into desired pages.
 <br>
-<img src="./documentation/images/app-pages/404.png" alt="sign out" width="550"/>
+<img src="./documentation/images/app-pages/404.png" alt="404 page" width="350"/>
 </details>
 
+[Back to top](#contents)
 ## Admin Portal
 
-### Admin Panel Design 
-The admin panel is simple in design, allowing the superuser to navigate easily. All objects are displayed with __str__ which allows the model objects to be easily identifiable. Unlike projects such as blogs, this site doesn't require extensive admin panel use. It still allows the Super user to create, edit and delete data.
+### Admin Panel Design
+The admin panel is simple in design, allowing the superuser to navigate easily. All objects are displayed with __str__ which allows the model objects to be easily identifiable. Unlike projects such as blogs, this site doesn't require extensive admin panel use. It still allows the superuser to create, edit and delete data.
 
 ![Admin panel overview](./documentation/images/app-pages/admin-overview.png)
 
@@ -328,7 +358,7 @@ The __str__ method is used to display objects in the admin panel, here's an exam
 
 ![Admin panel example](./documentation/images/app-pages/admin-layout-example.png)
 
----
+[Back to top](#contents)
 
 ## Automated Email Handling
 
@@ -354,7 +384,7 @@ All emails sent by Xpenso include a link for the user to confirm their email add
    - Once 2-Step Verification is set up, stay on the Security page and click “App passwords”.
    - If asked, log in again.
    - Select “Mail” as the app type and “Other (Custom name)” for device (e.g., “Xpenso App”).
-   - Click “Generate” to get a 16-character app password. **Copy this somewhere safe—you won’t see it again.**
+   - Click “Generate” to get a 16-character app password. Write this down somewhere safe, as you will not be able to see it again.
 
 4. **Configure Xpenso’s Email Settings**  
    In your project’s environment variables (not in the code), add:
@@ -364,19 +394,13 @@ All emails sent by Xpenso include a link for the user to confirm their email add
 5. **Keep Credentials Safe**  
    Never put your Gmail address or app password directly in your code. Use environment variables or a secrets manager to keep them secure.
 
----
+With this setup, Xpenso will send account-related emails to your users, helping them verify their email address and manage their account securely.
 
-With this setup, Xpenso will reliably send account-related emails to your users, helping them verify their email address and manage their account securely.
-
-
-
-
-
+[Back to top](#contents)
 
 ## Deployment
 
 ### Deployment process for Heroku
-
 
 To get this project live on Heroku, follow these steps:
 
@@ -401,63 +425,106 @@ To get this project live on Heroku, follow these steps:
 10. Under “Deployment method”, select “GitHub”.
 11. Use the “Search” box to find your repository, then click “Connect”.
 12. Scroll down and hit “Deploy Branch” to start deployment.
-13. If you’d like, you can enable automatic deploys so Heroku will redeploy every time you push to GitHub.
+13. If you want, you can enable automatic deploys so Heroku will redeploy every time you push to GitHub.
 14. Watch the build log at the bottom of the page. Once it’s done, you’ll get a link to your live app.
 
 **Important:**  
 - Make sure your Heroku app’s URL is included in the `ALLOWED_HOSTS` list in your `settings.py`.
 - Set `DEBUG = False` for your live site. This is automatically handled via env.
 - Double-check that your `requirements.txt` and `Procfile` are both up to date and committed to GitHub before deploying.
----
+
+[Back to top](#contents)
 
 ## Testing
 
 ### Automated Testing
-My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation. This made sure that users couldn’t access each other’s information, and helping to prevent malicious users from breaking the website.
+My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation. This made sure that users couldn’t access each other’s information, and helped to prevent malicious users from breaking the website.
 
-Tests can be run with following command: __python3 manage.py test finances__
+Tests can be run with the following command: `python3 manage.py test finances`
 
 #### [Automated Testing Document](./documentation/testing/automated_tests.md)
+
+[Back to top](#contents)
 
 ### Manual Testing
 Manual testing was also an important part of this project. I created a CSV file to track and record all my manual tests, as this let me design the layout to suit my needs. Once all the tests were complete, I converted them into a .md file using [tabletomarkdown.com](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/). This produced tables for each test section.
 
 #### [Manual Testing Document](./documentation/testing/manual_tests.md)
 
+[Back to top](#contents)
+
 ### Code Accessibility Tests
 Accessibility testing is a crucial part of the development process, ensuring that XpensoLog can be used by everyone, regardless of ability. By running thorough accessibility checks, I’ve been able to identify and address potential barriers to usability. You can view the full details of these tests and outcomes in the accessibility testing document. Including this section highlights a commitment to creating an inclusive and user-friendly experience.
 
 #### [Accessibility Testing Document](./documentation/testing/accessibility_testing.md)
 
+[Back to top](#contents)
+
 ### Lighthouse Tests
-Lighthouse testing helps to assess the overall quality of a web application, covering key areas such as performance, accessibility, best practices, and SEO. Running Lighthouse audits on XpensoLog’s main pages has enabled me to spot and resolve issues early on, leading to a more robust and efficient site. The results and improvements are documented in the Lighthouse testing section. Including these tests demonstrates a dedication to delivering a high standard of web development.
+Lighthouse testing helps to assess the overall quality of a web application, covering key areas such as performance, accessibility, best practices, and SEO. Running Lighthouse audits on XpensoLog’s main pages has enabled me to spot and resolve issues early on, leading to a more robust and efficient site. The results and improvements are documented in the Lighthouse testing section. Including these tests shows a commitment to delivering a high standard of web development.
 
 #### [Lighthouse Testing Document](./documentation/testing/lighthouse_tests.md)
 
-## Code Validation
+[Back to top](#contents)
 
-Code validation is an important step in maintaining the quality and reliability of XpensoLog. By validating the HTML, CSS, Python, and JavaScript files, I ensured that the code adheres to best practices and standards, reducing the likelihood of errors and improving overall site performance. Including this section demonstrates a commitment to robust, standards-compliant development.
+### Code Validation
+
+Code validation is an important step in maintaining the quality and reliability of XpensoLog. By validating the HTML, CSS, Python, and JavaScript files, I made sure that the code follows best practices and standards, reducing the likelihood of errors and improving overall site performance. Including this section shows a commitment to robust, standards-compliant development.
 
 #### [Code Validation Document](./documentation/testing/validation_testing.md)
 
+[Back to top](#contents)
+
 ## Technologies
 
-#### Languages
+### Languages
 
  - **[Python](https://www.python.org/)**: The primary language used for backend development.
  - **[JavaScript](https://www.javascript.com/)**: Used for frontend interactivity and dynamic content.
  - **[HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)**: The standard markup language for creating web pages.
  - **[CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)**: Used for styling the visual presentation of web pages.
 
-
-#### Framework
+### Framework
 
 - **[Django](https://www.djangoproject.com/)**: The web framework used for building the backend of the application, providing a robust structure for development.
-- **[Django Allauth](https://django-allauth.readthedocs.io/en/latest/)**: A Django app that provides user authentication, registration, and account management features.
 
-#### Libraries
+### Libraries
 
 - **[Bootstrap](https://getbootstrap.com/)**: A CSS framework used for responsive design and styling, ensuring the application looks good on all devices.
 - **[Chart.js](https://www.chartjs.org/)**: A JavaScript library used for creating interactive charts and graphs to visualise financial data.
 
-#### Tools
+### Tools
+
+#### Development & Collaboration
+- **[GitHub](https://github.com/)**: A platform for version control and collaboration, allowing developers to work together on projects.  
+- **[stackoverflow](https://stackoverflow.com/)**: A community-driven Q&A platform used for troubleshooting and finding solutions to coding problems encountered during development.  
+- **[gpt-4.1](https://openai.com/research/gpt-4)**: A state-of-the-art language model used for spell checking and grammar correction in the README documentation.  
+
+#### Frontend & User Interface
+- **[jQuery](https://jquery.com/)**: A JavaScript library used for simplifying DOM manipulation and event handling.  
+- **[crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)**: A Django app that helps to create beautiful forms with minimal effort, improving the user experience.  
+- **[crispy-bootstrap5](https://django-crispy-forms.readthedocs.io/en/latest/)**: A Django app that provides Bootstrap 5 support for crispy-forms, making it easy to create responsive and stylish forms.  
+
+#### Design Tools
+- **[Google Fonts](https://fonts.google.com/)**: A library of free fonts used to enhance the typography of the application.  
+- **[Favicon Generator](https://www.favicon-generator.org/)**: A tool for creating favicons from images, ensuring the app has a recognisable icon.  
+- **[coolors](https://coolors.co/)**: A colour scheme generator that helps in creating and exploring colour palettes for the application.  
+
+#### Database & Data Modelling
+- **[dbdiagram.io](https://dbdiagram.io/)**: A tool for designing and visualising the database schema, helping to create a clear data model for the application.  
+- **[psycopg2-binary](https://www.psycopg.org/)**: A PostgreSQL adapter for Python, used to connect the Django application to a PostgreSQL database.  
+- **[dj-database-url](https://github.com/adamchainz/dj-database-url)**: A Django utility for parsing database URLs, making it easier to configure database connections.  
+- **[sqlparse](https://github.com/andialbrecht/sqlparse)**: A non-validating SQL parser for Python, used to format and analyse SQL queries.  
+
+#### Deployment & Hosting
+- **[Heroku](https://www.heroku.com/)**: A cloud platform used for deploying the web application, providing a scalable environment for hosting.  
+- **[gunicorn](https://gunicorn.org/)**: A Python WSGI HTTP server for UNIX, used to serve the Django application in production.  
+- **[whitenoise](http://whitenoise.evans.io/en/stable/)**: A Django middleware that serves static files directly from the application, improving performance and simplifying deployment.  
+
+#### Authentication & Security
+- **[Django Allauth](https://django-allauth.readthedocs.io/en/latest/)**: A Django app that provides user authentication, registration, and account management features.  
+
+
+## Acknowledgements
+
+[Back to top](#contents)
