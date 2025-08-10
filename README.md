@@ -376,20 +376,20 @@ All emails sent by Xpenso include a link for the user to confirm their email add
    You’ll need an active Gmail (Google) account for Xpenso to send emails. Log in or create a new one if needed.
 
 2. **Enable Two-Step Verification on Gmail**  
-   - Go to your Google Account (click your profile picture, then “Manage your Google Account”).
-   - Open the “Security” tab.
-   - In “Signing in to Google”, enable 2-Step Verification and follow the steps.
+   - Go to your Google Account (click your profile picture, then **Manage your Google Account**).
+   - Open the **Security** tab.
+   - In **Signing in to Google**, enable 2-Step Verification and follow the steps.
 
 3. **Create an App Password for Xpenso**  
-   - Once 2-Step Verification is set up, stay on the Security page and click “App passwords”.
+   - Once 2-Step Verification is set up, stay on the Security page and click **App passwords**.
    - If asked, log in again.
-   - Select “Mail” as the app type and “Other (Custom name)” for device (e.g., “Xpenso App”).
-   - Click “Generate” to get a 16-character app password. Write this down somewhere safe, as you will not be able to see it again.
+   - Select **Mail** as the app type and **Other (Custom name)** for device (e.g., **Xpenso App**).
+   - Click **Generate** to get a 16-character app password. Write this down somewhere safe, as you will not be able to see it again.
 
 4. **Configure Xpenso’s Email Settings**  
    In your project’s environment variables (not in the code), add:
-   - `EMAIL_HOST_USER`: your Gmail address (e.g., youremail@gmail.com)
-   - `EMAIL_HOST_PASSWORD`: the 16-character app password you just generated
+   - `EMAIL_HOST_USER: your Gmail address (e.g., youremail@gmail.com)`
+   - `EMAIL_HOST_PASSWORD: the 16-character app password you just generated`
 
 5. **Keep Credentials Safe**  
    Never put your Gmail address or app password directly in your code. Use environment variables or a secrets manager to keep them secure.
@@ -405,33 +405,69 @@ With this setup, Xpenso will send account-related emails to your users, helping 
 To get this project live on Heroku, follow these steps:
 
 1. Go to the [Heroku website](https://heroku.com) and sign in, or set up a new account if you haven’t got one already.
-2. On your dashboard, click the “New” button in the top-right corner and select “Create new app”.
-3. Choose a unique name for your app in the “App name” box. Heroku will show a green tick if it’s available.
-4. Pick your region (“United States” or “Europe”) to match where most of your users are based.
-5. Click “Create app” to continue.
-6. Once your app is made, open the “Settings” tab along the top.
-7. Find the “Config Vars” section and click “Reveal Config Vars” to access your environment variable settings.
+2. Navigate to your **dashboard**, click the **New** button in the top-right corner and select **Create new app**.
+3. Choose a unique name for your app in the **App name** box. Heroku will show a green tick if it’s available.
+4. Pick your region (**United States** or **Europe**) to match where most of your users are based.
+5. Click **Create app** to continue.
+6. Once your app is made, open the **Settings** tab along the top.
+7. Find the **Config Vars** section and click **Reveal Config Vars** to access your environment variable settings.
 8. Add all required environment variables here (these are usually in your local `env.py`). For this project, set at least:
 
-    - **DATABASE_URL**: xxxx  
-    - **SECRET_KEY**: xxxx  
-    - **DEBUG**: xxxx  
-    - **EMAIL_HOST_PASS**: xxxx  
-    - **EMAIL_HOST_USER**: xxxx  
+        - **DATABASE_URL**: xxxx  
+        - **SECRET_KEY**: xxxx  
+        - **EMAIL_HOST_PASS**: xxxx  
+        - **EMAIL_HOST_USER**: xxxx  
 
-    Enter each variable name under “KEY” and its value under “VALUE”.
+    Enter each variable name under **KEY** and its value under **VALUE**.
 
-9. Go to the “Deploy” tab at the top of the page.
-10. Under “Deployment method”, select “GitHub”.
-11. Use the “Search” box to find your repository, then click “Connect”.
-12. Scroll down and hit “Deploy Branch” to start deployment.
+9. Go to the **Deploy** tab at the top of the page.
+10. Under **Deployment method**, select **GitHub**.
+11. Use the **Search** box to find your repository, then click **Connect**.
+12. Scroll down and hit **Deploy Branch** to start deployment.
 13. If you want, you can enable automatic deploys so Heroku will redeploy every time you push to GitHub.
 14. Watch the build log at the bottom of the page. Once it’s done, you’ll get a link to your live app.
 
 **Important:**  
 - Make sure your Heroku app’s URL is included in the `ALLOWED_HOSTS` list in your `settings.py`.
-- Set `DEBUG = False` for your live site. This is automatically handled via env.
+- Set  `DEBUG = False` for your live site. This is automatically handled via env.
 - Double-check that your `requirements.txt` and `Procfile` are both up to date and committed to GitHub before deploying.
+
+[Back to top](#contents)
+
+### To fork the project
+
+Forking the **GitHub** repository allows you to create a duplicate of a local repository. This is done so that modifications to the copy can be performed without compromising the original repository.
+
+
+- Log in to **GitHub**.
+
+- Locate the repository.
+
+- Click to open it.
+
+- The fork button is located on the right side of the repository menu.
+
+- To copy the repository to your **GitHub** account, click the button.
+
+  
+### To clone the project
+
+- Log in to **GitHub**.
+
+- Navigate to the main page of the repository and click **Code**.
+
+- Copy the **URL** for the repository.
+
+- Open your local **IDE**.
+
+- Change the current working directory to the location where you want the cloned directory.
+
+- Type git clone, and then paste the **URL** you copied earlier.
+
+- Press **Enter** to create your local clone.
+  
+
+_Any changes required to the website, they can be made, committed and pushed to GitHub._
 
 [Back to top](#contents)
 
@@ -493,6 +529,8 @@ Code validation is an important step in maintaining the quality and reliability 
 - **[Bootstrap](https://getbootstrap.com/)**: A CSS framework used for responsive design and styling, ensuring the application looks good on all devices.
 - **[Chart.js](https://www.chartjs.org/)**: A JavaScript library used for creating interactive charts and graphs to visualise financial data.
 
+[Back to top](#contents)
+
 ### Tools
 
 #### Development & Collaboration
@@ -527,7 +565,7 @@ Code validation is an important step in maintaining the quality and reliability 
 
 ## Acknowledgements
 
-- Special thanks to my mentor, [Mentor Name]()
+- Special thanks to my mentor, [Eventyret](https://github.com/Eventyret). Who gave me guidance and support throughout the development of this project, helping me to improve my coding skills and becoming a better developer.
 
 - Special thanks to my cohort facilitator, Marko and my fellow students for their support and feedback during the development of this project.
 
