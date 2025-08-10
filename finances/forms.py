@@ -4,9 +4,10 @@ from .models import Budget, Income, Category, Expenses
 import datetime
 
 
-# Method ensures amount data must be above 0.
 class CleanAmountMixin:
-
+    """
+    Mixin to validate that the amount is greater than zero.
+    """
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
         if amount is not None and amount <= 0:
@@ -16,11 +17,10 @@ class CleanAmountMixin:
         return amount
 
 
-# _____________________________________________________________________
-
-
-# Budget form for user to create budget.
 class BudgetForm(CleanAmountMixin, forms.ModelForm):
+    """
+    Form for creating a new budget.
+    """
     month = forms.ChoiceField(
         choices=Budget.MONTH_CHOICES,
         initial=datetime.date.today().month,
@@ -35,12 +35,10 @@ class BudgetForm(CleanAmountMixin, forms.ModelForm):
         fields = ['amount', 'month', 'year']
 
 
-# _____________________________________________________________________
-
-
-# Income form for user to create Income
 class IncomeForm(CleanAmountMixin, ModelForm):
-
+    """
+    Form for creating a new income entry.
+    """
     class Meta:
         model = Income
         fields = ['amount', 'source', 'budget']
@@ -53,12 +51,10 @@ class IncomeForm(CleanAmountMixin, ModelForm):
         )
 
 
-# _____________________________________________________________________
-
-
-# Expense form for user to create expenses
 class ExpenseForm(CleanAmountMixin, ModelForm):
-
+    """
+    Form for creating a new expense.
+    """
     class Meta:
         model = Expenses
         fields = [
@@ -69,7 +65,7 @@ class ExpenseForm(CleanAmountMixin, ModelForm):
             'expense_date': forms.DateInput(attrs={'type': 'date'}),
         }
 
-    # Pops user to filter user specific data
+    # Limit form choices to user's budgets and all categories
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
@@ -79,11 +75,10 @@ class ExpenseForm(CleanAmountMixin, ModelForm):
         self.fields['category'].queryset = Category.objects.all()
 
 
-# _____________________________________________________________________
-
-
-# Dashboard budget select form
 class DashboardBudgetSelect(forms.Form):
+    """
+    Form for selecting a budget in the dashboard.
+    """
     budget = forms.ModelChoiceField(queryset=Budget.objects.none())
 
     def __init__(self, user, *args, **kwargs):
