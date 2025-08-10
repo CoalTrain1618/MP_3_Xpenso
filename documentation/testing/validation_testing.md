@@ -8,34 +8,34 @@
 <summary><strong>login.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-login-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-login-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>signup.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="../images/validation-results/html-signup-error-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-signup-error-validation.png" alt="" width="400"/>
 
 - **How I fixed it:**  
 Added ID to respective password helper and then replaced the password helper small element with a div.
 
 - **Final result:** Passed  
-<img src="../images/validation-results/html-signup-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-signup-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>Verified_email_required.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-verified_email_required-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-verified_email_required-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>dashboard.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="../images/validation-results/html-dashboard-error-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-dashboard-error-validation.png" alt="" width="400"/>
 
 - **How I fixed it:**  
     - Closed open ul.
@@ -44,84 +44,84 @@ Added ID to respective password helper and then replaced the password helper sma
     - Changed capital P to lowercase p on element
 
 - **Final result:** Passed  
-<img src="../images/validation-results/html-dashboard-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-dashboard-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>budget_form.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-budget-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-budget-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>expense_form.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-expense-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-expense-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>income_form.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-income-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-income-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>profile.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-profile-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-profile-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>email.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-email-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-email-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>password_change.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="../images/validation-results/html-password_change-error-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-password_change-error-validation.png" alt="" width="400"/>
 
 - **How I fixed it:**  
     - id_password1_helptext ID missing a related element. Added if satement for password helper
     and added the missing ID.
 
 - **Final result:** Passed  
-<img src="../images/validation-results/html-password_change-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-password_change-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>password_reset.html</strong></summary>
 
 - **Result:** Initial run failed  
-<img src="../images/validation-results/html-password_reset-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-password_reset-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>delete_user.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-delete_user-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-delete_user-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>logout.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-logout-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-logout-validation.png" alt="" width="400"/>
 </details>
 
 <details>
 <summary><strong>404.html</strong></summary>
 
 - **Result:** Passed
-<img src="../images/validation-results/html-404-validation.png" alt="" width="550"/>
+<img src="../images/validation-results/html-404-validation.png" alt="" width="400"/>
 </details>
 
 ---
