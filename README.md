@@ -565,14 +565,24 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 #### Browser Tests
 
-|   Browser   | Description | Results | 
-|-------------|-------------|---------|
-| Chrome      |     |   |
-| Firefox Dev |     |   |
-| Brave       |     |   |
+ |    Browser     |        Version         |      Visual Discrepancies     |                   Responsive Design                     |
+ |----------------|------------------------|-------------------------------|---------------------------------------------------------|
+ |   Google       |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
+ |   Edge         |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
+ |   Brave        |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
+|   Firefox      |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
 
 
-#### Device Tests
+#### Screen Size Tests
+
+|       Device      | Size        | Results |
+|-------------------|-------------|---------|
+| Desktop windows   |  XXL        |   |
+| Desktop Linux     |  XL         |   |
+| HP laptop         |  L          |   |
+| Tab S7+           |  M          |   |
+| Ipad              |  S          |   |
+| Samsung S20 Ultra |  xs         |   |
 
 
 ### Automated Testing

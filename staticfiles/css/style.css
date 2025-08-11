@@ -104,6 +104,11 @@ footer {
     color: black;
 }
 
+.dropdown-menu-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* _________________________________________________________________ */
 
 /* Form Styles */
