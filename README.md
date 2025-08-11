@@ -584,6 +584,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 | Ipad              |  S          | Site remains responsive across all pages  |
 | Samsung S20 Ultra |  xs         | Site remains responsive across all pages  |
 
+---
 
 ### Automated Testing
 - My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation. This made sure that users couldn’t access each other’s information, and helped to prevent malicious users from breaking the website.
