@@ -169,7 +169,7 @@ Here is a technical description of the data model used in XpensoLog:
 
 ---
 
-#### - Budget
+#### Budget Model
 
 |  Field Name | Data Type    | Field Arguments |
 |-------------|--------------|------------------|
@@ -183,7 +183,7 @@ Here is a technical description of the data model used in XpensoLog:
 
 ---
 
-#### - Income
+#### Income Model
 
 |  Field Name |   Data Type  | Field Arguments |
 |-------------|--------------|------------------|
@@ -197,7 +197,7 @@ Here is a technical description of the data model used in XpensoLog:
 
 ---
 
-#### - Expenses
+#### Expenses Model
 
 |  Field Name | Data Type    | Field Arguments |
 |-------------|--------------|------------------|
@@ -213,7 +213,7 @@ Here is a technical description of the data model used in XpensoLog:
 
 ---
 
-#### - Category
+#### Category Model
 
 |  Field Name | Data Type    | Field Arguments |
 |-------------|--------------|-----------------|
@@ -221,6 +221,7 @@ Here is a technical description of the data model used in XpensoLog:
 
 - The **Category** table stores expense categories, including the category name. It is used to classify expenses and does not have a direct relationship with the User or Budget tables—each category can be associated with multiple expenses, but each expense is linked to only one category.
 
+--- 
 
 ### Rationale and Design Decisions
 
