@@ -195,6 +195,9 @@ This approach to the data model ensures that XpensoLog is robust, scalable, and 
 ### Categories
 - I decided to only include four categories for users to select from when creating an expense. I believe that for the purpose of this project to showcase my skills, including more categories would not add significant value and would only clutter the interface. More categories could be added in the future using the admin panel. So the expansion of this feature is totally possible and ready if necessary.
 
+### Application Name
+- When first creating this project, I chose the name **Let’s Talk Money** because it felt approachable for discussing personal finance. However, as the project evolved, I realized that **XpensoLog** better reflects the application's purpose: expense tracking and financial logging. This name also fits much better with the design and branding. Due to the name change, the Django project remains as **Lets-Talk-Money** to avoid complications with the database and migrations, but the application name is now **XpensoLog**.
+
 [Back to top](#contents)
 
 ## Security Measures
@@ -604,5 +607,8 @@ _Any changes required to the website, they can be made, committed and pushed to 
 - Special thanks to the contributors of the open-source libraries and tools used in this project.
 - Gratitude to the Django community for their extensive documentation and support.
 - Appreciation for the developers of Bootstrap and Chart.js for their excellent frameworks that enhanced the UI/UX of the application.
+
+## Contributions
+- Both contributors listed for this project are actually myself. I use two systems for development: a Linux desktop and a Linux laptop. When I first committed code from my laptop, I accidentally used the wrong git account because of its global git config. This is why two contributor accounts appear on the project.
 
 [Back to top](#contents)
