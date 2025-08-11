@@ -45,21 +45,21 @@
 
 <!-- [Project Introduction] -->
 ## Project Introduction
-XpensoLog is a user-friendly finance budgeting web application that enables users to create budgets, track income and log expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
+- XpensoLog is a user-friendly finance budgeting web application that enables users to create budgets, track income and log expenses by category. The app is designed to help users gain better control over their spending habits through clear, interactive features and data visualisation.
 
-This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts, with a strong focus on backend functionality using Python and the Django framework.
+- This project is being developed as part of Milestone Project 3 and aims to demonstrate my ability to implement full-stack web development concepts, with a strong focus on backend functionality using Python and the Django framework.
 
 [Back to top](#contents)
 
 ## Agile Methodology
 ### Overview
-For this project, I plan to utilise the Agile methodology to promote flexibility and ensure steady progress towards a clear objective. Agile development is particularly effective in environments where requirements and ideas evolve throughout the development process. It enables teams to break down large tasks into manageable, iterative steps, fostering continuous improvement and adaptability. This approach allows for quick adjustments in response to changing needs, making it ideal for dynamic project environments.
+- For this project, I plan to utilise the Agile methodology to promote flexibility and ensure steady progress towards a clear objective. Agile development is particularly effective in environments where requirements and ideas evolve throughout the development process. It enables teams to break down large tasks into manageable, iterative steps, fostering continuous improvement and adaptability. This approach allows for quick adjustments in response to changing needs, making it ideal for dynamic project environments.
 
 ### MoSCoW Prioritisation Technique
-As part of the project planning process, I will apply the MoSCoW prioritisation technique to help determine the relative importance of features and tasks. This method categorises requirements into four distinct groups: Must Have, Should Have, Could Have, and Won’t Have (at this time). By clearly identifying what is essential versus what is optional or deferrable, this approach supports effective time and resource management, ensuring that critical elements are addressed early in the development cycle.
+- As part of the project planning process, I will apply the MoSCoW prioritisation technique to help determine the relative importance of features and tasks. This method categorises requirements into four distinct groups: Must Have, Should Have, Could Have, and Won’t Have (at this time). By clearly identifying what is essential versus what is optional or deferrable, this approach supports effective time and resource management, ensuring that critical elements are addressed early in the development cycle.
 
 ### GitHub Project Board
-In line with Agile development methodology, I have made extensive use of GitHub’s project board by organising the development process into Epics, which are further broken down into user stories and manageable tasks. I have also utilised the Milestones feature, allowing me to group tasks into Sprint sections, each with a defined due date. By following this structured approach, I aim to maintain effective time management throughout the development of the web application, while also remaining adaptable to any necessary changes.
+- In line with Agile development methodology, I have made extensive use of GitHub’s project board by organising the development process into Epics, which are further broken down into user stories and manageable tasks. I have also utilised the Milestones feature, allowing me to group tasks into Sprint sections, each with a defined due date. By following this structured approach, I aim to maintain effective time management throughout the development of the web application, while also remaining adaptable to any necessary changes.
 
 ![Project](./documentation/images/app-pages/projectboard.png)
 
@@ -146,7 +146,7 @@ The user stories above have been grouped into Epics to align with the Agile meth
 [Back to top](#contents)
 
 ## Wireframes Design
-The wireframe designs serve as an initial blueprint for the website’s layout and user interface. While these designs provide a clear starting point for the placement of key elements across each page, they are intended to be flexible and may evolve throughout development as requirements and user needs become clearer. Creating wireframes has been instrumental in visualising the site’s structure and user flow, as well as aiding the development of the underlying database schema.
+- The wireframe designs serve as an initial blueprint for the website’s layout and user interface. While these designs provide a clear starting point for the placement of key elements across each page, they are intended to be flexible and may evolve throughout development as requirements and user needs become clearer. Creating wireframes has been instrumental in visualising the site’s structure and user flow, as well as aiding the development of the underlying database schema.
 
 **[Wireframes](./documentation/wireframes.md)**
 
@@ -154,7 +154,7 @@ The wireframe designs serve as an initial blueprint for the website’s layout a
 
 ## Database Design
 
-A clear and purposeful data model underpins XpensoLog’s ability to help users organise and track their finances effectively. The Entity Relationship Diagram (ERD) below provides a visual overview of the application’s database structure, showing how different tables interact to support core features such as budgeting, expense logging, and income tracking.
+- A clear and purposeful data model underpins XpensoLog’s ability to help users organise and track their finances effectively. The Entity Relationship Diagram (ERD) below provides a visual overview of the application’s database structure, showing how different tables interact to support core features such as budgeting, expense logging, and income tracking.
 
 ![dbdiagram](./documentation/images/dbdiagram/dbdiagram.png)
 
@@ -171,9 +171,9 @@ The data model consists of the following main tables:
 
 ### Rationale and Design Decisions
 
-During development, I identified the need to include `month` and `year` fields in the Budget table. This change ensures users can view and analyse their financial data on a monthly or yearly basis. Additionally, linking both Expenses and Incomes to their respective Budget entries (via foreign keys) enables efficient grouping, filtering, and reporting of financial data by time period. These changes were made to make the application more intuitive and to better support typical budgeting workflows.
+- During development, I identified the need to include `month` and `year` fields in the Budget table. This change ensures users can view and analyse their financial data on a monthly or yearly basis. Additionally, linking both Expenses and Incomes to their respective Budget entries (via foreign keys) enables efficient grouping, filtering, and reporting of financial data by time period. These changes were made to make the application more intuitive and to better support typical budgeting workflows.
 
-The final schema supports:
+**The final schema supports:**
 - User-specific data segregation and security
 - Flexible categorisation of transactions
 - Accurate, time-based reporting and data visualisation
@@ -185,10 +185,15 @@ This approach to the data model ensures that XpensoLog is robust, scalable, and 
 ## Design Choices
 
 ### Fonts
-This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inter) for most text, giving it a modern and professional appearance that suits financial tools. Inter is chosen for its clarity and ease of reading, helping to make the site accessible for all users. For headings, [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity) is used, creating a clear difference between sections whilst keeping with the fintech style.
+- This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inter) for most text, giving it a modern and professional appearance that suits financial tools. Inter is chosen for its clarity and ease of reading, helping to make the site accessible for all users. For headings, [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity) is used, creating a clear difference between sections whilst keeping with the fintech style.
 
 ### Colour Scheme
 ![Colour Palette](./documentation/images/app-pages/colours.png)
+
+- The colour scheme for XpensoLog was chosen to create a modern and fintech feel. 
+
+### Categories
+- I decided to only include four categories for users to select from when creating an expense. I believe that for the purpose of this project to showcase my skills, including more categories would not add significant value and would only clutter the interface. More categories could be added in the future using the admin panel. So the expansion of this feature is totally possible and ready if necessary.
 
 [Back to top](#contents)
 
@@ -218,7 +223,7 @@ This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inte
 
 ### Pages Overview
 
-XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customisation to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
+- XpensoLog uses a combination of custom templates and Django Allauth templates to render HTML pages for users. The addition of Allauth provided a robust foundation for authentication, registration, and account management, which made development faster and allowed easy customisation to match the app’s style and workflow. The sections below present the main pages of XpensoLog in the typical order a user would encounter them while navigating through the website.
 
 <details>
 <summary><strong>Login Page</strong></summary>
@@ -347,16 +352,41 @@ The Custom 404 page ensures continuity of style across the website even when a u
 </details>
 
 [Back to top](#contents)
+
+## Future Features
+
+- Budget calculations on the dashboard which would take away the total expense amount from the overall budget amount, giving the user a clear view of how much they have left to spend.
+
+- Implementing a dark mode for better user experience during night-time usage.
+
+- Adding a feature to set financial goals and track progress towards them.
+
+- Integrate a feature to export financial data to CSV or PDF for easy sharing and record-keeping.
+
+- Adding in financial tips and resources to better help users manage their finances.
+
 ## Admin Portal
 
 ### Admin Panel Design
-The admin panel is simple in design, allowing the superuser to navigate easily. All objects are displayed with __str__ which allows the model objects to be easily identifiable. Unlike projects such as blogs, this site doesn't require extensive admin panel use. It still allows the superuser to create, edit and delete data.
+- The admin panel is simple in design, allowing the superuser to navigate easily. All objects are displayed with __str__ which allows the model objects to be easily identifiable. Unlike projects such as blogs, this site doesn't require extensive admin panel use. It still allows the superuser to create, edit and delete data.
 
-![Admin panel overview](./documentation/images/app-pages/admin-overview.png)
+<details>
+<summary><strong>Admin Panel Overview</strong></summary>
 
-The __str__ method is used to display objects in the admin panel, here's an example.
+<br>
+<img src="./documentation/images/app-pages/admin-overview.png" alt="Admin Panel Overview" width="350"/>
+</details>
 
-![Admin panel example](./documentation/images/app-pages/admin-layout-example.png)
+
+- The __str__ method is used to display objects in the admin panel, here's an example.
+
+<details>
+<summary><strong>Admin Panel Example</strong></summary>
+
+<br>
+<img src="./documentation/images/app-pages/admin-layout-example.png" alt="Admin Panel Example" width="350"/>
+</details>
+
 
 [Back to top](#contents)
 
@@ -474,40 +504,40 @@ _Any changes required to the website, they can be made, committed and pushed to 
 ## Testing
 
 ### Automated Testing
-My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation. This made sure that users couldn’t access each other’s information, and helped to prevent malicious users from breaking the website.
+- My aim in this project was to implement Test Driven Development. By making use of automated testing, I was able to create robust views and methods to support my app’s functionality. Automated tests also allowed me to put my project under pressure throughout its development, including testing edge cases and ensuring user data isolation. This made sure that users couldn’t access each other’s information, and helped to prevent malicious users from breaking the website.
 
-Tests can be run with the following command: `python3 manage.py test finances`
+- Tests can be run with the following command: `python3 manage.py test finances`
 
 #### [Automated Testing Document](./documentation/testing/automated_tests.md)
 
 [Back to top](#contents)
 
 ### Manual Testing
-Manual testing was also an important part of this project. I created a CSV file to track and record all my manual tests, as this let me design the layout to suit my needs. Once all the tests were complete, I converted them into a .md file using [tabletomarkdown.com](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/). This produced tables for each test section.
+- Manual testing was also an important part of this project. I created a CSV file to track and record all my manual tests, as this let me design the layout to suit my needs. Once all the tests were complete, I converted them into a .md file using [tabletomarkdown.com](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/). This produced tables for each test section.
 
-#### [Manual Testing Document](./documentation/testing/manual_tests.md)
+- #### [Manual Testing Document](./documentation/testing/manual_tests.md)
 
 [Back to top](#contents)
 
 ### Code Accessibility Tests
-Accessibility testing is a crucial part of the development process, ensuring that XpensoLog can be used by everyone, regardless of ability. By running thorough accessibility checks, I’ve been able to identify and address potential barriers to usability. You can view the full details of these tests and outcomes in the accessibility testing document. Including this section highlights a commitment to creating an inclusive and user-friendly experience.
+- Accessibility testing is a crucial part of the development process, ensuring that XpensoLog can be used by everyone, regardless of ability. By running thorough accessibility checks, I’ve been able to identify and address potential barriers to usability. You can view the full details of these tests and outcomes in the accessibility testing document. Including this section highlights a commitment to creating an inclusive and user-friendly experience.
 
-#### [Accessibility Testing Document](./documentation/testing/accessibility_testing.md)
+- #### [Accessibility Testing Document](./documentation/testing/accessibility_testing.md)
 
 [Back to top](#contents)
 
 ### Lighthouse Tests
-Lighthouse testing helps to assess the overall quality of a web application, covering key areas such as performance, accessibility, best practices, and SEO. Running Lighthouse audits on XpensoLog’s main pages has enabled me to spot and resolve issues early on, leading to a more robust and efficient site. The results and improvements are documented in the Lighthouse testing section. Including these tests shows a commitment to delivering a high standard of web development.
+- Lighthouse testing helps to assess the overall quality of a web application, covering key areas such as performance, accessibility, best practices, and SEO. Running Lighthouse audits on XpensoLog’s main pages has enabled me to spot and resolve issues early on, leading to a more robust and efficient site. The results and improvements are documented in the Lighthouse testing section. Including these tests shows a commitment to delivering a high standard of web development.
 
-#### [Lighthouse Testing Document](./documentation/testing/lighthouse_tests.md)
+- #### [Lighthouse Testing Document](./documentation/testing/lighthouse_tests.md)
 
 [Back to top](#contents)
 
 ### Code Validation
 
-Code validation is an important step in maintaining the quality and reliability of XpensoLog. By validating the HTML, CSS, Python, and JavaScript files, I made sure that the code follows best practices and standards, reducing the likelihood of errors and improving overall site performance. Including this section shows a commitment to robust, standards-compliant development.
+- Code validation is an important step in maintaining the quality and reliability of XpensoLog. By validating the HTML, CSS, Python, and JavaScript files, I made sure that the code follows best practices and standards, reducing the likelihood of errors and improving overall site performance. Including this section shows a commitment to robust, standards-compliant development.
 
-#### [Code Validation Document](./documentation/testing/validation_testing.md)
+- #### [Code Validation Document](./documentation/testing/validation_testing.md)
 
 [Back to top](#contents)
 
