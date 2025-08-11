@@ -102,7 +102,7 @@ Through the implementation of Agile methodology, I created the user stories with
 - [#11](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/11) As a **developer** I want to ensure the web app is visually engaging and follows a mobile first responsive design so that Users can navigate the website and access relevant information with ease.
 - [#12](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/12) As a **developer** I will create Wireframes so that I can visually display my web application's design and structure.
 - [#13](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/13) As a **developer** I will set up and configure the Django project so that I can create a secure working environment.
-- [#14](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/14) As a **developer** I want to implement Django's built in authentication system so that users can securely log in and manage their accounts.
+- [#14](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/14) As a **developer** I will implement Django's built in authentication system so that users can securely log in and manage their accounts.
 - [#18](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/18) As a **developer**, I want to define the requirements and create the initial Budget and Income models so that the data structure is ready for further development.
 - [#19](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/19) As a **developer**, I want to migrate the new models to the database and register them with the Django admin so that they can be managed through the admin interface.
 - [#20](https://github.com/CoalTrain1618/MP_3_Lets-Talk-Money/issues/20) As a **developer**, I want to test the admin panel functionality and write unit tests for the models so that data management is reliable and robust.
@@ -162,12 +162,65 @@ This ERD was designed using [dbdiagram.io](https://dbdiagram.io).
 
 ### Data Model Description
 
-The data model consists of the following main tables:
-- **User:** Stores user account information and provides a link to each user’s financial data.
-- **Budget:** Represents a user’s budget for a particular month and year, enabling time-specific financial planning. Each budget is associated with a user and serves as a parent for related expense and income records.
-- **Expense:** Records individual expenses, each linked to a budget. This allows expenses to be grouped and filtered by month and year, and by user.
-- **Income:** Similar to Expense, this table records sources of income and is also linked to a specific budget for time-based tracking.
-- **Category:** Defines categories for expenses and income, such as ‘Groceries’ or ‘Salary’. Each expense/income entry is assigned a category to support clear reporting and visualisation.
+Here is a technical description of the data model used in XpensoLog:
+
+- **User** 
+    - I have used Django's built in User model for user authentication and management. This will be represented as User in the database. It includes fields for username, email, password, and other user-related information. User is a **one-to-many** relationship with Budget, Expenses, and Income, meaning each user can have multiple budgets, expenses, and incomes.
+
+---
+
+#### - Budget
+
+|  Field Name | Data Type    | Field Arguments |
+|-------------|--------------|------------------|
+| user_id     | ForeignKey   | User, on_delete=models.CASCADE |
+| amount      | DecimalField | max_digits=6, decimal_places=2 |
+| date_set    | DateField    | auto_now_add=True |
+| month       | IntegerField | choices=MONTH_CHOICES, default=datetime.date.today().month |
+| year        | IntegerField | choices=YEAR_CHOICES, default=datetime.date.today().year |
+
+- The **Budget** table stores user-defined budgets, including the amount, date set, month, and year. It has a **many-to-one** relationship with User, meaning each budget belongs to one user, but a user can have multiple budgets.
+
+---
+
+#### - Income
+
+|  Field Name |   Data Type  | Field Arguments |
+|-------------|--------------|------------------|
+| user_id     | ForeignKey   | User, on_delete=models.CASCADE |
+| amount      | DecimalField | max_digits=6, decimal_places=2 |
+| source      | CharField    | max_length=60 |
+| date_set    | DateField    | auto_now_add=True |
+| budget      | ForeignKey   | Budget, on_delete=models.CASCADE |
+
+- The **Income** table stores user income entries, including the amount, source, date set, and a foreign key linking to the Budget table. It has a **many-to-one** relationship with both the User and Budget tables, meaning each income entry belongs to one user and is associated with one budget, but a user or budget can have multiple income entries.
+
+---
+
+#### - Expenses
+
+|  Field Name | Data Type    | Field Arguments |
+|-------------|--------------|------------------|
+| user_id     | ForeignKey   | User, on_delete=models.CASCADE |
+| amount      | DecimalField | max_digits=6, decimal_places=2 |
+| expense_date| DateField    | default=datetime.date.today |
+| description | CharField    | max_length=50, null=True, blank=True |
+| date_set    | DateField    | auto_now_add=True |
+| category    | ForeignKey   | Category, on_delete=models.CASCADE |
+| budget      | ForeignKey   | Budget, on_delete=models.CASCADE |
+
+- The **Expenses** table stores user expenses, including the amount, date of expense, description, date set, and foreign keys linking to the Category and Budget tables. It has a **many-to-one** relationship with the User, Category, and Budget tables—meaning each expense is linked to one user, one category, and one budget, but a user, category, or budget can each have multiple associated expenses.
+
+---
+
+#### - Category
+
+|  Field Name | Data Type    | Field Arguments |
+|-------------|--------------|-----------------|
+| name        | CharField    | max_length=60   |
+
+- The **Category** table stores expense categories, including the category name. It is used to classify expenses and does not have a direct relationship with the User or Budget tables—each category can be associated with multiple expenses, but each expense is linked to only one category.
+
 
 ### Rationale and Design Decisions
 
