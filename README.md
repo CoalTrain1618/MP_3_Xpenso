@@ -568,7 +568,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
  |    Browser     |        Version         |      Visual Discrepancies     |                   Responsive Design                     |
  |----------------|------------------------|-------------------------------|---------------------------------------------------------|
  |   Google       |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
- |   Edge         |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
+ |   Safari       |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
  |   Brave        |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
 |   Firefox      |        Latest          |    No visual discrepancies    | Site remains responsive on all pages and screen sizes   |
 
@@ -577,12 +577,12 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 |       Device      | Size        | Results |
 |-------------------|-------------|---------|
-| Desktop windows   |  XXL        |   |
-| Desktop Linux     |  XL         |   |
-| HP laptop         |  L          |   |
-| Tab S7+           |  M          |   |
-| Ipad              |  S          |   |
-| Samsung S20 Ultra |  xs         |   |
+| Desktop windows   |  XXL        | Site remains responsive across all pages  |
+| Desktop Linux     |  XL         | Site remains responsive across all pages  |
+| HP laptop         |  L          | Site remains responsive across all pages  |
+| Tab S7+           |  M          | Site remains responsive across all pages  |
+| Ipad              |  S          | Site remains responsive across all pages  |
+| Samsung S20 Ultra |  xs         | Site remains responsive across all pages  |
 
 
 ### Automated Testing
