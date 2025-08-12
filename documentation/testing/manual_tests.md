@@ -155,6 +155,36 @@ All steps successfully passed.
 
 ---
 
+## <a name="tc5"></a>TC5: Forgot Password
+
+| Field             | Value                                                                                   |
+|-------------------|-----------------------------------------------------------------------------------------|
+| **Test #**        | TC5                                                                                     |
+| **Feature Tested**| Forgot Password                                                                          |
+| **Expected**      | User will be navigated to the reset password page                              |
+| **Status**        | PASS                                                                                    |
+
+**Test Description:**  
+Test to see if verification confirmation works and user can successfully sign in.
+
+**Steps:**
+
+| Step | Action                                         | Status |
+|------|------------------------------------------------|--------|
+| 1    | User clicks on "Forgot Password" link          | [x]    |
+| 2    | User is redirected to reset password page      | [x]    |
+| 3    | User enters email address                      | [x]    |
+| 4    | User receives password reset email             | [x]    |
+| 5    | User clicks on reset link and is redirected to reset password key page      | [x]    |
+| 6    | User enters new password and confirms it       | [x]    |
+
+**Notes:**  
+All steps passed. However found un styled pages, which needed styling to match the rest of the application.
+
+[Back to top](#test-cases)
+
+---
+
 ## <a name="tc5"></a>TC5: Email Verification (confirm)
 
 | Field             | Value                                                                                   |
@@ -180,8 +210,6 @@ Test to see if verification confirmation works and user can successfully sign in
 All steps passed.
 
 [Back to top](#test-cases)
-
----
 
 ## <a name="tc6"></a>TC6: Navigation
 
