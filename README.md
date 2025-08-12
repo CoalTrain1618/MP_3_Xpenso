@@ -322,6 +322,20 @@ The Password Reset Done page informs users that a password reset email has been 
 </details>
 
 <details>
+<summary><strong>Password Reset From Key</strong></summary>
+The Password Reset From Key page lets users reset their password using a unique key sent to their email. User can click the link and be navigated to this page, where they can enter a new password and then get redirected to the done page.
+<br>
+<img src="./documentation/images/app-pages/password_reset_from_key.png" alt="password reset" width="350"/>
+</details>
+
+<details>
+<summary><strong>Password Reset From Key Done</strong></summary>
+The Password Reset From Key Done page informs users that their password has been successfully reset. The user can then press the button to be redirected to the login page.
+<br>
+<img src="./documentation/images/app-pages/password_reset_from_key_done.png" alt="password reset" width="350"/>
+</details>
+
+<details>
 <summary><strong>Email Verification Page</strong></summary>
 The Email Verification page asks users to confirm their email address. A verification email is sent with a link to click, and you can change your email if needed.
 <br>
