@@ -295,147 +295,147 @@ This approach to the data model ensures that XpensoLog is robust, scalable, and 
 
 <details>
 <summary><strong>Login Page</strong></summary>
-The Sign In page lets users log in securely with their username or email and password. There are links to reset your password or sign up if you’re new. The layout is clean and accessible.
+<li> The Sign In page lets users log in securely with their username or email and password. There are links to reset your password or sign up if you’re new. The layout is clean and accessible. </li>
 <br>
 <img src="./documentation/images/app-pages/sign-in.png" alt="signin" width="375"/>
 </details>
 
 <details>
 <summary><strong>Sign Up Page</strong></summary>
-The Sign Up page lets new users create an account by entering a username, email, and password. Password guidance is shown, and there’s a button to complete registration. Users can also switch easily to the sign in page.
+<li> The Sign Up page lets new users create an account by entering a username, email, and password. Password guidance is shown, and there’s a button to complete registration. Users can also switch easily to the sign in page. </li>
 <br>
 <img src="./documentation/images/app-pages/sign-up.png" alt="signup" width="375"/>
 </details>
 
 <details>
 <summary><strong>Forgot Password Page</strong></summary>
-The Password Reset page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page.
+<li> The Forgot Password page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page. </li>
 <br>
 <img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="350"/>
 </details>
 
 <details>
 <summary><strong>Password Reset Done</strong></summary>
-The Password Reset Done page informs users that a password reset email has been sent. If they don't see it shortly, they should check their spam folder. There's also a link to return to the sign in page.
+<li> The Password Reset Done page informs users that a password reset email has been sent. If they don't see it shortly, they should check their spam folder. There's also a link to return to the sign in page. </li>
 <br>
 <img src="./documentation/images/app-pages/password_reset_done.png" alt="password reset" width="350"/>
 </details>
 
 <details>
 <summary><strong>Password Reset From Key</strong></summary>
-The Password Reset From Key page lets users reset their password using a unique key sent to their email. User can click the link and be navigated to this page, where they can enter a new password and then get redirected to the done page.
+<li> The Password Reset From Key page lets users reset their password using a unique key sent to their email. User can click the link and be navigated to this page, where they can enter a new password and then get redirected to the done page. </li>
 <br>
 <img src="./documentation/images/app-pages/password_reset_from_key.png" alt="password reset" width="350"/>
 </details>
 
 <details>
 <summary><strong>Password Reset From Key Done</strong></summary>
-The Password Reset From Key Done page informs users that their password has been successfully reset. The user can then press the button to be redirected to the login page.
+<li> The Password Reset From Key Done page informs users that their password has been successfully reset. The user can then press the button to be redirected to the login page. </li>
 <br>
 <img src="./documentation/images/app-pages/password_reset_from_key_done.png" alt="password reset" width="350"/>
 </details>
 
 <details>
 <summary><strong>Email Verification Page</strong></summary>
-The Email Verification page asks users to confirm their email address. A verification email is sent with a link to click, and you can change your email if needed.
+<li> The Email Verification page asks users to confirm their email address. A verification email is sent with a link to click, and you can change your email if needed. </li>
 <br>
 <img src="./documentation/images/app-pages/verify-email.png" alt="email verification" width="350"/>
 </details>
 
 <details>
 <summary><strong>Confirmation Email</strong></summary>
-Users receive this email to confirm their address after signing up. Click the link in the email to finish registration and verify your account.
+<li> Users receive this email to confirm their address after signing up. Click the link in the email to finish registration and verify your account. </li>
 <br>
 <img src="./documentation/images/app-pages/custom-email.png" alt="custom email" width="700"/>
 </details>
 
 <details>
 <summary><strong>Confirm Email Address Page</strong></summary>
-The Confirm Email Address page asks users to verify their email address. Click the “Confirm” button if the address is correct. This helps keep accounts secure and avoids mistakes.
+<li> The Confirm Email Address page asks users to verify their email address. Click the “Confirm” button if the address is correct. This helps keep accounts secure and avoids mistakes. </li>
 <br>
 <img src="./documentation/images/app-pages/confirm-email.png" alt="confirm email" width="350"/>
 </details>
 
 <details>
 <summary><strong>Dashboard</strong></summary>
-The Dashboard gives a quick overview of your budgets, incomes, and expenses. Select a budget to view analytics, then press Calculate for details. All totals and a chart by category are displayed for easy tracking.
+<li> The Dashboard gives a quick overview of your budgets, incomes, and expenses. Select a budget to view analytics, then press Calculate for details. All totals and a chart by category are displayed for easy tracking. </li>
 <br>
 <img src="./documentation/images/app-pages/dashboard.png" alt="dashboard" width="350"/>
 </details>
 
 <details>
 <summary><strong>Navigation Menu</strong></summary>
-The Navigation menu provides quick access to Dashboard, Budget, Expenses, Income, Profile, and Logout. It’s easy to find what you need from any page.
+<li> The Navigation menu provides quick access to Dashboard, Budget, Expenses, Income, Profile, and Logout. It’s easy to find what you need from any page. </li>
 <br>
 <img src="./documentation/images/app-pages/navigation.png" alt="navigation menu" width="350"/>
 </details>
 
 <details>
 <summary><strong>Quick Start Guide Modal</strong></summary>
-The Quick Start Guide modal greets users and gives a simple overview of how to get started. It explains how to create a budget, track expenses and incomes, and begin managing finances right away.
+<li> The Quick Start Guide modal greets users and gives a simple overview of how to get started. It explains how to create a budget, track expenses and incomes, and begin managing finances right away. </li>
 <br>
 <img src="./documentation/images/app-pages/quickstart-modal.png" alt="quick start guide" width="350"/>
 </details>
 
 <details>
 <summary><strong>Create Budget Page</strong></summary>
-The Create Budget page lets users set a budget by entering an amount, month, and year. Budgets can be saved, edited, or deleted easily in the table below the form.
+<li> The Create Budget page lets users set a budget by entering an amount, month, and year. Budgets can be saved, edited, or deleted easily in the table below the form. </li>
 <br>
 <img src="./documentation/images/app-pages/budget-create.png" alt="create budget" width="350"/>
 </details>
 
 <details>
 <summary><strong>Create Expense Page</strong></summary>
-The Create Expense page lets users add expenses by entering the date, amount, category, description, and budget. You can save each entry or add more. Existing expenses are listed in a table below, with options to edit or delete.
+<li> The Create Expense page lets users add expenses by entering the date, amount, category, description, and budget. You can save each entry or add more. Existing expenses are listed in a table below, with options to edit or delete. </li>
 <br>
 <img src="./documentation/images/app-pages/create-expense.png" alt="create expense" width="350"/>
 </details>
 
 <details>
 <summary><strong>Create Income Page</strong></summary>
-The Create Income page lets users add income by entering the amount, source, and budget. Entries appear in a table below, where you can edit or delete each item.
+<li> The Create Income page lets users add income by entering the amount, source, and budget. Entries appear in a table below, where you can edit or delete each item. </li>
 <br>
 <img src="./documentation/images/app-pages/create-income.png" alt="create income" width="350"/>
 </details>
 
 <details>
 <summary><strong>Profile Page</strong></summary>
-The Profile page lets users update their username, email, and password. There’s also an option to delete the account under Account Removal.
+<li> The Profile page lets users update their username, email, and password. There’s also an option to delete the account under Account Removal. </li>
 <br>
 <img src="./documentation/images/app-pages/profile.png" alt="profile page" width="350"/>
 </details>
 
 <details>
 <summary><strong>Manage Email Addresses Page</strong></summary>
-The Manage Email Addresses page lets users view, verify, set as primary, or remove email addresses on their account. You can also add a new email address at the bottom.
+<li> The Manage Email Addresses page lets users view, verify, set as primary, or remove email addresses on their account. You can also add a new email address at the bottom. </li>
 <br>
 <img src="./documentation/images/app-pages/manage-email.png" alt="manage email" width="350"/>
 </details>
 
 <details>
 <summary><strong>Change Password Page</strong></summary>
-The Change Password page allows users to update their password by entering their current password and new password twice. There’s also a link for forgotten passwords.
+<li> The Change Password page allows users to update their password by entering their current password and new password twice. There’s also a link for forgotten passwords. </li>
 <br>
 <img src="./documentation/images/app-pages/change-password.png" alt="change password" width="350"/>
 </details>
 
 <details>
 <summary><strong>Delete Account Confirmation Page</strong></summary>
-The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel.
+<li> The Delete Account Confirmation page warns users that their account and all data will be permanently deleted if they proceed. It offers options to confirm deletion or cancel. </li>
 <br>
 <img src="./documentation/images/app-pages/delete-account.png" alt="delete account confirmation" width="350"/>
 </details>
 
 <details>
 <summary><strong>Sign Out Page</strong></summary>
-The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action.
+<li> The Sign Out page asks users to confirm if they want to sign out, with a clear button to complete the action. </li>
 <br>
 <img src="./documentation/images/app-pages/signout.png" alt="sign out" width="350"/>
 </details>
 
 <details>
 <summary><strong>Custom 404 Page</strong></summary>
-The Custom 404 page ensures continuity of style across the website even when a user is faced with a page not found. This helps the user have a seamless experience, allowing them to easily navigate back into desired pages.
+<li> The Custom 404 page ensures continuity of style across the website even when a user is faced with a page not found. This helps the user have a seamless experience, allowing them to easily navigate back into desired pages. </li>
 <br>
 <img src="./documentation/images/app-pages/404.png" alt="404 page" width="350"/>
 </details>
