@@ -45,6 +45,27 @@ Lighthouse is an automated tool built into Chrome that audits web pages for perf
 </details>
 
 <details>
+<summary><strong>password_reset_from_key.html</strong></summary>
+
+- **Desktop Result:**  
+<img src="../images/lighthouse-results/lighthouse-password_reset_from_key-desktop.png" alt="Lighthouse test for password_reset_from_key.html" width="375"/>
+
+- **Mobile Result:**  
+<img src="../images/lighthouse-results/lighthouse-password_reset_from_key-mobile.png" alt="Lighthouse test for password_reset_from_key.html" width="375"/>
+</details>
+
+<details>
+<summary><strong>password_reset_from_key_done.html</strong></summary>
+
+- **Desktop Result:**  
+<img src="../images/lighthouse-results/lighthouse-password_reset_from_key_done-desktop.png" alt="Lighthouse test for password_reset_from_key_done.html" width="375"/>
+
+- **Mobile Result:**  
+<img src="../images/lighthouse-results/lighthouse-password_reset_from_key_done-mobile.png" alt="Lighthouse test for password_reset_from_key_done.html" width="375"/>
+</details>
+
+
+<details>
 <summary><strong>verify_email_required.html</strong></summary>
 
 - **Desktop Result:**  
