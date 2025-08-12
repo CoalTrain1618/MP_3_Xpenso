@@ -1,9 +1,13 @@
-# MP_3_XpensoLog
+# XpensoLog
+
+![Multi-Device display](./documentation/images/app-pages/all-devices-black.png)
 
 ## Project Introduction
 XpensoLog is a user-friendly, budgeting Django application, designed to make budgeting free and accessible for everyone. The application offers secure account creation and management, ensuring users’ financial data remains private and protected. XpensoLog users can create budgets, track expenses and incomes, and visualize their financial data through a comprehensive dashboard that displays clear insights for each month. XpensoLog is designed with a sleek, modern Fintech style, making it visually appealing and easy to navigate.
 
 Built with user-centric principles, XpensoLog's **C.R.U.D** based design enables users to easily **Create**, **Read**, **Update**, and **Delete** their financial data, providing full control over their experience. The app is developed with a mobile-first approach and is fully responsive across all devices.
+
+### Live site: [XpensoLog](https://xpenso-eaaa4f25fbfe.herokuapp.com)
 
 ## Contents
 
@@ -71,7 +75,7 @@ Built with user-centric principles, XpensoLog's **C.R.U.D** based design enables
     - Enable categorisation of expenses for better insight into spending habits.
 
 - Promote Financial Awareness and Accountability:
-    - Offer clear visual summaries of income, outgoings, and remaining budget.
+    - Offer clear visual summaries of income and outgoings.
     - Help users identify areas where they can reduce costs or improve saving.
 
 - Ensure an Intuitive and Accessible Experience:
@@ -90,7 +94,6 @@ Built with user-centric principles, XpensoLog's **C.R.U.D** based design enables
     - Provide reminders, insights, and positive feedback to help users stay engaged.
     - Allow users to view progress over time and set personal financial goals.
 
-[Back to top](#contents)
 
 --------------------------------------------------------------------------------------------
 ## User Stories
@@ -238,6 +241,14 @@ This approach to the data model ensures that XpensoLog is robust, scalable, and 
 
 ## Design Choices
 
+### User Flow map
+
+- Here is the intended user flow map for XpensoLog. The Flow map was the first step in the design process, allowing me to visualise the user journey and then identify the next steps in the design process. Throughout the development of XpensoLog, the user flow map has been a valuable reference point, ensuring that the application remains focused on delivering a seamless and intuitive user experience.
+
+![User Flow Map](./documentation/images/app-pages/app-user-flow-chart.png)
+
+[Back to top](#contents)
+
 ### Fonts
 - This application uses [Inter](https://fonts.google.com/specimen/Inter?query=Inter) for most text, giving it a modern and professional appearance that suits financial tools. Inter is chosen for its clarity and ease of reading, helping to make the site accessible for all users. For headings, [Montserrat](https://fonts.google.com/specimen/Montserrat?sort=popularity) is used, creating a clear difference between sections whilst keeping with the fintech style.
 
@@ -249,7 +260,7 @@ This approach to the data model ensures that XpensoLog is robust, scalable, and 
 ### Categories
 - I decided to only include four categories for users to select from when creating an expense. I believe that for the purpose of this project to showcase my skills, including more categories would not add significant value and would only clutter the interface. More categories could be added in the future using the admin panel. So the expansion of this feature is totally possible and ready if necessary.
 
-### Application Name
+### Application Name Change
 - When first creating this project, I chose the name **Let’s Talk Money** because it felt approachable for discussing personal finance. However, as the project evolved, I realized that **XpensoLog** better reflects the application's purpose: expense tracking and financial logging. This name also fits much better with the design and branding. Due to the name change, the Django project remains as **Lets-Talk-Money** to avoid complications with the database and migrations, but the application name is now **XpensoLog**.
 
 [Back to top](#contents)
@@ -301,6 +312,13 @@ The Sign Up page lets new users create an account by entering a username, email,
 The Password Reset page lets users request a password reset by entering their email address. After submitting, a confirmation email is sent. There’s also a link to return to the sign in page.
 <br>
 <img src="./documentation/images/app-pages/forgot-password.png" alt="password reset" width="350"/>
+</details>
+
+<details>
+<summary><strong>Password Reset Done</strong></summary>
+The Password Reset Done page informs users that a password reset email has been sent. If they don't see it shortly, they should check their spam folder. There's also a link to return to the sign in page.
+<br>
+<img src="./documentation/images/app-pages/password_reset_done.png" alt="password reset" width="350"/>
 </details>
 
 <details>
@@ -666,6 +684,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 - **[psycopg2-binary](https://www.psycopg.org/)**: A PostgreSQL adapter for Python, used to connect the Django application to a PostgreSQL database.  
 - **[dj-database-url](https://github.com/adamchainz/dj-database-url)**: A Django utility for parsing database URLs, making it easier to configure database connections.  
 - **[sqlparse](https://github.com/andialbrecht/sqlparse)**: A non-validating SQL parser for Python, used to format and analyse SQL queries.  
+- **[PostgreSQL](https://www.postgresql.org/)**: The database management system used to store and manage the application’s data.
 
 #### Deployment & Hosting
 - **[Heroku](https://www.heroku.com/)**: A cloud platform used for deploying the web application, providing a scalable environment for hosting.  
@@ -680,9 +699,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 - Special thanks to my mentor, [Eventyret](https://github.com/Eventyret). Who gave me guidance and support throughout the development of this project, helping me to improve my coding skills and becoming a better developer.
 
-- Special thanks to my cohort facilitator, Marko and my fellow students for their support and feedback during the development of this project.
-
-
+- Acknowledgement of the valuable feedback and insights provided by my peers during the development process.
 
 - Special thanks to the contributors of the open-source libraries and tools used in this project.
 - Gratitude to the Django community for their extensive documentation and support.

@@ -104,6 +104,13 @@ Added ID to respective password helper and then replaced the password helper sma
 </details>
 
 <details>
+<summary><strong>password_reset_done.html</strong></summary>
+
+- **Result:** Initial run failed  
+<img src="../images/validation-results/html-password_reset_done-pass.png" alt="" width="400"/>
+</details>
+
+<details>
 <summary><strong>delete_user.html</strong></summary>
 
 - **Result:** Passed

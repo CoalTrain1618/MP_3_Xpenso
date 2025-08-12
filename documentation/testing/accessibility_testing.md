@@ -43,8 +43,16 @@ base.html: Changed text to white by removing the 'text-muted' class.
 <summary><strong>password_reset.html</strong></summary>
 
 - **Result:** Passed  
-<img src="../images/accessibility-results/wave-password_reset-passed.png" alt="WAVE accessibility passed for signup.html" width="400"/>
+<img src="../images/accessibility-results/wave-password_reset-passed.png" alt="WAVE accessibility passed for password_reset.html" width="400"/>
 </details>
+
+<details>
+<summary><strong>password_reset_done.html</strong></summary>
+
+- **Result:** Passed  
+<img src="../images/accessibility-results/wave-password_reset_done.png" alt="WAVE accessibility passed for password_reset_done.html" width="400"/>
+</details>
+
 
 <details>
 <summary><strong>verify_email_required.html</strong></summary>
