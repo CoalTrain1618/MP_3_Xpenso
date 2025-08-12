@@ -111,6 +111,28 @@ Added ID to respective password helper and then replaced the password helper sma
 </details>
 
 <details>
+<summary><strong>password_reset_from_key.html</strong></summary>
+
+- **Result:** Initial run failed
+<img src="../images/validation-results/html-password_reset_from_key-fail.png" alt="" width="400"/>
+
+- **How I fixed it:**  
+    - Initially this page had an issue of no aria-describedby error when testing for validation. This led me on a 4 hour battle attempting multiple fixes such as Rendering form.password as a widget only, adding the help_text id to different elements and removing the DTL template tag and replacing with raw html input. Nothing seemed to work. But The solution was right in front of me all along. I truly felt the fog of war (frustration) blinded my mind to think clearly. Each time I pushed, the page source wouldn't update to my template changes. I tried resetting the Heroku dyno, attempting to clear any and every cache, but to no avail. I then turn off my PC and rebooted it and started up Firefox Dev, instead of Chrome, I opened Dev tools and seen the deployed site code was indeed updated... Ureeka!. 
+
+         I then went back to Chrome and pulled up the source code on the same page, and it was completely different. I then realized that the issue was that I had to clear the cache in Chrome. After clearing the cache, the aria-describedby error was gone and the page passed html validation. I felt like I wasted so much time on such a simple fix, but I don't beleive any time is wasted when you learn something new. The end.
+
+- **Final result:** Passed
+<img src="../images/validation-results/html-password_reset_from_key-pass.png" alt="" width="400"/>
+</details>
+
+<details>
+<summary><strong>password_reset_from_key_done.html</strong></summary>
+
+- **Result:** Passed
+<img src="../images/validation-results/html-password_reset_from_key_done-pass.png" alt="" width="400"/>
+</details>
+
+<details>
 <summary><strong>delete_user.html</strong></summary>
 
 - **Result:** Passed
