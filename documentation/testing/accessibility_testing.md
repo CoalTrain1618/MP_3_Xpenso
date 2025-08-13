@@ -1,6 +1,6 @@
 # WAVE Accessibility Testing
 
-Accessibility testing is an essential part of web development, helping to ensure that everyone—including people with disabilities—can use and navigate your site effectively. Using the [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/), I checked each page for accessibility issues and made improvements where needed. This process helps to create a more inclusive and user-friendly experience for all visitors.
+Accessibility testing is an essential part of web development, helping to ensure that everyone, including people with disabilities, can use and navigate your site effectively. Using the [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/), I checked each page for accessibility issues and made improvements where needed. This process helps to create a more inclusive and user-friendly experience for all visitors.
 
 ---
 
@@ -8,7 +8,7 @@ Accessibility testing is an essential part of web development, helping to ensure
 
 ### Points
 
-- Whilst running accessibility tests, one alert persisted across all pages. This alert existed because both the dashboard nav link and the XpensoLog logo navigate users back to the dashboard. This is intentional: when the nav links collapse, the user can still click the logo to return to the dashboard.
+- Whilst running accessibility tests, one alert persisted across most pages. This alert existed because both the dashboard nav link and the XpensoLog logo navigate users back to the dashboard. This is intentional: when the nav links collapse, the user can still click the logo to return to the dashboard. You will notice this on all pages except the login and signup pages, where the logo is not a link.
 
 <details>
 <summary><strong>login.html</strong></summary>
@@ -57,7 +57,9 @@ base.html: Changed text to white by removing the 'text-muted' class.
 <summary><strong>password_reset_from_key.html</strong></summary>
 
 **Result:** Initial run failed
- 
+
+**Error** 
+- The password reset from key page had an error with the ID of the password field not matching the label. This was fixed by adding the correct ID to the label.
 
 - **Result:** Passed  
 <img src="../images/accessibility-results/wave-password_reset_key_done-pass.png" alt="WAVE accessibility passed for password_reset_from_key_done.html" width="400"/>
