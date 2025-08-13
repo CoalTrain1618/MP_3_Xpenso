@@ -607,6 +607,8 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 #### Screen Size Tests
 
+- Sizes are based on Bootstrap's responsive [breakpoints](https://getbootstrap.com/docs/5.3/layout/breakpoints/).
+
 |       Device      | Size        | Results |
 |-------------------|-------------|---------|
 | Desktop windows   |  XXL        | Site remains responsive across all pages  |
